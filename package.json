@@ -18,6 +18,7 @@
     "@astrojs/rss": "^4.0.12",
     "@astrojs/sitemap": "^3.4.1",
     "astro": "^5.11.0",
+    "husky": "^9.1.7",
     "sass-embedded": "^1.89.2"
   },
   "devDependencies": {
