@@ -14,8 +14,10 @@
   "dependencies": {
     "@astrojs/mdx": "^4.3.1",
     "@astrojs/partytown": "^2.1.4",
+    "@astrojs/rss": "^4.0.12",
     "@astrojs/sitemap": "^3.4.1",
-    "astro": "^5.11.0"
+    "astro": "^5.11.0",
+    "sass-embedded": "^1.89.2"
   },
   "devDependencies": {
     "@eslint/js": "^9.30.1",

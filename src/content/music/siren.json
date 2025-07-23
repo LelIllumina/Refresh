@@ -1,0 +1,24 @@
+{
+  "title": "Siren",
+  "artist": "Susumu Hirasawa",
+  "cover": "/music/Siren/Cover.jpg",
+  "tracks": [
+    {
+      "title": "ELECTRIC LIGHT BATHING-1",
+      "src": "/music/Siren/ELECTRIC LIGHT BATHING-1.mp3"
+    },
+    { "title": "SAIREN  Siren ", "src": "/music/Siren/SAIREN Siren .mp3" },
+    { "title": "On Line Malaysia", "src": "/music/Siren/On Line Malaysia.mp3" },
+    { "title": "Siren  SEIREN ", "src": "/music/Siren/Siren SEIREN .mp3" },
+    { "title": "Nurse Cafe", "src": "/music/Siren/Nurse Cafe.mp3" },
+    { "title": "Holy Delay", "src": "/music/Siren/Holy Delay.mp3" },
+    { "title": "Gemini", "src": "/music/Siren/Gemini.mp3" },
+    { "title": "Day Scanner", "src": "/music/Siren/Day Scanner.mp3" },
+    { "title": "Siam Lights", "src": "/music/Siren/Siam Lights.mp3" },
+    {
+      "title": "ELECTRIC LIGHT BATHING-2",
+      "src": "/music/Siren/ELECTRIC LIGHT BATHING-2.mp3"
+    },
+    { "title": "Mermaid Song", "src": "/music/Siren/Mermaid Song.mp3" }
+  ]
+}
