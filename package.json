@@ -9,7 +9,8 @@
     "astro": "astro",
     "eslint": "eslint './src/**/*.{js,ts,astro}' --fix",
     "stylelint": "stylelint './src/**/*.{css,astro}' --fix",
-    "prettier": "prettier './src/**/*.{js,ts,css}' --write"
+    "prettier": "prettier './src/**/*.{js,ts,css}' --write",
+    "prepare": "husky install"
   },
   "dependencies": {
     "@astrojs/mdx": "^4.3.1",
@@ -31,5 +32,14 @@
     "stylelint-config-html": "^1.1.0",
     "stylelint-config-standard": "^38.0.0",
     "typescript-eslint": "^8.36.0"
-  }
+  },
+  "lint-staged": {
+    "*.{js,ts,astro}": "eslint --cache --fix",
+    "*.{css,astro}": "stylelint --fix --cache",
+    "*.{js,ts,css,md}": "prettier --write"
+  },
+  "browserslist": [
+    "defaults and fully supports es6-module",
+    "maintained node versions"
+  ]
 }
