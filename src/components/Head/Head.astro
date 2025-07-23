@@ -1,0 +1,69 @@
+---
+import { ClientRouter } from "astro:transitions";
+import Favicons from "./Favicons.astro";
+import RichData from "./RichData.astro";
+
+interface Props {
+  title: string;
+  description?: string;
+  keywords?: string[];
+  image?: string;
+}
+
+const {
+  title = "Lel@Nekoweb",
+  description = "Welcome to Lel@Nekoweb",
+  keywords = ["Nekoweb", "Lel", "Blog", "Personal"],
+  image,
+} = Astro.props;
+
+const canonicalUrl = new URL(
+  Astro.url.pathname.endsWith("/")
+    ? Astro.url.pathname
+    : Astro.url.pathname + "/",
+  "https://lel.nekoweb.org"
+).href;
+
+const isDev = import.meta.env.DEV;
+---
+
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>{title}</title>
+
+  <Favicons />
+
+  <meta name="description" content={description} />
+  <meta name="keywords" content={keywords.join(", ")} />
+  <meta name="theme-color" content="# SET THIS TO THE ACCENT YOU CHOOSE" />
+
+  <RichData title={title} description={description} image={image} />
+
+  <link rel="sitemap" href="/sitemap-index.xml" />
+  <link rel="canonical" href={canonicalUrl} />
+  <link
+    rel="alternate"
+    type="application/rss+xml"
+    title="lel@nekoweb"
+    href={new URL("rss.xml", Astro.site)}
+  />
+
+  {
+    !isDev && (
+      <script
+        is:inline
+        type="text/partytown"
+        src="https://cloud.umami.is/script.js"
+        data-website-id="e892313b-4c2a-45e8-90ed-25d53abbc813"
+      />
+    )
+  }
+
+  <meta
+    name="google-site-verification"
+    content="WOn7NKMqQnniSYxOoqE9lu4k9YKK9zzhUJkSwQLm-_U"
+  />
+
+  <ClientRouter />
+</head>

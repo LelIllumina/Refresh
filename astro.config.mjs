@@ -7,7 +7,7 @@ import sitemap from "@astrojs/sitemap";
 import { defineConfig } from "astro/config";
 
 export default defineConfig({
-  site: "https://yourSiteHere.nekoweb.org",
+  site: "https://lel.nekoweb.org",
 
   server: { host: true },
   output: "static",
