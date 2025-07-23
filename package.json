@@ -1,5 +1,5 @@
 {
-  "name": "",
+  "name": "neko-lel-astro-refresh-layout-3-but-actually-kinda-layout-4",
   "type": "module",
   "version": "0.0.1",
   "scripts": {
@@ -12,6 +12,9 @@
     "prettier": "prettier './src/**/*.{js,ts,css}' --write"
   },
   "dependencies": {
+    "@astrojs/mdx": "^4.3.1",
+    "@astrojs/partytown": "^2.1.4",
+    "@astrojs/sitemap": "^3.4.1",
     "astro": "^5.11.0"
   },
   "devDependencies": {
