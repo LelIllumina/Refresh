@@ -1,0 +1,21 @@
+---
+import Head from "@components/Head.astro";
+import "@styles/style.css"; // Importing css like this will apply it to everything in the layout, including imported components and content in <slot />
+
+// Don't import scripts here as then they'll run server-side / during the build.
+// If you want to run scripts, use the <script> tag
+---
+
+<!doctype html>
+<html lang="en">
+  <body>
+    <Head />
+    {
+      /* The above <Head /> will insert everything from the Head.astro component over here */
+      /* Comments like these which are in {} are JSX comments and won't show up when building your site */
+    }
+    <slot />
+    <!-- This <slot /> tag dictates that all the HTML that will passed to this layout will end up here.  -->
+    <!-- Comments like these are HTML comments and WILL show up in your build  -->
+  </body>
+</html>

@@ -1,0 +1,142 @@
+---
+// The code inside these "---" are called the frontmatter, they are used when building the site
+// Here you'll manage stuff like components and variables youd like to use on the page.
+// On vscode with the astro extension Ctrl + Right Click on a component name (like the "Layout" import below) to go to it file.
+
+import Layout from "@layouts/Layout.astro"; // You can use @<folder> to import files for convinience, Note that this only works for paths configured in /tsconfig.json
+import LinksTable from "@components/LinksTable.astro";
+
+const username = Astro.site?.hostname.split(".")[0]; // This gets your username from what you set your site to in astro.config.mjs
+---
+
+{
+  /* The content below was made for HTML newbies rather than SSG/Astro Newbies so it might be lower level than expected*/
+}
+
+<Layout>
+  <div id="header">
+    <h1>This is YOUR new webpage</h1>
+    <h2 id="username">
+      {username}
+      {
+        /* This is how you can use variables in your HTML.
+           The variable "username" is inserted here as plaintext when you build your site rather than client-side as it is with regular JavaScript
+           If you wanted you could skip making a variable in the frontmatter you could inline the code in {} itself
+        */
+      }
+    </h2>
+  </div>
+  <main>
+    <h2>Welcome to Nekoweb.org</h2>
+    <p>
+      Welcome to your new site! If you want to hop right in, you can head over
+      to the
+
+      <a target="_blank" href="https://nekoweb.org/dashboard/">dashboard</a>
+
+      right now, otherwise if you're new to making websites, you can check out
+      some of the sources below:
+    </p>
+
+    <h3>Some Basic all-purpose guides and links</h3>
+    <ul>
+      <li>
+        <a
+          target="_blank"
+          href="https://developer.mozilla.org/en-US/docs/Web/Tutorials"
+          >MDN Docs Tutorials</a
+        >
+      </li>
+      <li>
+        <a target="_blank" href="https://www.w3schools.com/">W3Schools</a>
+      </li>
+      <li>
+        <a
+          target="_blank"
+          href="https://goblin-heart.net/sadgrl/webmastery/webmaster-links"
+          >Sadgrl Webmaster links</a
+        >
+      </li>
+      <li>
+        <a target="_blank" href="https://discord.gg/hvfHKyVS6b"
+          >Nekoweb Discord Server</a
+        >
+      </li>
+    </ul>
+
+    <h3>And some Language specific links</h3>
+
+    <LinksTable />
+
+    <h3>Theres a couple books for further reading too:</h3>
+    <ul>
+      <li>
+        <a target="_blank" href="https://github.com/getify/You-Dont-Know-JS"
+          >You Dont Know JS Yet</a
+        >
+      </li>
+      <li>
+        <a target="_blank" href="https://eloquentjavascript.net/"
+          >Eloquent JavaScript</a
+        >
+      </li>
+    </ul>
+
+    <h3>There are also some Nekoweb specific; resources:</h3>
+    <ul>
+      <li>
+        <a
+          target="_blank"
+          href="https://github.com/fl0werpowers/nekoweb-sitebox-preview"
+          >Sitebox Preview</a
+        >
+      </li>
+      <li>
+        <a
+          target="_blank"
+          href="https://github.com/deploy2nekoweb/deploy2nekoweb"
+          >Deploy2Nekoweb</a
+        >
+      </li>
+      <li>
+        <a target="_blank" href="https://search.nekoweb.org/">NekoSearch</a>
+      </li>
+      <li>
+        <a target="_blank" href="https://domain.joo.sh/">Custom Domain Guide</a>
+      </li>
+      <li>
+        <a target="_blank" href="https://snippets.nekoweb.org/">Snippets</a>
+      </li>
+    </ul>
+    <br />
+    <hr />
+    <p>
+      <em>!!! Important !!!</em> Read the
+      <a target="_blank" href="https://nekoweb.org/faq">FAQ</a>
+      , it'll help you fix many common issues you might have.
+    </p>
+    <p>
+      A particularly common issue is not seeing your site changes immediately
+      after reloading; this is possibly because of browser caching, where you
+      don't get your new files loaded.
+
+      <br />
+      A simple fix is to just press <code>Ctrl + Shift + R</code> or
+      <code>Ctrl + f5</code>
+
+      depending on your browser. This will clear the cache and load your latest
+      changes.
+
+      <br />
+
+      If you still have issues, Cloudflare domains also usually have similar
+      problems. Try messing around with its cache settings if you have
+      Cloudflare (custom domain with nekoweb Patreon).
+    </p>
+    <p>
+      And; remember: Google is your friend, use it for all the issues you have,
+      and you will probably find an answer!
+    </p>
+  </main>
+  <div id="footer">Enjoy your new; site :3</div>
+</Layout>

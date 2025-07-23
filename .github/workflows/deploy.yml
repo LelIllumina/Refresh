@@ -1,0 +1,56 @@
+# This file uploads your files to NekoWeb using the deploy2nekoweb action.
+# It requires the NEKOWEB_API_KEY and NEKOWEB_COOKIE secrets to be set in your GitHub repository.
+# You can find instructions for that here: https://deploy.nekoweb.org/
+
+name: Deploy to NekoWeb
+
+on:
+  push:
+    branches: [master]
+  workflow_dispatch:
+
+permissions:
+  contents: read
+  pages: write
+  id-token: write
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+    outputs:
+      artifact-name: site-build
+    steps:
+      - name: Checkout repository
+        uses: actions/checkout@v4
+
+      - uses: actions/cache@v4
+        with:
+          path: ~/.bun/install/cache
+          key: ${{ runner.os }}-bun-${{ hashFiles('**/bun.lockb') }}
+
+      - name: Install dependencies and build site
+        uses: withastro/action@v3
+
+      - name: Upload built site
+        uses: actions/upload-artifact@v4
+        with:
+          name: site-build
+          path: dist/
+
+  deploy-to-nekoweb:
+    runs-on: ubuntu-latest
+    needs: build
+    steps:
+      - name: Download built site
+        uses: actions/download-artifact@v4
+        with:
+          name: site-build
+          path: dist/
+
+      - name: Deploy to NekoWeb
+        uses: deploy2nekoweb/deploy2nekoweb@main
+        with:
+          nekoweb-api-key: ${{ secrets.NEKOWEB_API_KEY }}
+          nekoweb-cookie: ${{ secrets.NEKOWEB_COOKIE }}
+          nekoweb-folder: "/dist/"
+          directory: "dist"
