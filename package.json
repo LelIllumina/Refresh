@@ -34,13 +34,16 @@
     "globals": "^16.3.0",
     "postcss-html": "^1.8.0",
     "prettier": "3.6.2",
+    "sass-embedded": "^1.89.2",
     "stylelint": "^16.22.0",
+    "stylelint-config-clean-order": "^7.0.0",
     "stylelint-config-html": "^1.1.0",
     "stylelint-config-standard": "^38.0.0",
-    "typescript-eslint": "^8.36.0",
-    "sass-embedded": "^1.89.2",
-    "stylelint-config-clean-order": "^7.0.0",
-    "stylelint-scss": "^6.12.1"
+    "stylelint-config-standard-scss": "^15.0.1",
+    "stylelint-high-performance-animation": "^1.11.0",
+    "stylelint-scss": "^6.12.1",
+    "stylelint-use-nesting": "^6.0.0",
+    "typescript-eslint": "^8.36.0"
   },
   "lint-staged": {
     "*.{js,ts,astro}": "eslint --cache --fix",
