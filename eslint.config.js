@@ -19,6 +19,7 @@ export default defineConfig([
   tseslint.configs.recommended,
 
   // Astro support with JSX A11y
-  ...eslintPluginAstro.configs["flat/recommended"],
+  ...eslintPluginAstro.configs.recommended,
+  ...eslintPluginAstro.configs["jsx-a11y-recommended"],
   eslintConfigPrettier,
 ]);

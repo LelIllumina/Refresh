@@ -1,9 +1,12 @@
 {
     "stylelint.validate": [
+        "css",
+        "scss",
         "astro"
     ],
-    "[astro]": {
-        "editor.defaultFormatter": "astro-build.astro-vscode"
-    },
-    "typescript.experimental.useTsgo": true,
+    "stylelint.experimental": {
+        "customSyntax": {
+            "astro": "postcss-html"
+        }
+    }
 }
