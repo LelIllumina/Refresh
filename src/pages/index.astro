@@ -2,7 +2,70 @@
 import Layout from "@layouts/Layout.astro";
 ---
 
-<Layout>
-  <h1>Welcome to the Home Page</h1>
-  <p>This is the main content of the home page.</p>
+<Layout
+  ><main>
+    <section class="hero">
+      <h1 class="hero-title">Lel@NekoWEB</h1>
+    </section>
+    <section>
+      <article>
+        <h2>Stuff here</h2>
+        <p>
+          To make aesthetic one needs a vision before their tools, but to even
+          envison, first needed is the tools
+        </p>
+        <p>
+          Lorem ipsum dolor sit amet consectetur adipisicing elit. Quos possimus
+          eaque quisquam explicabo magni assumenda iure corrupti nemo sint error
+          nam maiores tenetur suscipit, officiis porro voluptates dicta ipsa
+          ratione.
+        </p>
+        <p>
+          Lorem ipsum dolor sit amet consectetur adipisicing elit. Quos possimus
+          eaque quisquam explicabo magni assumenda iure corrupti nemo sint error
+          nam maiores tenetur suscipit, officiis porro voluptates dicta ipsa
+          ratione.
+        </p>
+        <p>
+          Lorem ipsum dolor sit amet consectetur adipisicing elit. Quos possimus
+          eaque quisquam explicabo magni assumenda iure corrupti nemo sint error
+          nam maiores tenetur suscipit, officiis porro voluptates dicta ipsa
+          ratione.
+        </p>
+      </article>
+    </section>
+  </main>
 </Layout>
+
+<style>
+  main {
+    min-height: 100vh;
+    margin: 0;
+  }
+
+  .hero {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+
+    height: 100vh;
+    margin: 0;
+
+    background: var(--background-50) center/cover no-repeat fixed
+      url("/src/assets/images/background.jpg");
+  }
+
+  .hero-title {
+    margin: 0;
+
+    font-family: var(--font-fancy);
+    font-size: clamp(4rem, 15vw, 14rem);
+    color: var(--accent-600);
+    text-align: center;
+    text-shadow:
+      2px 2px var(--primary-800),
+      -2px -2px var(--secondary-800);
+
+    mix-blend-mode: color-dodge;
+  }
+</style>

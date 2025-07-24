@@ -1,0 +1,46 @@
+/*
+This file should only contain styles that affect text, in terms of the font family, font size, style, weight, features, etc.
+Do not change visual elements on fonts such as padding, margin or background.
+*/
+
+/* Fallbacks */
+$sans:
+  "Inter",
+  "SF Pro Display",
+  -apple-system,
+  blinkmacsystemfont,
+  "Segoe UI",
+  roboto,
+  "Helvetica Neue",
+  arial,
+  sans-serif;
+$serif: "Playfair Display", "Times New Roman", times, georgia, serif;
+$mono: "Fira Code", "SF Mono", monaco, "Cascadia Code", consolas, monospace;
+
+:root {
+  --font-body: Conso, #{$serif};
+  --font-title: Mica Valo, #{$serif};
+  --font-fancy: Archoblast, #{$sans};
+}
+
+body {
+  font-family: var(--font-body);
+  font-size: 1rem;
+  line-height: calc(1em + 0.7rem);
+
+  // text-wrap: pretty is not on firefox yet
+  text-wrap: balance;
+  text-wrap: pretty;
+}
+
+h1,
+h2,
+h3,
+h4,
+h5,
+h6 {
+  break-after: avoid;
+  font-family: var(--font-title);
+  font-weight: 900;
+  line-height: 1.1;
+}

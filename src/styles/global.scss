@@ -1,0 +1,65 @@
+/* All css that dosen't belong in other files AND is global in nature */
+
+@charset 'utf-8';
+
+@use "./reset";
+@use "./fonts";
+@use "./colors";
+@use "./typography";
+
+:root {
+  scroll-behavior: smooth;
+
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+  text-rendering: optimizelegibility;
+
+  color-scheme: dark;
+  accent-color: var(--accent-700);
+  caret-color: var(--accent-700);
+
+  caret-shape: bar;
+}
+
+body {
+  margin: 0;
+  padding: 0;
+  color: var(--text-950);
+  background-color: var(--background-50);
+}
+
+h1,
+h2,
+h3,
+h4,
+h5,
+h6 {
+  margin-block: 1.5em 0.5em;
+  color: var(--text-800);
+}
+
+section {
+  margin: clamp(1rem, 5vw, 4rem) 0;
+  padding: clamp(1rem, 3vw, 2.5rem);
+
+  article & {
+    max-width: 70ch;
+  }
+}
+
+:focus-visible {
+  outline: 2px solid var(--accent-700);
+  outline-offset: 2px;
+}
+
+/* Reduce motion if user prefers it */
+@media (prefers-reduced-motion: reduce) {
+  *,
+  *::before,
+  *::after {
+    scroll-behavior: auto !important;
+    transition-duration: 0.01ms !important;
+    animation-duration: 0.01ms !important;
+    animation-iteration-count: 1 !important;
+  }
+}
