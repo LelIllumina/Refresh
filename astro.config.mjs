@@ -6,6 +6,8 @@ import partytown from "@astrojs/partytown";
 import sitemap from "@astrojs/sitemap";
 import { defineConfig } from "astro/config";
 
+import purgecss from "astro-purgecss";
+
 export default defineConfig({
   site: "https://lel.nekoweb.org",
   server: { host: true },
@@ -15,6 +17,7 @@ export default defineConfig({
 
   build: {
     format: "preserve",
+    inlineStylesheets: "never",
   },
 
   prefetch: {
@@ -22,7 +25,7 @@ export default defineConfig({
     defaultStrategy: "viewport",
   },
 
-  integrations: [partytown(), mdx(), sitemap()],
+  integrations: [partytown(), mdx(), sitemap(), purgecss()],
 
   experimental: {
     contentIntellisense: true,
