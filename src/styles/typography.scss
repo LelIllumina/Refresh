@@ -36,7 +36,7 @@ $mono: "Fira Code", "SF Mono", monaco, "Cascadia Code", consolas, monospace;
 
 body {
   font-family: var(--font-body);
-  font-size: var(--fs-400);
+  font-size: clamp(0.875rem, 0.5vw + 0.5rem, 1.25rem);
   line-height: calc(1em + 0.7rem);
 
   // text-wrap: pretty is not on firefox yet
@@ -54,4 +54,28 @@ h6 {
   font-family: var(--font-title);
   font-weight: 900;
   line-height: 1.1;
+}
+
+h1 {
+  font-size: clamp(var(--fs-700), 2vw + 1rem, var(--fs-900));
+}
+
+h2 {
+  font-size: clamp(var(--fs-600), 1.5vw + 1rem, var(--fs-800));
+}
+
+h3 {
+  font-size: clamp(var(--fs-500), 1vw + 1rem, var(--fs-700));
+}
+
+h4 {
+  font-size: clamp(var(--fs-400), 0.75vw + 0.9rem, var(--fs-600));
+}
+
+h5 {
+  font-size: clamp(var(--fs-400), 0.5vw + 0.75rem, var(--fs-500));
+}
+
+h6 {
+  font-size: clamp(var(--fs-300), 0.4vw + 0.7rem, var(--fs-400));
 }
