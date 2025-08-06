@@ -139,7 +139,11 @@ const links: Link[] = [
 
       opacity: 0.3;
       background-color: oklab(from var(--background-950) l a b / 75%);
-      box-shadow: 0 0.15em 0.25em oklab(from var(--accent-950) l a b / 25%);
+
+      // box-shadow: 0 0.15em 0.25em oklab(from var(--accent-950) l a b / 25%);
+      box-shadow:
+        rgb(50 50 93 / 25%) 0 30px 60px -12px inset,
+        rgb(0 0 0 / 30%) 0 18px 36px -18px inset;
 
       transition: 280ms transform 120ms ease-out;
 
