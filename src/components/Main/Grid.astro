@@ -1,0 +1,136 @@
+---
+import { Image } from "astro:assets";
+
+import stupid from "@assets/images/main/stupid.png";
+import lel from "@assets/images/main/lel.png";
+---
+
+<div class="grid">
+  <div>
+    <h2>Hello My niggas</h2>
+
+    <p>Im gonna put text here 🥱🥱🥱🥱🥱🥱🥱🥱</p>
+  </div>
+  <div>
+    <Image
+      src={stupid}
+      alt="I love saying stupid shit in nekoweb general"
+      layout="constrained"
+    />
+  </div>
+  <div>
+    <Image src={lel} alt="The original Top Lel" layout="constrained" />
+  </div>
+  <div>
+    <h2>If you can read this</h2>
+    <p>then im gonna piss on you</p>
+  </div>
+</div>
+
+<style lang="scss">
+  @use "sass:list";
+
+  $areas: (a, b, c, d);
+  $gradient-1: #d3290f;
+  $gradient-2: #e6770b;
+  $gradient: conic-gradient($gradient-1, $gradient-2, $gradient-1);
+
+  // Just get better colors for this :sob:
+
+  /* Grid */
+  .grid {
+    display: grid;
+    grid-auto-flow: row;
+    grid-auto-rows: auto;
+    grid-template-areas:
+      "a a b"
+      "c d d";
+    grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+    gap: max(2vh, 2vw);
+
+    width: min(900px, 70%);
+    margin-inline: auto;
+
+    & > div {
+      // Grid area assignment
+      @each $area in $areas {
+        $i: list.index($areas, $area);
+        &:nth-child(#{$i}) {
+          grid-area: #{$area};
+        }
+      }
+
+      isolation: isolate;
+      position: relative;
+
+      overflow: hidden;
+
+      border: 2px solid transparent;
+
+      background:
+        linear-gradient(var(--background-950) 0 0) padding-box,
+        $gradient;
+      filter: drop-shadow(0 0 10px black) drop-shadow(0 0 10px $gradient-2);
+
+      &::before,
+      &::after {
+        content: "";
+        position: absolute;
+        border-radius: inherit;
+      }
+
+      &::after {
+        z-index: -2;
+        inset: -0.5em;
+
+        opacity: 0.25;
+        background: $gradient;
+        filter: blur(var(--blur-intensity, 1rem));
+      }
+
+      &::before {
+        z-index: -1;
+        inset: 5em;
+        background: var(--background-950);
+        filter: blur(var(--blur-intensity, 5rem));
+      }
+
+      &:not(:has(img)) {
+        padding: 2em;
+        border-radius: 0.5rem;
+        color: var(--text-100);
+      }
+
+      &:has(img) {
+        border-radius: 8px;
+      }
+
+      img {
+        display: block;
+        width: 100%;
+        height: auto;
+        object-fit: cover;
+      }
+
+      h2 {
+        color: var(--text-100);
+      }
+    }
+
+    @media (width <= 900px) {
+      grid-template-areas:
+        "a"
+        "b"
+        "c"
+        "d";
+      grid-template-columns: 1fr;
+    }
+
+    @media (width >= 901px) and (width <= 1200px) {
+      grid-template-areas:
+        "a b"
+        "c d";
+      grid-template-columns: 1fr 1fr;
+    }
+  }
+</style>

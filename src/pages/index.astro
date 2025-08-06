@@ -1,5 +1,6 @@
 ---
 import Layout from "@layouts/Layout.astro";
+import Grid from "@components/Main/Grid.astro";
 ---
 
 <Layout
@@ -9,26 +10,13 @@ import Layout from "@layouts/Layout.astro";
     </section>
     <section>
       <article>
-        <div class="grid">
-          <div>
-            <h2>Stuff here</h2>
-
-            Div 1
-          </div>
-          <div>Div 2</div>
-          <div>Div 3</div>
-          <div>Div 4</div>
-        </div>
+        <Grid />
       </article>
     </section>
   </main>
 </Layout>
 
 <style lang="scss">
-  @use "sass:list";
-
-  $areas: (a, b, c, d);
-
   /* Main Hero */
   main {
     min-height: 100vh;
@@ -59,35 +47,5 @@ import Layout from "@layouts/Layout.astro";
       -2px -2px var(--secondary-800);
 
     mix-blend-mode: color-dodge;
-  }
-
-  /* Grid */
-
-  .grid {
-    display: grid;
-    grid-auto-flow: row;
-    grid-auto-rows: minmax(200px, auto);
-    grid-template-areas:
-      "a a b"
-      "c d d";
-    grid-template-columns: 1fr 1fr 1fr;
-    gap: 1em;
-
-    margin: 10em; // TODO: Change to use grid properties for same result
-
-    & > div {
-      padding: 1em;
-      border-radius: 1rem;
-      color: var(--text-100);
-      background-color: var(--primary-900);
-
-      // Set grid-areas in order of appearence
-      @each $area in $areas {
-        $i: list.index($areas, $area);
-        &:nth-child(#{$i}) {
-          grid-area: #{$area};
-        }
-      }
-    }
   }
 </style>
