@@ -33,7 +33,11 @@ const links: Link[] = [
 ---
 
 <header>
-  <nav aria-label="Main Navigation">
+  <button aria-controls="navlist" aria-expanded="false" class="menu-button"
+    ><span class="sr-only">Menu</span></button
+  >
+
+  <nav id="navlist" aria-label="Main Navigation">
     <ul>
       {
         links.map((link) => (
@@ -73,8 +77,13 @@ const links: Link[] = [
 <style lang="scss">
   header {
     position: fixed;
+    z-index: 999;
     width: 100%;
     padding: 1rem;
+  }
+
+  .menu-button {
+    display: none;
   }
 
   .dropdown__title {
@@ -84,6 +93,7 @@ const links: Link[] = [
   }
 
   nav {
+    pointer-events: all;
     transform: translateY(-100px);
     transition: transform 0.2s;
 
@@ -142,8 +152,8 @@ const links: Link[] = [
 
       // box-shadow: 0 0.15em 0.25em oklab(from var(--accent-950) l a b / 25%);
       box-shadow:
-        rgb(50 50 93 / 25%) 0 30px 60px -12px inset,
-        rgb(0 0 0 / 30%) 0 18px 36px -18px inset;
+        oklab(from var(--accent-950) l a b / 25%) 0 30px 60px -12px inset,
+        oklab(from var(--accent-950) l a b / 30%) 0 18px 36px -18px inset;
 
       transition: 280ms transform 120ms ease-out;
 
@@ -196,6 +206,63 @@ const links: Link[] = [
       transform: translateX(-50%) translateY(60px);
     }
   }
+
+  /* Mobile header */
+  @media (width <= 600px) {
+    header {
+      pointer-events: none;
+
+      position: fixed;
+      inset: 0 0 0 50%;
+
+      width: initial;
+      padding: 0;
+    }
+
+    nav {
+      transform: translateX(100%);
+
+      & ul {
+        display: flex;
+        flex-direction: column;
+
+        height: 100vh;
+        padding: min(10vh, 10rem) 2em;
+
+        background-color: oklab(from var(--accent-50) l a b / 25%);
+        backdrop-filter: blur(1rem);
+
+        li {
+          text-align: left;
+        }
+      }
+    }
+
+    #navbar-handle {
+      display: none;
+    }
+
+    .menu-button {
+      pointer-events: all;
+
+      position: fixed;
+      z-index: 9999;
+      top: 2rem;
+      right: 2rem;
+
+      display: block;
+
+      aspect-ratio: 1;
+      width: 2rem;
+      border: none;
+
+      font-size: 2rem;
+      color: white;
+
+      background: url("data:image/svg+xml,%3Csvg%20xmlns%3D%22http%3A%2F%2Fwww.w3.org%2F2000%2Fsvg%22%20width%3D%2232%22%20height%3D%2232%22%20viewBox%3D%220%200%2024%2024%22%3E%3Cpath%20fill%3D%22white%22%20d%3D%22M3%208V7h17v1zm17%204v1H3v-1zM3%2017h17v1H3z%22%2F%3E%3C%2Fsvg%3E");
+      background-repeat: no-repeat;
+    }
+  }
 </style>
 
 <script>
@@ -207,5 +274,14 @@ const links: Link[] = [
     btn.addEventListener("mouseout", () => {
       btn.setAttribute("aria-expanded", "false");
     });
+  });
+
+  const navToggle = document.querySelector(".menu-button");
+
+  navToggle?.addEventListener("mouseover", () => {
+    navToggle?.setAttribute("aria-expanded", "true");
+  });
+  navToggle?.addEventListener("mouseout", () => {
+    navToggle?.setAttribute("aria-expanded", "false");
   });
 </script>

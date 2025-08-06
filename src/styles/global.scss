@@ -57,6 +57,21 @@ section {
   outline-offset: 2px;
 }
 
+/* Show content to Screen Reader only */
+.sr-only:not(:focus, :active) {
+  position: absolute;
+
+  overflow: hidden;
+
+  width: 1px;
+  height: 1px;
+
+  white-space: nowrap;
+
+  clip-path: rect(0 0 0 0);
+  clip-path: inset(50%);
+}
+
 /* Reduce motion if user prefers it */
 @media (prefers-reduced-motion: reduce) {
   *,
