@@ -1,8 +1,5 @@
 ---
-import { Image } from "astro:assets";
-
-import stupid from "@assets/images/main/stupid.png";
-import lel from "@assets/images/main/lel.png";
+import FigureImage from "@components/FigureImage.astro";
 ---
 
 <div class="grid">
@@ -12,14 +9,18 @@ import lel from "@assets/images/main/lel.png";
     <p>Im gonna put text here 🥱🥱🥱🥱🥱🥱🥱🥱</p>
   </div>
   <div>
-    <Image
-      src={stupid}
+    <FigureImage
+      src={"/src/assets/images/main/stupid.png"}
       alt="I love saying stupid shit in nekoweb general"
-      layout="constrained"
+      noCaption
     />
   </div>
   <div>
-    <Image src={lel} alt="The original Top Lel" layout="constrained" />
+    <FigureImage
+      src={"/src/assets/images/main/lel.png"}
+      alt="The original Top Lel"
+      noCaption
+    />
   </div>
   <div>
     <h2>If you can read this</h2>
