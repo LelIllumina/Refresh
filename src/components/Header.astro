@@ -30,6 +30,8 @@ const links: Link[] = [
     ],
   },
 ];
+
+const currentUrl = Astro.url.pathname;
 ---
 
 <header>
@@ -43,7 +45,12 @@ const links: Link[] = [
         links.map((link) => (
           <li class={link.children ? "dropdown" : ""}>
             {!link.children ? (
-              <a href={link.url}>{link.label}</a>
+              <a
+                href={link.url}
+                aria-current={currentUrl === link.url ? "page" : undefined}
+              >
+                {link.label}
+              </a>
             ) : (
               <>
                 <button
@@ -60,7 +67,14 @@ const links: Link[] = [
                 >
                   {link.children.map((child) => (
                     <li>
-                      <a href={child.url}>{child.label}</a>
+                      <a
+                        href={child.url}
+                        aria-current={
+                          currentUrl === link.url ? "page" : undefined
+                        }
+                      >
+                        {child.label}
+                      </a>
                     </li>
                   ))}
                 </ul>
@@ -86,49 +100,40 @@ const links: Link[] = [
     display: none;
   }
 
-  .dropdown__title {
-    border: none;
-    font-family: inherit;
-    background-color: transparent;
-  }
-
   nav {
     pointer-events: all;
     transform: translateY(-100px);
     transition: transform 0.2s;
 
-    & > ul {
+    ul {
+      display: grid;
       grid-auto-flow: column;
 
-      & > li {
+      margin: 0;
+      padding: 0;
+
+      list-style: none;
+
+      li {
         margin: 0 0.5rem;
+        padding: 0;
+        text-align: center;
 
         a,
         .dropdown__title {
           display: inline-block;
 
+          padding: 1rem 0.5rem;
+          border: none;
+
+          font-family: inherit;
           font-size: 1.125rem;
           color: var(--text-950);
           text-align: center;
           text-decoration: none;
+
+          background-color: transparent;
         }
-
-        > a,
-        .dropdown__title {
-          padding: 1rem 0.5rem;
-        }
-      }
-    }
-
-    & ul {
-      display: grid;
-      margin: 0;
-      padding: 0;
-      list-style: none;
-
-      & li {
-        padding: 0;
-        text-align: center;
       }
     }
   }
@@ -147,10 +152,9 @@ const links: Link[] = [
       padding: 0.5em 0;
       border-radius: 4px;
 
+      visibility: hidden;
       opacity: 0.3;
       background-color: oklab(from var(--background-950) l a b / 75%);
-
-      // box-shadow: 0 0.15em 0.25em oklab(from var(--accent-950) l a b / 25%);
       box-shadow:
         oklab(from var(--accent-950) l a b / 25%) 0 30px 60px -12px inset,
         oklab(from var(--accent-950) l a b / 30%) 0 18px 36px -18px inset;
@@ -162,11 +166,9 @@ const links: Link[] = [
         padding: 0.5em;
         color: var(--text-50);
       }
-    }
 
-    &:hover,
-    &:focus-within {
-      .dropdown__menu {
+      &:hover &,
+      &:focus-within & {
         transform: rotateX(0) translateX(-50%);
         visibility: visible;
         opacity: 1;
@@ -174,7 +176,7 @@ const links: Link[] = [
     }
   }
 
-  /* Hover down */
+  /* Navbar Handle */
   #navbar-handle {
     position: fixed;
     top: 0;
@@ -207,6 +209,16 @@ const links: Link[] = [
     }
   }
 
+  /* Current Page */
+
+  nav ul li a[aria-current="page"] {
+    font-weight: 900;
+    background: linear-gradient(var(--accent-200), var(--accent-800));
+    background-clip: text;
+
+    -webkit-text-fill-color: transparent;
+  }
+
   /* Mobile header */
   @media (width <= 600px) {
     header {
@@ -222,7 +234,7 @@ const links: Link[] = [
     nav {
       transform: translateX(100%);
 
-      & ul {
+      ul {
         display: flex;
         flex-direction: column;
 
@@ -259,8 +271,8 @@ const links: Link[] = [
       font-size: 2rem;
       color: white;
 
-      background: url("data:image/svg+xml,%3Csvg%20xmlns%3D%22http%3A%2F%2Fwww.w3.org%2F2000%2Fsvg%22%20width%3D%2232%22%20height%3D%2232%22%20viewBox%3D%220%200%2024%2024%22%3E%3Cpath%20fill%3D%22white%22%20d%3D%22M3%208V7h17v1zm17%204v1H3v-1zM3%2017h17v1H3z%22%2F%3E%3C%2Fsvg%3E");
-      background-repeat: no-repeat;
+      background: url("data:image/svg+xml,%3Csvg%20xmlns%3D%22http%3A%2F%2Fwww.w3.org%2F2000%2Fsvg%22%20width%3D%2232%22%20height%3D%2232%22%20viewBox%3D%220%200%2024%2024%22%3E%3Cpath%20fill%3D%22white%22%20d%3D%22M3%208V7h17v1zm17%204v1H3v-1zM3%2017h17v1H3z%22%2F%3E%3C%2Fsvg%3E")
+        no-repeat;
     }
   }
 </style>
