@@ -85,7 +85,7 @@ const lightglow = palette.LightVibrant?.hex;
   figure {
     margin: 0;
 
-    &:not([data-noglow]) {
+    &[data-noglow="false"] {
       filter: drop-shadow(0 0 10px black) drop-shadow(0 0 50px var(--glow));
     }
 
