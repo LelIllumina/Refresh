@@ -1,17 +1,30 @@
 ---
 import type { ImageMetadata } from "astro";
-import type { HTMLAttributes } from "astro/types";
 import { Image } from "astro:assets";
+import type { HTMLAttributes } from "astro/types";
 
-interface Props extends HTMLAttributes<"img"> {
-  src: keyof typeof images | string;
-  alt?: string | null;
-  height?: number;
+type AstroImageProps = {
+  src: string | URL;
+  alt: string;
   width?: number;
-  href?: string;
+  height?: number;
+  format?: "avif" | "jpeg" | "png" | "webp";
+  quality?: number;
+  fit?: "contain" | "cover" | "fill" | "inside" | "outside";
+  position?: string;
+  background?: string;
+  loading?: "lazy" | "eager";
+  decoding?: "async" | "sync" | "auto";
+  sizes?: string;
+  referrerpolicy?: HTMLImageElement["referrerPolicy"];
+  style?: string;
+  class?: string;
+} & HTMLAttributes<"img">;
 
+type Props = AstroImageProps & {
+  href?: string;
   noCaption?: boolean;
-}
+};
 
 const images = import.meta.glob<{ default: ImageMetadata }>(
   "/src/assets/images/**/*.{jpeg,jpg,png,gif,svg,avif,webp}"

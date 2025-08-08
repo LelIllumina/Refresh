@@ -1,0 +1,55 @@
+---
+import Layout from "@layouts/Layout.astro";
+import Grid from "@components/About/Grid.astro";
+---
+
+<Layout title="About" description="About - Manga" image="">
+  <main>
+    <article>
+      <section>
+        <Grid
+          title="Manga"
+          subtitle="About"
+          images={[
+            {
+              src: "/src/assets/images/about/manga/vf2ktm25fc491.webp",
+              alt: "Ishuzoku Joshi ni ○○ suru Hanashi",
+            },
+            {
+              src: "/src/assets/images/about/manga/JIua5RzrU5.png",
+              alt: "Oddman 11",
+            },
+            {
+              src: "/src/assets/images/about/manga/VaF7xf8e3A.png",
+              alt: "Kaguhara-san no Fetinote",
+            },
+            {
+              src: "/src/assets/images/about/manga/77ZB4d3Hp.png",
+              alt: "Shimeiji",
+              position: "right",
+            },
+            {
+              src: "/src/assets/images/about/manga/Mieruko-chan.full.3491504.png",
+              alt: "Mieruko Chan",
+              position: "top",
+            },
+            {
+              src: "/src/assets/images/about/manga/seitokai-ni-mo-ana-wa-aru.webp",
+              alt: "Seitokai ni mo Ana wa Aru",
+              position: "top",
+            },
+            {
+              src: "/src/assets/images/about/manga/AC0DtMl9zx.png",
+              alt: "Elaina",
+            },
+            {
+              src: "/src/assets/images/about/manga/Screenshot_20250319_212921.jpg",
+              alt: "Akame ga kill",
+              position: "top",
+            },
+          ]}
+        />
+      </section>
+    </article>
+  </main>
+</Layout>

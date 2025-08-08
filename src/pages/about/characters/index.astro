@@ -1,0 +1,56 @@
+---
+import Layout from "@layouts/Layout.astro";
+import Grid from "@components/About/Grid.astro";
+---
+
+<Layout title="About" description="About - Characters" image="">
+  <main>
+    <article>
+      <section>
+        <Grid
+          title="Characters"
+          subtitle="About"
+          images={[
+            {
+              src: "/src/assets/images/about/characters/a7205e79f4e46b8339094eee9078d942.jpg",
+              alt: "Lumine",
+              position: "left",
+            },
+            {
+              src: "/src/assets/images/about/characters/aba2d654e4208538608bf9388f25b611.jpg",
+              alt: "Belle",
+            },
+            {
+              src: "/src/assets/images/about/characters/035533ce6151d278c68c17bbe8a61f0e.png",
+              alt: "Gudako",
+              position: "top",
+            },
+            {
+              src: "/src/assets/images/about/characters/7206ac8c408fa2f17cf4203c2e7f210b.jpg",
+              alt: "Stelle",
+              position: "left",
+            },
+            {
+              src: "/src/assets/images/about/characters/0d68a3aef61aa5fe27019fc9e4f07971.png",
+              alt: "Hakunon",
+              position: "top",
+            },
+            {
+              src: "/src/assets/images/about/characters/bcd399cab4ca3b53e32c80fa260d8adc.jpg",
+              alt: "Rover",
+            },
+            {
+              src: "/src/assets/images/about/characters/e7c4e7b3af9d8309e733a09b4bc4eaf8.jpg",
+              alt: "Kiana Kasalana",
+            },
+            {
+              src: "/src/assets/images/about/characters/42ff665cef0b52937e0f68af7cb67718.jpg",
+              alt: "Lucia",
+              position: "left",
+            },
+          ]}
+        />
+      </section>
+    </article>
+  </main>
+</Layout>

@@ -1,0 +1,59 @@
+---
+import Layout from "@layouts/Layout.astro";
+import Grid from "@components/About/Grid.astro";
+---
+
+<Layout title="About" description="About - Index" image="">
+  <main>
+    <article>
+      <section>
+        <Grid
+          title="Index"
+          subtitle="About"
+          images={[
+            {
+              src: "/src/assets/images/about/1451227473225.jpg",
+              alt: "Anime",
+              href: "/about/anime/",
+            },
+            {
+              src: "/src/assets/images/about/FESu8xuVkAQoySP.jpg",
+              alt: "Manga",
+              href: "/about/manga/",
+            },
+            {
+              src: "/src/assets/images/about/p-model_poster.jpg",
+              alt: "Music",
+              href: "/about/music/",
+            },
+            {
+              src: "/src/assets/images/about/106510771_p0_master1200.jpg",
+              alt: "IRL People",
+              href: "/about/people/",
+            },
+            {
+              src: "/src/assets/images/about/bunny.png",
+              alt: "Games",
+              href: "/about/games/",
+            },
+            {
+              src: "/src/assets/images/about/Hakunonposedithered.png",
+              alt: "Characters",
+              href: "/about/characters/",
+            },
+            {
+              src: "/src/assets/images/about/TechniqueofLelief.png",
+              alt: "Me",
+              href: "/about/me/",
+            },
+            {
+              src: "/src/assets/images/about/NSFW/img028.png",
+              alt: "NSFW",
+              href: "/about/NSFW/",
+            },
+          ]}><p>Hover or click on any image for more info</p></Grid
+        >
+      </section>
+    </article>
+  </main>
+</Layout>
