@@ -221,6 +221,16 @@ const currentUrl = Astro.url.pathname;
     }
   }
 
+  /* Current Page */
+
+  nav ul li a[aria-current="page"] {
+    font-weight: 900;
+    background: linear-gradient(var(--accent-200), var(--accent-800));
+    background-clip: text;
+
+    -webkit-text-fill-color: transparent;
+  }
+
   /* Mobile header */
   @media (width <= 600px) {
     header {
