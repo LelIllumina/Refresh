@@ -4,27 +4,34 @@ import FigureImage from "@components/FigureImage.astro";
 
 <div class="grid">
   <div>
-    <h2>Hello My niggas</h2>
+    <h2>Hello My Lelggas</h2>
 
-    <p>Im gonna put text here 🥱🥱🥱🥱🥱🥱🥱🥱</p>
-  </div>
-  <div>
-    <FigureImage
-      src="/src/assets/images/main/stupid.png"
-      alt="I love saying stupid shit in nekoweb general"
-      caption={false}
-    />
+    <p>
+      Welcome to "like the 4th fucking layout but actually it's just the 3rd
+      layout rewritten with a few changes design-wise and otherwise mostly the
+      same just with different source code"
+    </p>
   </div>
   <div>
     <FigureImage
       src="/src/assets/images/main/lel.png"
       alt="The original Top Lel"
       caption={false}
+      noglow
     />
   </div>
   <div>
-    <h2>If you can read this</h2>
-    <p>then im gonna piss on you</p>
+    <FigureImage
+      src="/src/assets/images/main/stupid.png"
+      alt="I love saying stupid shit in nekoweb general"
+      caption={false}
+      noglow
+    />
+  </div>
+
+  <div>
+    <h2>I'm the Neko Menace</h2>
+    <p>I love saying and doing stupid shit.</p>
   </div>
 </div>
 
@@ -34,7 +41,12 @@ import FigureImage from "@components/FigureImage.astro";
   $areas: (a, b, c, d);
   $gradient-1: #d3290f;
   $gradient-2: #e6770b;
-  $gradient: conic-gradient($gradient-1, $gradient-2, $gradient-1);
+  $gradient: linear-gradient(
+    to top right,
+    $gradient-1,
+    $gradient-2,
+    $gradient-1
+  );
 
   // Just get better colors for this :sob:
 
@@ -71,7 +83,9 @@ import FigureImage from "@components/FigureImage.astro";
       background:
         linear-gradient(var(--background-950) 0 0) padding-box,
         $gradient;
-      filter: drop-shadow(0 0 10px black) drop-shadow(0 0 10px $gradient-2);
+      box-shadow:
+        0 0 10px black,
+        0 0 100px -25px $gradient-2;
 
       &::before,
       &::after {
@@ -103,6 +117,8 @@ import FigureImage from "@components/FigureImage.astro";
       }
 
       &:has(img) {
+        height: min-content;
+        margin: auto;
         border-radius: 8px;
       }
 
@@ -114,6 +130,7 @@ import FigureImage from "@components/FigureImage.astro";
       }
 
       h2 {
+        margin: 0.5rem;
         color: var(--text-100);
       }
     }

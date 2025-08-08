@@ -29,9 +29,10 @@ type AstroImageProps = {
 type Props = AstroImageProps & {
   href?: string;
   caption?: string | boolean;
+  noglow?: boolean;
 };
 
-const { href, src, alt, caption, ...rest } = Astro.props;
+const { href, src, alt, caption, noglow = false, ...rest } = Astro.props;
 
 const images = import.meta.glob<{ default: ImageMetadata }>(
   "/src/assets/images/**/*.{jpeg,jpg,png,gif,svg,avif,webp}"
@@ -56,7 +57,7 @@ const darkglow = palette.DarkMuted?.hex;
 const lightglow = palette.LightVibrant?.hex;
 ---
 
-<figure>
+<figure data-noglow={noglow}>
   {
     href ? (
       <a href={href}>
@@ -83,7 +84,10 @@ const lightglow = palette.LightVibrant?.hex;
 <style define:vars={{ darkglow, lightglow }}>
   figure {
     margin: 0;
-    filter: drop-shadow(0 0 10px black) drop-shadow(0 0 50px var(--glow));
+
+    &:not([data-noglow]) {
+      filter: drop-shadow(0 0 10px black) drop-shadow(0 0 50px var(--glow));
+    }
 
     @media (prefers-color-scheme: light) {
       --glow: var(--lightglow);
