@@ -46,10 +46,6 @@ h6 {
 section {
   margin: clamp(1rem, 5vw, 4rem) 0;
   padding: clamp(1rem, 3vw, 2.5rem);
-
-  article & {
-    max-width: 70ch;
-  }
 }
 
 :focus-visible {
