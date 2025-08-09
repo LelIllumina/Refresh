@@ -59,7 +59,16 @@ async function getGlowColors(src: string | URL) {
 
 const resolvedAlt = alt ?? generateAlt(typeof src === "string" ? src : "");
 
-const { darkglow, lightglow } = await getGlowColors(src);
+let darkglow = "";
+let lightglow = "";
+
+const isDev = import.meta.env.DEV;
+
+if (!isDev) {
+  const { darkglow: d, lightglow: l } = await getGlowColors(src);
+  darkglow = d ?? "";
+  lightglow = l ?? "";
+}
 ---
 
 <figure data-noglow={noglow}>
