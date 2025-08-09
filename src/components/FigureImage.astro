@@ -71,17 +71,25 @@ const { darkglow, lightglow } = await getGlowColors(src);
         ) : (
           <Image src={imageSrc!()} alt={resolvedAlt} {...rest} />
         )}
+        {caption !== false && resolvedAlt && (
+          <figcaption>
+            <slot>{caption || resolvedAlt}</slot>
+          </figcaption>
+        )}
       </a>
-    ) : isPublic ? (
-      <img src={src as string} alt={resolvedAlt} {...rest} />
     ) : (
-      <Image src={imageSrc!()} alt={resolvedAlt} {...rest} />
-    )
-  }
-
-  {
-    caption != false && resolvedAlt && (
-      <figcaption>{caption || resolvedAlt}</figcaption>
+      <>
+        {isPublic ? (
+          <img src={src as string} alt={resolvedAlt} {...rest} />
+        ) : (
+          <Image src={imageSrc!()} alt={resolvedAlt} {...rest} />
+        )}
+        {caption !== false && resolvedAlt && (
+          <figcaption>
+            <slot>{caption || resolvedAlt}</slot>
+          </figcaption>
+        )}
+      </>
     )
   }
 </figure>
