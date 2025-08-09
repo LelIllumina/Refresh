@@ -4,9 +4,9 @@ import { Image } from "astro:assets";
 import type { HTMLAttributes } from "astro/types";
 
 import { Vibrant } from "node-vibrant/node";
-import fs from "node:fs/promises";
 import path from "node:path";
 import { fileURLToPath } from "node:url";
+import sharp from "sharp";
 
 type AstroImageProps = {
   src: string | URL;
@@ -47,14 +47,19 @@ function generateAlt(src: string | undefined) {
   return filename?.replace(/[-_]/g, " ") ?? "";
 }
 
+async function getGlowColors(src: string | URL) {
+  const basePath = fileURLToPath(new URL("../..", import.meta.url));
+  const imgPath = path.join(basePath, src as string);
+  const buffer = await sharp(imgPath).jpeg().toBuffer();
+  const palette = await Vibrant.from(buffer).getPalette();
+  const darkglow = palette.DarkMuted?.hex;
+  const lightglow = palette.LightVibrant?.hex;
+  return { darkglow, lightglow };
+}
+
 const resolvedAlt = alt ?? generateAlt(typeof src === "string" ? src : "");
 
-const basePath = fileURLToPath(new URL("../..", import.meta.url));
-const imgPath = path.join(basePath, src as string);
-const buffer = await fs.readFile(imgPath);
-const palette = await Vibrant.from(buffer).getPalette();
-const darkglow = palette.DarkMuted?.hex;
-const lightglow = palette.LightVibrant?.hex;
+const { darkglow, lightglow } = await getGlowColors(src);
 ---
 
 <figure data-noglow={noglow}>
