@@ -83,6 +83,14 @@ const background = `url(${thumb.src})`;
           display: block;
           font-size: clamp(6rem, 20vh, 40rem);
         }
+
+        @media (width <= 768px) {
+          font-size: clamp(1.5rem, 20vh / 3, 15rem);
+
+          span {
+            font-size: clamp(2rem, 7vh, 4rem);
+          }
+        }
       }
     }
 
@@ -96,7 +104,16 @@ const background = `url(${thumb.src})`;
         time & {
           text-align: start;
         }
+
+        @media (width <= 768px) {
+          font-size: clamp(1.5rem, 15vh / 3, 10rem);
+        }
       }
+    }
+
+    @media (width <= 768px) {
+      padding-block: 10rem;
+      padding-inline: 2rem;
     }
   }
 

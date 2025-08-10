@@ -25,13 +25,13 @@ $mono: "Fira Code", "SF Mono", monaco, "Cascadia Code", consolas, monospace;
   --font-mono: Iosevka Etiole, #{$mono};
 
   /* Font Sizes */
-  --fs-300: 0.75rem;
-  --fs-400: 1rem;
-  --fs-500: 1.25rem;
-  --fs-600: 1.5rem;
-  --fs-700: 2rem;
-  --fs-800: 2.5rem;
-  --fs-900: 3rem;
+  --fs-300: clamp(0.75rem, 0.5vw + 0.5rem, 1rem);
+  --fs-400: clamp(1rem, 0.75vw + 0.75rem, 1.25rem);
+  --fs-500: clamp(1.25rem, 1vw + 1rem, 1.5rem);
+  --fs-600: clamp(1.5rem, 1.25vw + 1.25rem, 2rem);
+  --fs-700: clamp(2rem, 1.5vw + 1.5rem, 2.5rem);
+  --fs-800: clamp(2.5rem, 1.75vw + 1.75rem, 3rem);
+  --fs-900: clamp(3rem, 2vw + 2rem, 3.5rem);
 }
 
 body {
