@@ -35,11 +35,31 @@ type Props = AstroImageProps & {
 const { href, src, alt, caption, noglow = false, ...rest } = Astro.props;
 
 const images = import.meta.glob<{ default: ImageMetadata }>(
-  "/src/assets/images/**/*.{jpeg,jpg,png,gif,svg,avif,webp}"
+  "/src/assets/images/**/*.{jpeg,jpg,png,gif,svg,avif,webp}",
+  { eager: true }
 );
 
 const isPublic = typeof src === "string" && !(src in images);
-const imageSrc = !isPublic && typeof src === "string" ? images[src] : null;
+const aliasBase = "/src/assets/images";
+
+function normalizeSrcPath(src: string) {
+  if (!src.startsWith("/")) {
+    return `${aliasBase}/${src}`;
+  }
+
+  if (!src.startsWith(aliasBase)) {
+    return path.posix.join(aliasBase, src.replace(/^\/+/, ""));
+  }
+
+  return src;
+}
+
+const normalizedSrc = typeof src === "string" ? normalizeSrcPath(src) : src;
+
+const imageSrc =
+  !isPublic && typeof normalizedSrc === "string"
+    ? (images[normalizedSrc]?.default ?? null)
+    : null;
 
 function generateAlt(src: string | undefined) {
   if (!src) return "";
@@ -62,7 +82,7 @@ const resolvedAlt = alt ?? generateAlt(typeof src === "string" ? src : "");
 let darkglow = "";
 let lightglow = "";
 
-const isDev = false; /* import.meta.env.DEV; */
+const isDev = import.meta.env.DEV;
 
 if (!isDev) {
   const { darkglow: d, lightglow: l } = await getGlowColors(src);
@@ -78,7 +98,7 @@ if (!isDev) {
         {isPublic ? (
           <img src={src as string} alt={resolvedAlt} {...rest} />
         ) : (
-          <Image src={imageSrc!()} alt={resolvedAlt} {...rest} />
+          imageSrc && <Image src={imageSrc} alt={resolvedAlt} {...rest} />
         )}
         {caption !== false && resolvedAlt && (
           <figcaption>
@@ -91,7 +111,7 @@ if (!isDev) {
         {isPublic ? (
           <img src={src as string} alt={resolvedAlt} {...rest} />
         ) : (
-          <Image src={imageSrc!()} alt={resolvedAlt} {...rest} />
+          imageSrc && <Image src={imageSrc} alt={resolvedAlt} {...rest} />
         )}
         {caption !== false && resolvedAlt && (
           <figcaption>

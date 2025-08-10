@@ -5,15 +5,12 @@ import { glob } from "astro/loaders";
 
 const blogs = defineCollection({
   loader: glob({ pattern: "**/*.{md,mdx}", base: "./src/content/blogs" }),
-  schema: () =>
+  schema: ({ image }) =>
     rssSchema.extend({
       title: z.string(),
       description: z.string(),
       date: z.coerce.date(),
-      thumb: z.preprocess(
-        (val) => `/src/assets/images/blog/${val}`,
-        z.string(),
-      ),
+      thumb: z.preprocess((val) => `/src/assets/images/blog/${val}`, image()),
       tags: z.array(z.string()),
       keywords: z.array(z.string()).optional(),
       draft: z.boolean(),
@@ -21,15 +18,12 @@ const blogs = defineCollection({
 });
 const guides = defineCollection({
   loader: glob({ pattern: "**/*.{md,mdx}", base: "./src/content/guides" }),
-  schema: () =>
+  schema: ({ image }) =>
     rssSchema.extend({
       title: z.string(),
       description: z.string(),
       date: z.coerce.date(),
-      thumb: z.preprocess(
-        (val) => `/src/assets/images/blog/${val}`,
-        z.string(),
-      ),
+      thumb: z.preprocess((val) => `/src/assets/images/blog/${val}`, image()),
       tags: z.array(z.string()),
       keywords: z.array(z.string()).optional(),
       draft: z.boolean(),

@@ -1,0 +1,21 @@
+---
+import Layout from "@layouts/Layout.astro";
+import PostSkeleton from "@components/Blogs/PostSkeleton.astro";
+
+import { getCollection } from "astro:content";
+
+export async function getStaticPaths() {
+  const posts = await getCollection("blogs");
+  return posts.map((post) => ({
+    params: { blog: post.id },
+    props: { post },
+  }));
+}
+
+const { post } = Astro.props;
+const { title, description, thumb, keywords } = post.data;
+---
+
+<Layout {title} {description} image={thumb.src} {keywords}>
+  <PostSkeleton {post} />
+</Layout>

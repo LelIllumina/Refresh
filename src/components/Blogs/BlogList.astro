@@ -21,7 +21,7 @@ const sortedPosts = posts.sort(
     sortedPosts.map((post) => (
       <li>
         <FigureImage
-          src={post.data.thumb}
+          src={post.data.thumb.src}
           alt={post.data.description}
           href={`./${post.id}/`}
         >
