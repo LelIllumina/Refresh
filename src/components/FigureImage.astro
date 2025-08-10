@@ -52,7 +52,7 @@ async function getGlowColors(src: string | URL) {
   const imgPath = path.join(basePath, src as string);
   const buffer = await sharp(imgPath).jpeg().toBuffer();
   const palette = await Vibrant.from(buffer).getPalette();
-  const darkglow = palette.DarkMuted?.hex;
+  const darkglow = palette.Muted?.hex;
   const lightglow = palette.LightVibrant?.hex;
   return { darkglow, lightglow };
 }
@@ -62,7 +62,7 @@ const resolvedAlt = alt ?? generateAlt(typeof src === "string" ? src : "");
 let darkglow = "";
 let lightglow = "";
 
-const isDev = import.meta.env.DEV;
+const isDev = false; /* import.meta.env.DEV; */
 
 if (!isDev) {
   const { darkglow: d, lightglow: l } = await getGlowColors(src);
@@ -107,8 +107,15 @@ if (!isDev) {
   figure {
     margin: 0;
 
+    img {
+      height: auto;
+    }
+
     &[data-noglow="false"] {
-      filter: drop-shadow(0 0 10px black) drop-shadow(0 0 50px var(--glow));
+      img {
+        filter: drop-shadow(0 0 10px black)
+          drop-shadow(-0.5em 0.5em 5px var(--glow));
+      }
     }
 
     @media (prefers-color-scheme: light) {
