@@ -43,16 +43,17 @@ const sortedPosts = posts.sort(
 
 <style>
   ul {
-    padding-inline: clamp(10rem, 5vw, 20rem);
+    padding-inline: clamp(5rem, 5vw, 10rem);
     list-style: none;
 
     li {
-      margin-block: 10rem;
+      margin-block: clamp(5rem, 8vw, 10rem);
 
       figure {
         a {
           display: grid;
-          grid-template-columns: repeat(auto-fit, minmax(40%, 1fr));
+          grid-auto-flow: dense;
+          grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
           place-items: center center;
 
           text-decoration: none;
@@ -95,7 +96,7 @@ const sortedPosts = posts.sort(
             );
 
           img {
-            max-width: min(400px, 100%);
+            max-width: min(350px, 100%);
             border-radius: 0.5rem;
             transition: scale 0.5s
               linear(
@@ -126,7 +127,7 @@ const sortedPosts = posts.sort(
           }
 
           figcaption {
-            width: 35ch;
+            width: clamp(20ch, 30ch, 45ch);
 
             h2 {
               text-decoration: underline solid var(--text-950) 1px;
@@ -149,6 +150,12 @@ const sortedPosts = posts.sort(
 
             img {
               scale: 1.05;
+            }
+          }
+
+          @media (width <= 768px) {
+            figcaption {
+              margin-block: 2rem;
             }
           }
         }
