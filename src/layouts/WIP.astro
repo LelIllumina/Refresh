@@ -1,0 +1,56 @@
+---
+import Layout from "@layouts/Layout.astro";
+
+import FigureImage from "@components/FigureImage.astro";
+---
+
+<Layout title="Making this page" description="This might be a 404 Page">
+  <div class="text">
+    <h1>Under Construction</h1>
+    <h2>Come back later when i've made this</h2>
+    <p><a href="/">Back to main page</a></p>
+  </div>
+  <FigureImage
+    draggable="false"
+    src={"/src/assets/images/etc/hand.gif"}
+    alt="Giant Woman"
+    class="giant-woman"
+    caption={false}
+  />
+</Layout>
+
+<style>
+  .text {
+    position: absolute;
+    top: 24%;
+    left: 8%;
+    text-align: center;
+
+    a {
+      margin: 7.5vh auto;
+      padding: 0.75em 1.5em;
+      border-radius: 10px;
+    }
+
+    h2 {
+      text-align: center;
+    }
+  }
+
+  .giant-woman {
+    pointer-events: none;
+
+    position: absolute;
+    right: 0;
+    bottom: 0;
+
+    width: auto;
+    height: 100vh;
+    margin: 0;
+
+    object-fit: contain;
+    object-position: bottom;
+
+    image-rendering: pixelated;
+  }
+</style>
