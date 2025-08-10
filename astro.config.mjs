@@ -8,6 +8,13 @@ import { defineConfig } from "astro/config";
 
 import purgecss from "astro-purgecss";
 
+import playformCompress from "@playform/compress";
+
+import pageInsight from "astro-page-insight";
+import metaTags from "astro-meta-tags";
+
+import playformInline from "@playform/inline";
+
 export default defineConfig({
   site: "https://lel.nekoweb.org",
   server: { host: true },
@@ -25,7 +32,17 @@ export default defineConfig({
     defaultStrategy: "viewport",
   },
 
-  integrations: [partytown(), mdx(), sitemap(), purgecss()],
+  integrations: [
+    sitemap(),
+    mdx(),
+    partytown(),
+    purgecss(),
+    playformInline(),
+
+    playformCompress(),
+    pageInsight(),
+    metaTags(),
+  ],
 
   experimental: {
     contentIntellisense: true,

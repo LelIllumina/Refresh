@@ -1,5 +1,8 @@
 ---
 import { ClientRouter } from "astro:transitions";
+
+import { Head as CapoHead } from "astro-capo";
+
 import Favicons from "./Favicons.astro";
 import RichData from "./RichData.astro";
 
@@ -27,7 +30,7 @@ const canonicalUrl = new URL(
 const isDev = import.meta.env.DEV;
 ---
 
-<head>
+<CapoHead>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>{title}</title>
@@ -66,4 +69,4 @@ const isDev = import.meta.env.DEV;
   />
 
   <ClientRouter />
-</head>
+</CapoHead>
