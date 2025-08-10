@@ -5,6 +5,7 @@ import { render } from "astro:content";
 
 import FigureImage from "@components/FigureImage.astro";
 import Anchor from "@components/Anchor.astro";
+import Aside from "./Aside.astro";
 
 import "@styles/blog/content.scss";
 
@@ -50,7 +51,7 @@ const background = `url(${thumb.src})`;
       </div>
     </header>
     <section>
-      <Content components={{ img: FigureImage, a: Anchor }} />
+      <Content components={{ img: FigureImage, a: Anchor, Aside: Aside }} />
     </section>
   </article>
 </main>

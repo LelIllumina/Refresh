@@ -1,0 +1,90 @@
+---
+import { Icon } from "astro-icon/components";
+
+interface Props {
+  title: string;
+  variant: "tip" | "note" | "warning" | "important" | "caution";
+}
+
+const { variant, title } = Astro.props;
+
+const icon = (() => {
+  switch (variant) {
+    case "tip":
+      return "lucide:lightbulb";
+
+    case "note":
+      return "lucide:info";
+
+    case "warning":
+      return "lucide:triangle-alert";
+
+    case "important":
+      return "lucide:octagon-alert";
+
+    case "caution":
+      return "lucide:octagon-alert";
+  }
+})();
+---
+
+<aside class={`aside--${variant}`}>
+  <div>
+    <Icon name={icon} aria-hidden="true" />
+    <p>{title ? title.toUpperCase() : variant.toUpperCase()}</p>
+  </div>
+  <slot />
+</aside>
+
+<style>
+  aside {
+    margin-block: 2rem;
+    margin-inline: 2rem;
+    padding: 1.5rem;
+    border-left: 0.25rem solid var(--color-border);
+
+    background-color: var(--color-background);
+
+    div {
+      display: flex;
+      gap: 0.5rem;
+      align-items: center;
+      font-size: 1rem;
+
+      svg {
+        font-size: 1.75rem;
+      }
+
+      p {
+        margin: 0;
+        padding-top: 0.25rem;
+        font-weight: bold;
+      }
+    }
+  }
+
+  .aside--tip {
+    --color-background: var(--primary-100);
+    --color-border: var(--primary-500);
+  }
+
+  .aside--note {
+    --color-background: var(--secondary-100);
+    --color-border: var(--secondary-500);
+  }
+
+  .aside--warning {
+    --color-background: oklch(from var(--accent-100) l c calc(h + 30));
+    --color-border: oklch(from var(--accent-500) l c calc(h + 30));
+  }
+
+  .aside--important {
+    --color-background: var(--accent-100);
+    --color-border: var(--accent-500);
+  }
+
+  .aside--caution {
+    --color-background: oklch(from var(--accent-100) l c calc(h + 60));
+    --color-border: oklch(from var(--accent-500) l c calc(h + 60));
+  }
+</style>
