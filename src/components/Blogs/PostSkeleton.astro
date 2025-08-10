@@ -2,7 +2,11 @@
 import type { InferEntrySchema } from "astro:content";
 import type { RenderedContent } from "astro:content";
 import { render } from "astro:content";
+
 import FigureImage from "@components/FigureImage.astro";
+import Anchor from "@components/Anchor.astro";
+
+import "@styles/blog/content.scss";
 
 interface Props {
   post: {
@@ -29,7 +33,10 @@ const background = `url(${thumb.src})`;
       <div class="background"></div>
       <div class="brand">
         <h1>
-          LEL <br /> DOT <br />
+          LEL
+          <br />
+          DOT
+          <br />
           <span>NEKOWEB</span>
         </h1>
       </div>
@@ -43,7 +50,7 @@ const background = `url(${thumb.src})`;
       </div>
     </header>
     <section>
-      <Content components={{ img: FigureImage }} />
+      <Content components={{ img: FigureImage, a: Anchor }} />
     </section>
   </article>
 </main>
@@ -114,25 +121,6 @@ const background = `url(${thumb.src})`;
     @media (width <= 768px) {
       padding-block: 10rem;
       padding-inline: 2rem;
-    }
-  }
-
-  section {
-    max-width: 70ch;
-    margin: auto;
-    padding: 2rem;
-
-    figure {
-      text-align: center;
-
-      img {
-        width: auto;
-        max-width: 20vw;
-        max-height: 50vh;
-        margin-block: 1rem;
-        margin-inline: auto;
-        border-radius: 0.5rem;
-      }
     }
   }
 </style>

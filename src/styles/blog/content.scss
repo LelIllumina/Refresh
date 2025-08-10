@@ -1,0 +1,64 @@
+section {
+  max-width: 70ch;
+  margin: auto;
+  padding: 2rem;
+
+  @supports (initial-letter: 2) or (-webkit-initial-letter: 2) {
+    p:nth-child(1)::first-letter {
+      margin-right: 10px;
+      font-weight: 900;
+
+      -webkit-initial-letter: 2 2;
+      initial-letter: 2 2;
+    }
+  }
+
+  a {
+    text-decoration: underline;
+    opacity: 1;
+    transition: opacity 0.2s ease-in-out;
+
+    &:hover {
+      opacity: 0.8;
+    }
+  }
+
+  figure {
+    text-align: center;
+
+    img {
+      width: auto;
+      max-width: 20vw;
+      max-height: 50vh;
+      margin-block: 1rem;
+      margin-inline: auto;
+      border-radius: 0.5rem;
+    }
+  }
+
+  table {
+    border-collapse: collapse;
+    width: 95%;
+    margin: 2rem auto;
+  }
+
+  tr {
+    color: var(--text-800);
+    background-color: var(--background-100);
+
+    th {
+      border-top: solid 1px;
+      border-bottom: solid 1px;
+    }
+
+    td {
+      padding: 10px;
+      border: none;
+    }
+
+    tr:nth-child(even),
+    th {
+      background-color: var(--background-200);
+    }
+  }
+}

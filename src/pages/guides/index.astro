@@ -1,0 +1,24 @@
+---
+import Layout from "@layouts/Layout.astro";
+import BlogList from "@components/Blogs/BlogList.astro";
+---
+
+<Layout title="Blogs" description="I love righting stuff.">
+  <main>
+    <article>
+      <section>
+        <div class="title">
+          <h1>Guides</h1>
+          <p>List of Guides | I love shoving my opinions on others</p>
+        </div>
+        <BlogList collectionName="guides" />
+      </section>
+    </article>
+  </main>
+</Layout>
+
+<style>
+  .title {
+    text-align: center;
+  }
+</style>

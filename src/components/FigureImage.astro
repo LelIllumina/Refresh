@@ -2,9 +2,11 @@
 import type { ImageMetadata } from "astro";
 import { Image } from "astro:assets";
 import type { HTMLAttributes } from "astro/types";
+import path from "node:path";
 
 import { getGlowColors } from "@utils/getColors.ts";
-import path from "node:path";
+
+import Anchor from "@components/Anchor.astro";
 
 type AstroImageProps = {
   src: string | URL;
@@ -75,7 +77,7 @@ const lightglow = palette.LightVibrant?.hex ?? "";
 <figure data-noglow={noglow}>
   {
     href ? (
-      <a href={href}>
+      <Anchor href={href}>
         {isPublic ? (
           <img src={src as string} alt={resolvedAlt} {...rest} />
         ) : (
@@ -86,7 +88,7 @@ const lightglow = palette.LightVibrant?.hex ?? "";
             <slot>{caption || resolvedAlt}</slot>
           </figcaption>
         )}
-      </a>
+      </Anchor>
     ) : (
       <>
         {isPublic ? (
@@ -115,8 +117,13 @@ const lightglow = palette.LightVibrant?.hex ?? "";
     &[data-noglow="false"] {
       img {
         filter: drop-shadow(0 0 10px black)
-          drop-shadow(-0.5em 0.5em 5px var(--glow));
+          drop-shadow(-0.5em 0.5em 0 var(--glow));
       }
+    }
+
+    a {
+      --link-color: var(--text-950);
+      --visited-color: var(--text-950);
     }
 
     @media (prefers-color-scheme: light) {

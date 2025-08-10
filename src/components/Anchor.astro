@@ -1,0 +1,39 @@
+---
+import type { HTMLAttributes } from "astro/types";
+
+interface Props extends HTMLAttributes<"a"> {
+  href: string;
+}
+
+const { href, ...attrs } = Astro.props;
+
+// Simple external link check
+const isExternal = /^https?:\/\//i.test(href);
+---
+
+<a
+  href={href}
+  {...attrs}
+  target={isExternal ? "_blank" : attrs.target}
+  rel={isExternal ? "noopener noreferrer" : attrs.rel}
+  class:list={["link", isExternal && "link--external"]}
+>
+  <slot />
+</a>
+
+<style>
+  .link {
+    color: var(--link-color, var(--accent-900));
+    text-decoration: underline;
+
+    &:visited {
+      color: var(--visited-color, var(--accent-800));
+    }
+  }
+
+  .link--external::after {
+    content: "↗";
+    margin-left: 0.25rem;
+    font-size: 0.8em;
+  }
+</style>

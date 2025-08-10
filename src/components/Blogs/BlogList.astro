@@ -19,7 +19,7 @@ const sortedPosts = posts.sort(
 <ul>
   {
     sortedPosts.map((post) => (
-      <li>
+      <li class="post">
         <FigureImage
           src={post.data.thumb.src}
           alt={post.data.description}
@@ -46,7 +46,7 @@ const sortedPosts = posts.sort(
     padding-inline: clamp(0rem, 5vw, 10rem);
     list-style: none;
 
-    li {
+    .post {
       margin-block: clamp(5rem, 8vw, 10rem);
 
       figure {
