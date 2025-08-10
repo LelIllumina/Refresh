@@ -3,9 +3,10 @@ import type { HTMLAttributes } from "astro/types";
 
 interface Props extends HTMLAttributes<"a"> {
   href: string;
+  noSign?: boolean;
 }
 
-const { href, ...attrs } = Astro.props;
+const { href, noSign, ...attrs } = Astro.props;
 
 // Simple external link check
 const isExternal = /^https?:\/\//i.test(href);
@@ -17,6 +18,7 @@ const isExternal = /^https?:\/\//i.test(href);
   target={isExternal ? "_blank" : attrs.target}
   rel={isExternal ? "noopener noreferrer" : attrs.rel}
   class:list={["link", isExternal && "link--external"]}
+  data-nosign={noSign}
 >
   <slot />
 </a>
@@ -31,7 +33,7 @@ const isExternal = /^https?:\/\//i.test(href);
     }
   }
 
-  .link--external::after {
+  .link--external:not([data-nosign="true"])::after {
     content: "↗";
     margin-left: 0.25rem;
     font-size: 0.8em;

@@ -1,5 +1,6 @@
 ---
-import FigureImage from "../FigureImage.astro";
+import Anchor from "@components/Anchor.astro";
+import FigureImage from "@components/FigureImage.astro";
 
 export interface ImageItem {
   src: string;
@@ -38,7 +39,7 @@ const { title, subtitle, images } = Astro.props;
   </div>
   <div class="contents">
     <slot>
-      <a href="../">Go Back</a>
+      <Anchor href="../">Go Back</Anchor>
     </slot>
   </div>
 </div>
@@ -94,6 +95,11 @@ const { title, subtitle, images } = Astro.props;
           1 86.7%,
           1 100%
         );
+
+      /* To bypass specificity stuff :sob: */
+      &:not(#fake-id) a::after {
+        display: none;
+      }
 
       & figcaption {
         position: absolute;

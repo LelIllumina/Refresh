@@ -1,4 +1,6 @@
 ---
+import Anchor from "./Anchor.astro";
+
 interface Link {
   label: string;
   url?: string;
@@ -45,12 +47,12 @@ const currentUrl = Astro.url.pathname;
         links.map((link) => (
           <li class={link.children ? "dropdown" : ""}>
             {!link.children ? (
-              <a
-                href={link.url}
+              <Anchor
+                href={link.url ?? "#"}
                 aria-current={currentUrl === link.url ? "page" : undefined}
               >
                 {link.label}
-              </a>
+              </Anchor>
             ) : (
               <>
                 <button
@@ -67,14 +69,14 @@ const currentUrl = Astro.url.pathname;
                 >
                   {link.children.map((child) => (
                     <li>
-                      <a
-                        href={child.url}
+                      <Anchor
+                        href={child.url ?? "#"}
                         aria-current={
                           currentUrl === link.url ? "page" : undefined
                         }
                       >
                         {child.label}
-                      </a>
+                      </Anchor>
                     </li>
                   ))}
                 </ul>
