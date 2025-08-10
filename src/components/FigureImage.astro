@@ -3,10 +3,8 @@ import type { ImageMetadata } from "astro";
 import { Image } from "astro:assets";
 import type { HTMLAttributes } from "astro/types";
 
-import { Vibrant } from "node-vibrant/node";
+import { getGlowColors } from "@utils/getColors.ts";
 import path from "node:path";
-import { fileURLToPath } from "node:url";
-import sharp from "sharp";
 
 type AstroImageProps = {
   src: string | URL;
@@ -67,28 +65,11 @@ function generateAlt(src: string | undefined) {
   return filename?.replace(/[-_]/g, " ") ?? "";
 }
 
-async function getGlowColors(src: string | URL) {
-  const basePath = fileURLToPath(new URL("../..", import.meta.url));
-  const imgPath = path.join(basePath, src as string);
-  const buffer = await sharp(imgPath).jpeg().toBuffer();
-  const palette = await Vibrant.from(buffer).getPalette();
-  const darkglow = palette.Muted?.hex;
-  const lightglow = palette.LightVibrant?.hex;
-  return { darkglow, lightglow };
-}
-
 const resolvedAlt = alt ?? generateAlt(typeof src === "string" ? src : "");
 
-let darkglow = "";
-let lightglow = "";
-
-const isDev = import.meta.env.DEV;
-
-if (!isDev) {
-  const { darkglow: d, lightglow: l } = await getGlowColors(src);
-  darkglow = d ?? "";
-  lightglow = l ?? "";
-}
+const { palette } = await getGlowColors(src);
+const darkglow = palette.Muted?.hex ?? "";
+const lightglow = palette.LightVibrant?.hex ?? "";
 ---
 
 <figure data-noglow={noglow}>
