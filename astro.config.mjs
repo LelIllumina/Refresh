@@ -6,9 +6,6 @@ import partytown from "@astrojs/partytown";
 import sitemap from "@astrojs/sitemap";
 import { defineConfig } from "astro/config";
 
-import purgecss from "astro-purgecss";
-import playformCompress from "@playform/compress";
-import playformInline from "@playform/inline";
 import pageInsight from "astro-page-insight";
 import metaTags from "astro-meta-tags";
 
@@ -37,9 +34,6 @@ export default defineConfig({
     sitemap(),
     mdx(),
     partytown(),
-    purgecss(),
-    playformInline(),
-    playformCompress(),
     pageInsight(),
     metaTags(),
     icon(),
