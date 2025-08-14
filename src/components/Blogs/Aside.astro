@@ -64,13 +64,13 @@ const icon = (() => {
   }
 
   .aside--tip {
-    --color-background: var(--primary-100);
-    --color-border: var(--primary-500);
+    --color-background: oklch(from var(--accent-100) l c calc(h + 30));
+    --color-border: oklch(from var(--accent-500) l c calc(h + 30));
   }
 
   .aside--note {
-    --color-background: var(--secondary-100);
-    --color-border: var(--secondary-500);
+    --color-background: var(--primary-100);
+    --color-border: var(--primary-500);
   }
 
   .aside--warning {
@@ -84,7 +84,7 @@ const icon = (() => {
   }
 
   .aside--caution {
-    --color-background: oklch(from var(--accent-100) l c calc(h + 60));
-    --color-border: oklch(from var(--accent-500) l c calc(h + 60));
+    --color-background: oklch(from var(--accent-100) l c calc(h + 270));
+    --color-border: oklch(from var(--accent-500) l c calc(h + 270));
   }
 </style>
