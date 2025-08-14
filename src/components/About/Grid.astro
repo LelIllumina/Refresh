@@ -46,6 +46,11 @@ const { title, subtitle, images } = Astro.props;
 
 <style>
   .grid {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+
     display: grid;
     grid-template-columns: repeat(3, minmax(128px, 1fr));
     gap: clamp(2rem, 4vw, 8rem);
@@ -54,8 +59,7 @@ const { title, subtitle, images } = Astro.props;
 
     aspect-ratio: 1 / 1;
     height: 70vh;
-    margin-block: 2rem;
-    margin-inline: auto;
+    margin: auto;
 
     figure {
       width: fit-content;

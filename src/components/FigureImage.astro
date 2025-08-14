@@ -69,8 +69,8 @@ const imageSrc =
 const resolvedAlt = alt ?? generateAlt(typeof src === "string" ? src : "");
 
 const { palette } = await getGlowColors(src);
-const darkglow = palette.Muted?.hex ?? "";
-const lightglow = palette.LightVibrant?.hex ?? "";
+const darkglow = palette.Vibrant?.hex ?? "";
+const lightglow = palette.DarkVibrant?.hex ?? "";
 ---
 
 <figure data-noglow={noglow}>

@@ -41,8 +41,8 @@ export async function getGlowColors(src: string | URL | ImageMetadata) {
     );
     return {
       palette: {
-        Muted: { hex: "#000000" },
-        LightVibrant: { hex: "#ffffff" },
+        DarkVibrant: { hex: "#000000" },
+        Vibrant: { hex: "#ffffff" },
       },
     };
   }

@@ -30,7 +30,7 @@
 body {
   margin: 0;
   padding: 0.02px;
-  color: var(--text-800);
+  color: var(--text-900);
   background-color: var(--background-50);
 }
 
@@ -45,8 +45,8 @@ h6 {
 }
 
 section {
-  margin: clamp(1rem, 5vw, 4rem) 0;
-  padding: clamp(1rem, 3vw, 2.5rem);
+  // margin: clamp(1rem, 5vw, 4rem) 0;
+  padding: clamp(1rem, 3vw, 10rem);
 }
 
 :focus-visible {
