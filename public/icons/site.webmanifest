@@ -1,6 +1,13 @@
 {
   "name": "Lel@Nekoweb",
   "short_name": "Lel",
+  "description": "The website to visit if you wanna fuck lel",
+  "start_url": "/",
+  "display": "standalone",
+  "background_color": "#4f2a72",
+  "theme_color": "#4f2a72",
+  "lang": "en",
+  "scope": "/",
   "icons": [
     {
       "src": "/icons/web-app-manifest-192x192.png",
@@ -13,9 +20,14 @@
       "sizes": "512x512",
       "type": "image/png",
       "purpose": "maskable"
+    },
+    {
+      "src": "/icons/favicon.svg",
+      "sizes": "any",
+      "type": "image/svg+xml",
+      "purpose": "any"
     }
   ],
-  "theme_color": "#722014",
-  "background_color": "#722014",
-  "display": "standalone"
+  "orientation": "landscape-primary",
+  "display_override": ["window-controls-overlay"]
 }
