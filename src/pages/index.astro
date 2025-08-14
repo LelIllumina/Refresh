@@ -4,6 +4,15 @@ import Grid from "@components/Main/Grid.astro";
 ---
 
 <Layout title="lel@NekoWeb" description="Nekosex">
+  <Fragment slot="head">
+    <link
+      rel="preload"
+      href="/fonts/Archoblast.woff2"
+      as="font"
+      type="font/woff2"
+      crossorigin
+    />
+  </Fragment>
   <main>
     <section class="hero">
       <h1 class="hero-title">Lel@NekoWEB</h1>

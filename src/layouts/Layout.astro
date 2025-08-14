@@ -29,6 +29,24 @@ const { title, description, image, keywords } = Astro.props;
   </body>
 </html>
 
+<Fragment slot="headContent">
+  <slot name="head" />
+  <link
+    rel="preload"
+    href="/fonts/subset-Conso-Regular.woff2"
+    as="font"
+    type="font/woff2"
+    crossorigin
+  />
+  <link
+    rel="preload"
+    href="/fonts/subset-MicaValo.woff2"
+    as="font"
+    type="font/woff2"
+    crossorigin
+  />
+</Fragment>
+
 <style>
   hr {
     position: fixed;

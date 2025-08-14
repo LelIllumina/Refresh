@@ -3,9 +3,6 @@ import { ClientRouter } from "astro:transitions";
 
 import { Head as CapoHead } from "astro-capo";
 
-import Favicons from "./Favicons.astro";
-import RichData from "./RichData.astro";
-
 interface Props {
   title: string;
   description?: string;
@@ -35,13 +32,39 @@ const isDev = import.meta.env.DEV;
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>{title}</title>
 
-  <Favicons />
+  <meta name="author" content="Lel Illumina" />
+  <link
+    rel="icon"
+    type="image/png"
+    href="/icons/favicon-96x96.png"
+    sizes="96x96"
+  />
+
+  <!-- Icons   -->
+  <link rel="icon" type="image/svg+xml" href="/icons/favicon.svg" />
+  <link rel="shortcut icon" href="/icons/favicon.ico" />
+  <link
+    rel="apple-touch-icon"
+    sizes="180x180"
+    href="/icons/apple-touch-icon.png"
+  />
+  <meta name="apple-mobile-web-app-title" content="Lel@Nekoweb" />
+  <link rel="manifest" href="/icons/site.webmanifest" />
 
   <meta name="description" content={description} />
   <meta name="keywords" content={keywords.join(", ")} />
   <meta name="theme-color" content="#8441bb" />
 
-  <RichData title={title} description={description} image={image} />
+  <!-- OpenGraph Embed stuff -->
+  <meta property="og:image" content={new URL(image ?? "", Astro.url)} />
+  <meta property="og:title" content={title} />
+  <meta property="og:description" content={description} />
+  <meta property="og:url" content={new URL(Astro.url.pathname, Astro.site)} />
+  <meta property="og:site_name" content="Lel@Nekoweb" />
+  <!-- Twitter stuff -->
+  <meta name="twitter:card" content="summary_large_image" />
+  <meta name="twitter:site" content="@Lel_Illumina" />
+  <meta name="twitter:creator" content="@Lel_Illumina" />
 
   <link rel="sitemap" href="/sitemap-index.xml" />
   <link rel="canonical" href={canonicalUrl} />
@@ -67,6 +90,8 @@ const isDev = import.meta.env.DEV;
     name="google-site-verification"
     content="WOn7NKMqQnniSYxOoqE9lu4k9YKK9zzhUJkSwQLm-_U"
   />
+
+  <slot name="headContent" />
 
   <ClientRouter />
 </CapoHead>
