@@ -5,7 +5,6 @@ import type { HTMLAttributes } from "astro/types";
 import path from "node:path";
 
 import { getGlowColors } from "@utils/getColors.ts";
-
 import Anchor from "@components/Anchor.astro";
 
 type AstroImageProps = {
@@ -42,7 +41,7 @@ const images = import.meta.glob<{ default: ImageMetadata }>(
 const isPublic = typeof src === "string" && !(src in images);
 const aliasBase = "/src/assets/images";
 
-function normalizeSrcPath(src: string) {
+function normalizeSrcPath(src: string): string {
   if (!src.startsWith("/")) {
     return `${aliasBase}/${src}`;
   }
@@ -54,18 +53,18 @@ function normalizeSrcPath(src: string) {
   return src;
 }
 
+function generateAlt(src: string | undefined): string {
+  if (!src) return "";
+  const filename = src.split("/").pop()?.split(".")[0];
+  return filename?.replace(/[-_]/g, " ") ?? "";
+}
+
 const normalizedSrc = typeof src === "string" ? normalizeSrcPath(src) : src;
 
 const imageSrc =
   !isPublic && typeof normalizedSrc === "string"
     ? (images[normalizedSrc]?.default ?? null)
     : null;
-
-function generateAlt(src: string | undefined) {
-  if (!src) return "";
-  const filename = src.split("/").pop()?.split(".")[0];
-  return filename?.replace(/[-_]/g, " ") ?? "";
-}
 
 const resolvedAlt = alt ?? generateAlt(typeof src === "string" ? src : "");
 

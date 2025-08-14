@@ -22,10 +22,9 @@ interface Props {
 
 const { post } = Astro.props;
 const { title, date, thumb } = post.data;
+const background = `url(${thumb.src})`;
 
 const { Content } = await render(post);
-
-const background = `url(${thumb.src})`;
 ---
 
 <main>

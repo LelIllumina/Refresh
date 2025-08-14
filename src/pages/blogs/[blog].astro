@@ -16,6 +16,6 @@ const { post } = Astro.props;
 const { title, description, thumb, keywords } = post.data;
 ---
 
-<Layout {title} {description} image={thumb.src} {keywords}>
+<Layout {title} {description} image={thumb} {keywords}>
   <PostSkeleton {post} />
 </Layout>
