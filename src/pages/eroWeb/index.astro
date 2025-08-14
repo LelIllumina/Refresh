@@ -1,0 +1,58 @@
+---
+import Layout from "@layouts/Layout.astro";
+import fireFoxGirl from "/src/assets/images/eroweb/eroWeb.png";
+import FigureImage from "@components/FigureImage.astro";
+import Anchor from "@components/Anchor.astro";
+---
+
+<Layout
+  title="eroWeb Discord"
+  description="eroWeb is a server for users of static web hosts like Nekoweb or Neocities who have NSFW content on their site or like sites that have content like that on them."
+  image={fireFoxGirl.src}
+>
+  <main>
+    <section>
+      <FigureImage
+        src={"/src/assets/images/eroweb/eroWeb.png"}
+        alt="eroWeb Discord"
+        width={650}
+      >
+        Original image from <Anchor
+          href="https://www.pixiv.net/artworks/22647957">Pixiv</Anchor
+        >
+      </FigureImage>
+      <div>
+        <h1>eroWeb needs YOU</h1>
+        <p>
+          eroWeb is a server for users of static web hosts like Nekoweb or
+          Neocities who have NSFW content on their site or like sites that have
+          content like that on them.
+        </p>
+        <Anchor href="https://discord.com/invite/umdKJrCA"
+          >Join the eroWeb Discord</Anchor
+        >
+      </div>
+    </section>
+  </main>
+</Layout>
+
+<style>
+  section {
+    display: flex;
+    flex-wrap: wrap;
+    align-items: center;
+    justify-content: space-evenly;
+
+    height: 100vh;
+    margin: 0;
+
+    figcaption {
+      margin-block-start: 2rem;
+      text-align: center;
+    }
+
+    div {
+      max-width: 35ch;
+    }
+  }
+</style>
