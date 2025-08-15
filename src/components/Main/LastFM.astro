@@ -2,6 +2,11 @@
 import FigureImage from "@components/FigureImage.astro";
 ---
 
+<Fragment slot="head">
+  <link rel="preconnect" href="https://scrobbled.tepiloxtl.net" />
+  <link rel="preconnect" href="https://lastfm.freetls.fastly.net" crossorigin />
+</Fragment>
+
 <div id="songBox">
   <h2 id="lastfm-status">Loading...</h2>
   <FigureImage
