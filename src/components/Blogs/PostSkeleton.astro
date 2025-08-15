@@ -8,6 +8,8 @@ import Aside from "./Aside.astro";
 
 import "@styles/blog/content.scss";
 
+import TableOfContents from "@components/Blogs/TableOfContents.astro";
+
 interface Props {
   post: CollectionEntry<"blogs" | "guides">;
 }
@@ -16,7 +18,7 @@ const { post } = Astro.props;
 const { title, date, thumb } = post.data;
 const background = `url(${thumb.src})`;
 
-const { Content } = await render(post);
+const { Content, headings } = await render(post);
 ---
 
 <main>
@@ -42,6 +44,11 @@ const { Content } = await render(post);
       </div>
     </header>
     <section>
+      <aside>
+        <nav aria-label="Table of contents">
+          <TableOfContents {headings} levels={3} />
+        </nav>
+      </aside>
       <Content components={{ img: FigureImage, a: Anchor, Aside: Aside }} />
     </section>
   </article>
