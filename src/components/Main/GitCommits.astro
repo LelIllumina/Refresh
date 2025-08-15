@@ -1,0 +1,49 @@
+<a id="commit-link" href="./" target="_blank">
+  <div>
+    <div>
+      <p id="short-hash"></p>
+      <p id="commit-latest">
+        <br />
+        Loading...
+      </p>
+    </div>
+  </div>
+</a>
+<script src="/src/scripts/main/github.ts"></script>
+<style>
+  #commit-link {
+    display: flex;
+    flex-direction: column;
+    gap: 0.25rem; /* space between short hash and latest commit text */
+    align-items: center;
+    justify-content: center;
+
+    padding: 0.5rem 0.75rem;
+    border-radius: 0.5rem;
+
+    text-decoration: none;
+
+    background: var(--background-900);
+
+    transition:
+      /* stylelint-disable-next-line plugin/no-low-performance-animation-properties */
+      background 0.5s ease-out,
+      transform 0.25s ease-out;
+
+    &:hover {
+      transform: translateY(-5px);
+      background: var(--background-800);
+    }
+  }
+
+  #short-hash {
+    font-size: var(--fs-500);
+    font-weight: 600;
+    color: var(--text-300);
+  }
+
+  #commit-latest {
+    font-size: var(--fs-400);
+    color: var(--text-200);
+  }
+</style>
