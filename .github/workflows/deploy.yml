@@ -1,3 +1,7 @@
+# This file uploads your files to NekoWeb using the deploy2nekoweb action.
+# It requires the NEKOWEB_API_KEY and NEKOWEB_COOKIE secrets to be set in your GitHub repository.
+# You can find instructions for that here: https://deploy.nekoweb.org/
+
 name: Deploy to NekoWeb
 
 on:
@@ -24,16 +28,8 @@ jobs:
           path: ~/.bun/install/cache
           key: ${{ runner.os }}-bun-${{ hashFiles('**/bun.lockb') }}
 
-      - name: Setup Bun
-        uses: oven-sh/setup-bun@v2
-        with:
-          bun-version: latest
-
       - name: Install dependencies and build site
-        run: |
-          bun install
-          bun add -d @rollup/rollup-linux-x64-gnu
-          bun run build
+        uses: withastro/action@v3
 
       - name: Upload built site
         uses: actions/upload-artifact@v4
