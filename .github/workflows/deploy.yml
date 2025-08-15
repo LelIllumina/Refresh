@@ -27,13 +27,16 @@ jobs:
         uses: actions/setup-node@v4
         with:
           node-version: 20
-          cache: npm
+          cache: yarn
+
+      - name: Install Yarn
+        run: corepack enable && corepack prepare yarn@stable --activate
 
       - name: Install dependencies
-        run: npm ci
+        run: yarn install --frozen-lockfile
 
       - name: Build site
-        run: npm run build
+        run: yarn build
 
       - name: Upload built site
         uses: actions/upload-artifact@v4
