@@ -24,6 +24,11 @@ jobs:
           path: ~/.bun/install/cache
           key: ${{ runner.os }}-bun-${{ hashFiles('**/bun.lockb') }}
 
+      - name: Setup Bun
+        uses: oven-sh/setup-bun@v2
+        with:
+          bun-version: latest
+
       - name: Install dependencies and build site
         run: |
           bun install
@@ -53,4 +58,4 @@ jobs:
           nekoweb-cookie: ${{ secrets.NEKOWEB_COOKIE }}
           nekoweb-domain: "lel.nekoweb.org"
           nekoweb-username: "lel"
-          directory: "public"
+          directory: "dist"
