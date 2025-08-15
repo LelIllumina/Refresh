@@ -1,0 +1,22 @@
+---
+import FigureImage from "@components/FigureImage.astro";
+---
+
+<div id="songBox">
+  <h2 id="lastfm-status">Loading...</h2>
+  <FigureImage
+    id="trackCover"
+    decoding="async"
+    loading="eager"
+    src="/src/assets/images/nekofm/loading.png"
+    alt=""
+    height={150}
+    width={150}
+  />
+  <div class="trackInfo" id="trackInfo">
+    <h2 class="trackName" id="trackName">Loading...</h2>
+    <p class="artistName" id="artistName">Loading...</p>
+    <p class="siteName" id="siteName"></p>
+  </div>
+</div>
+<script src="/src/scripts/main/lastfm.ts"></script>
