@@ -28,12 +28,11 @@ jobs:
           path: ~/.bun/install/cache
           key: ${{ runner.os }}-bun-${{ hashFiles('**/bun.lockb') }}
 
+      - name: Fix Rollup native binary
+        run: bun add @rollup/rollup-linux-x64-gnu --optional
+
       - name: Install dependencies and build site
         uses: withastro/action@v3
-        with:
-          package-manager: pnpm@latest
-        env:
-          PNPM_ALLOW_BUILD_SCRIPTS: true
 
       - name: Upload built site
         uses: actions/upload-artifact@v4
