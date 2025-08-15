@@ -1,6 +1,5 @@
 ---
-import type { InferEntrySchema } from "astro:content";
-import type { RenderedContent } from "astro:content";
+import type { CollectionEntry } from "astro:content";
 import { render } from "astro:content";
 
 import FigureImage from "@components/FigureImage.astro";
@@ -10,14 +9,7 @@ import Aside from "./Aside.astro";
 import "@styles/blog/content.scss";
 
 interface Props {
-  post: {
-    id: string;
-    body?: string;
-    collection: "blogs" | "guides";
-    data: InferEntrySchema<"blogs" | "guides">;
-    rendered?: RenderedContent;
-    filePath?: string;
-  };
+  post: CollectionEntry<"blogs" | "guides">;
 }
 
 const { post } = Astro.props;
