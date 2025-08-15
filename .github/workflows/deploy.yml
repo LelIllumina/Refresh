@@ -30,6 +30,8 @@ jobs:
 
       - name: Install dependencies and build site
         uses: withastro/action@v3
+        env:
+          ROLLUP_DISABLE_NATIVE: 1
 
       - name: Upload built site
         uses: actions/upload-artifact@v4
