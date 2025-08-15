@@ -1,7 +1,3 @@
-# This file uploads your files to NekoWeb using the deploy2nekoweb action.
-# It requires the NEKOWEB_API_KEY and NEKOWEB_COOKIE secrets to be set in your GitHub repository.
-# You can find instructions for that here: https://deploy.nekoweb.org/
-
 name: Deploy to NekoWeb
 
 on:
@@ -23,20 +19,16 @@ jobs:
       - name: Checkout repository
         uses: actions/checkout@v4
 
-      - name: Setup Node.js
-        uses: actions/setup-node@v4
+      - uses: actions/cache@v4
         with:
-          node-version: 20
-          cache: yarn
+          path: ~/.bun/install/cache
+          key: ${{ runner.os }}-bun-${{ hashFiles('**/bun.lockb') }}
 
-      - name: Install Yarn
-        run: corepack enable && corepack prepare yarn@stable --activate
-
-      - name: Install dependencies
-        run: yarn install --frozen-lockfile
-
-      - name: Build site
-        run: yarn build
+      - name: Install dependencies and build site
+        run: |
+          bun install
+          bun add -d @rollup/rollup-linux-x64-gnu
+          bun run build
 
       - name: Upload built site
         uses: actions/upload-artifact@v4
