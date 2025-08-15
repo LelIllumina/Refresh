@@ -39,6 +39,11 @@ jobs:
       - name: Fix Rollup native binary
         run: bun add @rollup/rollup-linux-x64-gnu --optional
 
+      - name: Fix sharp native binary
+        run: |
+          bun remove sharp
+          npm install --os=linux --cpu=x64 sharp
+
       - name: Build site
         run: bun run build
 
