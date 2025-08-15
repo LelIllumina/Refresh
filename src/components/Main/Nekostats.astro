@@ -1,0 +1,73 @@
+---
+import FigureImage from "@components/FigureImage.astro";
+---
+
+<div id="views">
+  <section id="views-counter">
+    <FigureImage
+      src="/images/main/numbers/0.gif"
+      alt="0"
+      loading="eager"
+      decoding="async"
+      caption={false}
+    />
+    <FigureImage
+      src="/images/main/numbers/1.gif"
+      alt="1"
+      loading="eager"
+      decoding="async"
+      caption={false}
+    />
+    <FigureImage
+      src="/images/main/numbers/2.gif"
+      alt="2"
+      loading="eager"
+      decoding="async"
+      caption={false}
+    />
+    <FigureImage
+      src="/images/main/numbers/3.gif"
+      alt="3"
+      loading="eager"
+      decoding="async"
+      caption={false}
+    />
+    <FigureImage
+      src="/images/main/numbers/4.gif"
+      alt="4"
+      loading="eager"
+      decoding="async"
+      caption={false}
+    />
+    <span id="views-text" class="sr-only">00000</span>
+    <p id="subtitle">Visits since creation</p>
+  </section>
+
+  <section id="stats">
+    <h2>Stats:</h2>
+    <p id="created"><em>Created</em>: Loading...</p>
+    <p id="updated"><em>Updated</em>: Loading...</p>
+    <p id="followers"><em>Followers</em>: Loading...</p>
+
+    <iframe
+      loading="eager"
+      title="Nekoweb Follow button"
+      src="https://nekoweb.org/frame/follow"
+      width="150"
+      height="35"
+      style="border: none"></iframe>
+  </section>
+</div>
+<script src="/src/scripts/main/nekostats.ts"></script>
+<style>
+  #views {
+    section {
+      padding-block: 0;
+
+      figure {
+        display: inline-block;
+        image-rendering: pixelated;
+      }
+    }
+  }
+</style>
