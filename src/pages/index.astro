@@ -1,6 +1,9 @@
 ---
 import Layout from "@layouts/Layout.astro";
 import Grid from "@components/Main/Grid.astro";
+import Nekostats from "@components/Main/Nekostats.astro";
+import LastFM from "@components/Main/LastFM.astro";
+import GitCommits from "@components/Main/GitCommits.astro";
 ---
 
 <Layout title="lel@NekoWeb" description="Nekosex">
@@ -18,9 +21,25 @@ import Grid from "@components/Main/Grid.astro";
       <h1 class="hero-title">Lel@NekoWEB</h1>
     </section>
     <section>
-      <article>
+      <section>
+        <h2 id="main-grid-title" class="sr-only">Main Grid with Information</h2>
         <Grid />
-      </article>
+      </section>
+
+      <section class="widgets">
+        <h2 id="widgets-title" class="sr-only">
+          Widgets with Additional Information
+        </h2>
+        <article>
+          <Nekostats />
+        </article>
+        <article>
+          <LastFM />
+        </article>
+        <article>
+          <GitCommits />
+        </article>
+      </section>
     </section>
   </main>
 </Layout>
@@ -56,5 +75,12 @@ import Grid from "@components/Main/Grid.astro";
       -2px -2px var(--secondary-800);
 
     mix-blend-mode: color-dodge;
+  }
+
+  .widgets {
+    display: flex;
+    align-items: center;
+    justify-content: space-around;
+    margin-block: 2rem;
   }
 </style>
