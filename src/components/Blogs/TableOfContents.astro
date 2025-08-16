@@ -1,8 +1,8 @@
 ---
 interface Heading {
-  depth: number; // The heading level (h1 = 1, h2 = 2, etc)
-  slug: string; // The ID of the heading for linking
-  text: string; // The text content of the heading
+  depth: number;
+  slug: string;
+  text: string;
 }
 
 interface Props {
@@ -14,22 +14,62 @@ const { headings, levels = 2 } = Astro.props;
 const filteredHeadings = headings.filter((heading) => heading.depth <= levels);
 ---
 
-<div class="toc-container">
-  <h4 class="toc-title">Table of Contents</h4>
-  <ul class="toc-list">
-    {
-      filteredHeadings.map((heading) => (
-        <li
-          class:list={{
-            "toc-indent-2": heading.depth === 2,
-            "toc-indent-3": heading.depth === 3,
-          }}
-        >
-          <a href={`#${heading.slug}`} class="toc-link">
-            {heading.text}
-          </a>
-        </li>
-      ))
+<aside class="toc-container">
+  <nav aria-label="Table of contents"></nav>
+  <div>
+    <h4 class="toc-title">Table of Contents</h4>
+    <ul class="toc-list">
+      {
+        filteredHeadings.map((heading) => (
+          <li
+            class:list={{
+              "toc-indent-2": heading.depth === 2,
+              "toc-indent-3": heading.depth === 3,
+            }}
+          >
+            <a href={`#${heading.slug}`} class="toc-link">
+              {heading.text}
+            </a>
+          </li>
+        ))
+      }
+    </ul>
+  </div>
+</aside>
+
+<style>
+  .toc-container {
+    position: sticky;
+    inset: 5rem;
+
+    width: 20vw;
+    margin-block-end: auto;
+    padding-block: 1rem;
+    padding-inline: 2rem;
+    border: 2px solid var(--background-800);
+    border-radius: 0.5rem;
+
+    .toc-list {
+      padding: 0;
+      list-style: none;
+
+      .toc-link {
+        font-size: var(--fs-400);
+        color: var(--text-950);
+        text-decoration: none;
+      }
+
+      li {
+        margin-block-start: 0.5rem;
+      }
+
+      .toc-indent-2 {
+        padding-inline-start: 1.5rem;
+      }
+
+      .toc-indent-3 {
+        padding-inline-start: 3rem;
+      }
     }
-  </ul>
-</div>
+  }
+</style>

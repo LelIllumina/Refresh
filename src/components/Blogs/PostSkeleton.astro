@@ -43,14 +43,14 @@ const { Content, headings } = await render(post);
         <h2>{title}</h2>
       </div>
     </header>
-    <section>
-      <aside>
-        <nav aria-label="Table of contents">
-          <TableOfContents {headings} levels={3} />
-        </nav>
-      </aside>
-      <Content components={{ img: FigureImage, a: Anchor, Aside: Aside }} />
-    </section>
+
+    <div class="content">
+      <TableOfContents {headings} levels={3} />
+
+      <section>
+        <Content components={{ img: FigureImage, a: Anchor, Aside: Aside }} />
+      </section>
+    </div>
   </article>
 </main>
 
@@ -109,5 +109,10 @@ const { Content, headings } = await render(post);
       padding-block: 10rem;
       padding-inline: 2rem;
     }
+  }
+
+  .content {
+    display: flex;
+    flex-direction: row-reverse;
   }
 </style>
