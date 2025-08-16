@@ -1,7 +1,7 @@
 ---
 title: Piracy and Tracking Setup Guide
 description: I love Piracy and I want you to fall in love too.
-date: 2025-06-25
+date: 2025-08-16
 thumb: kidnap.gif
 tags:
   - Guide
@@ -18,7 +18,7 @@ I often see people trying to pirate stuff off the Internet in the worst ways pos
 
 Do note that this guide is opinionated and there are other options available, I’ll mostly just write about what I use and find the most convenient.
 
-## Anime/Shows/Movie
+## Anime, Shows & Movie
 
 Let’s start off with one of the most commonly pirated category, Digital video. While I don’t watch anime as much as I used to, and I haven’t really watched many shows and movies at all, I do want to experience the most convenient and high quality product there is. While I can’t do much about the hardware I have, getting the best video out there is not that hard, especially for anime.
 
@@ -35,7 +35,12 @@ Let’s start off with one of the most commonly pirated category, Digital video.
 
 #### Torrentio
 
-Most high quality videos aren’t on a central server with http streams, that poses quite a lot of issues related to bandwidth and reliability as well as longevity and redistribution/archiving. As such, a more common platform are torrents which have p2p. Torrentio aggregates torrent aggregating sites and provides magnet links in the Stremio client itself, making it pretty easy to load up Stremio, find a show you want to watch, click on any link Torrentio provided, and you have your stream running now, often times at faster download speeds than http piracy sites.
+Most high quality videos aren’t on a central server with http streams (well free to use servers atleast, more on debrid services below), that poses quite a lot of issues related to bandwidth and reliability as well as longevity and redistribution/archiving. As such, a more common platform are torrents which have p2p. Torrentio aggregates torrent aggregating sites and provides magnet links in the Stremio client itself, making it pretty easy to load up Stremio, find a show you want to watch, click on any link Torrentio provided, and you have your stream running now, often times at faster download speeds than http piracy sites.
+
+![The mostly default settings I chose.](https://lel.hadsex.today/7fH88hbIf.png)
+
+In the image above you can see in the last field an option to choose a debrid service. Debrid services are paid services that provide dedicated servers that host DDL links to torrents of shows and movies, which can be useful if a torrent has few or no seeders or you have issue with torrenting with your ISP.
+I do not use a Debrid service but the reccomended one is [Real Debrid](https://real-debrid.com/), it has good compatibility with most plugins and a nice reputation for price and uptime.
 
 ### Video Quality
 
@@ -44,6 +49,13 @@ When using Torrentio you’ll probably get many torrent links and knowing which 
 - [Sneedex](https://sneedex.moe/)
 - [Seadex/releases.moe](https://releases.moe/)
   FYI you can also make a better educated guess by looking at the torrent name, typically “BDRip” and “FLAC” are a good sign.
+
+<Aside variant="tip">
+  For entries with 4K torrents, do check if the movie or show was actually
+  released in 4K, as some are just upscaled from lower resolutions. These would
+  just bloat the download size and not provide any real quality improvement
+  (Often times adding visual artifacts).
+</Aside>
 
 ### Pro/Cons
 
@@ -161,19 +173,44 @@ Get [Perfect Viewer](https://play.google.com/store/apps/details?id=com.rookiestu
 
 ## Books
 
-WIP
+Theres a few different sources for books in epubs and pdfs, but most of them are already aggreagated on one site so its easier to just use that. The site being [Annas Archive](https://annas-archive.org/)
+
+### Annas Archive
+
+Novels, biographies, textbooks, comics and even academic papers can be found on Annas archive.
+As long as you know the ISBN (or DOI for science papers) of the specific book you want, searching for it is pretty strightforward, but name only searches could get a little tricky.
+When using ISBN to search try using the ISBN for ebooks as they'll be easier to read and have more customizability with your ebook reader.
+
+However, without a donator account you can only use the "Slow Partner Servers" and besides the long waitlists the download speed can be uite bad, especially for pdfs.
+The best way to get a good speed link is to check the "External Downloads" option at the bottom.
+
+![The button to open the external links list.](https://lel.hadsex.today/7fHkf5T6S.png)
+
+After that your best bet is to use the "Library Genesis" or "LibGen" link, or the z-Library link. Personally I have never gotten any IPFS links to work.
+
+### Readers
+
+I mostly only read books on my phone but sometimes it's useful to pick up where I left off on my PC, so for syncing I prefer [Google Play books](https://play.google.com/books/). It supports both epubs and pdfs so unless you're reading DJVU files, you should be fine.
+If you dont like google or play books, I used to use [ReadEra](https://play.google.com/store/apps/details?id=org.readera&hl=en) on android, it dosent have syncing on the free tier but it has a few more cosmetic and functional features, being able to save pictures embedded in ebups was nice.
+on windows I used [Aquile Reader](https://www.aquilereader.in/) but I deleted it once it got into an ad-infested mess.
+
+---
+
+## Work in progress line.
+
+---
 
 ## Music
 
-WIP
+[Soulseek](https://www.slsknet.org/) is Unfortunately by an israeli dev. [Nicotine+](https://nicotine-plus.org/) is a nicer UI for the same backend.
 
 ## Games
 
-WIP
+[Fitgirl](https://fitgirl-repacks.site/) and [cs.rin.ru](https://cs.rin.ru/) are pertty useful. Do NOT use steamunlocked.
 
 ## Fonts
 
-WIP
+Yandex Search the font name with keywords like "free download" or "free font" and you should find a few sites that have it. If you want to get it from a torrent.
 
 ## NSFW
 
