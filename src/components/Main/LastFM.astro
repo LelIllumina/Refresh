@@ -7,12 +7,13 @@ import FigureImage from "@components/FigureImage.astro";
   <link rel="preconnect" href="https://lastfm.freetls.fastly.net" crossorigin />
 </Fragment>
 
-<div id="songBox">
+<div class="songBox">
   <h2 id="lastfm-status">Loading...</h2>
   <FigureImage
     id="trackCover"
+    class="trackCover"
     decoding="async"
-    loading="eager"
+    loading="lazy"
     src="/src/assets/images/nekofm/loading.png"
     alt=""
     height={150}
@@ -25,3 +26,18 @@ import FigureImage from "@components/FigureImage.astro";
   </div>
 </div>
 <script src="/src/scripts/main/lastfm.ts"></script>
+
+<style>
+  .songBox {
+    max-width: 20ch;
+
+    .trackCover {
+      margin: auto;
+      padding-block: 1rem;
+    }
+
+    .trackName {
+      font-size: var(--fs-600);
+    }
+  }
+</style>

@@ -1,30 +1,62 @@
-export interface Image {
-  "#text": string;
+export interface LastFmData {
+  recenttracks: Recenttracks;
 }
 
-export interface Artist {
-  name: string;
-}
-
-export interface Album {
-  isnsfw: boolean;
+export interface Recenttracks {
+  track: Track[];
+  "@attr": Attr;
 }
 
 export interface Track {
-  name: string;
-  nowplaying: string;
-  album: Album;
-  image: Image[];
   artist: Artist;
+  mbid: string;
+  name: string;
+  image: Image2[];
+  streamable: string;
+  album: Album;
+  url: string;
+  loved: string;
+  nowplaying: string;
+  date?: Date;
 }
 
-export interface RecentTracks {
-  track: Track[];
+export interface Artist {
+  url: string;
+  name: string;
+  image: Image[];
+  mbid: string;
 }
 
-export interface LastFmData {
-  recenttracks: RecentTracks;
+export interface Image {
+  size: string;
+  "#text": string;
 }
+
+export interface Image2 {
+  size: string;
+  "#text": string;
+}
+
+export interface Album {
+  mbid: string;
+  "#text": string;
+  isnsfw: boolean;
+}
+
+export interface Date {
+  uts: string;
+  "#text": string;
+}
+
+export interface Attr {
+  user: string;
+  totalPages: string;
+  page: string;
+  perPage: string;
+  total: string;
+}
+
+// ---
 
 const WS_URL = "wss://scrobbled.tepiloxtl.net/ws/get_last_track/lelillumina";
 const DEFAULT_NO_ART = "/images/nekofm/NoArt.png";
