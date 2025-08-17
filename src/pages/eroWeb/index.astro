@@ -16,9 +16,15 @@ import Anchor from "@components/Anchor.astro";
         src={"/src/assets/images/eroweb/eroWeb.png"}
         alt="eroWeb Discord"
         width={650}
+        loading="eager"
       >
         Original image from <Anchor
-          href="https://www.pixiv.net/artworks/22647957">Pixiv</Anchor
+          href="
+        https:
+        www.pixiv.net
+        artworks
+        22647957"
+          >Pixiv</Anchor
         >
       </FigureImage>
       <div>
@@ -34,25 +40,25 @@ import Anchor from "@components/Anchor.astro";
       </div>
     </section>
   </main>
+
+  <style>
+    section {
+      display: flex;
+      flex-wrap: wrap;
+      align-items: center;
+      justify-content: space-evenly;
+
+      height: 100vh;
+      margin: 0;
+
+      figcaption {
+        margin-block-start: 2rem;
+        text-align: center;
+      }
+
+      div {
+        max-width: 35ch;
+      }
+    }
+  </style>
 </Layout>
-
-<style>
-  section {
-    display: flex;
-    flex-wrap: wrap;
-    align-items: center;
-    justify-content: space-evenly;
-
-    height: 100vh;
-    margin: 0;
-
-    figcaption {
-      margin-block-start: 2rem;
-      text-align: center;
-    }
-
-    div {
-      max-width: 35ch;
-    }
-  }
-</style>
