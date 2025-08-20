@@ -1,0 +1,109 @@
+---
+
+---
+
+<form action="">
+  <fieldset>
+    <legend class="sr-only">Color Scheme</legend>
+    <label for="default" class="sr-only">default</label>
+    <input type="radio" name="theme" id="default" checked />
+
+    <label for="reverse" class="sr-only">reverse</label>
+    <input type="radio" name="theme" id="reverse" />
+
+    <label for="brue" class="sr-only">brue</label>
+    <input type="radio" name="theme" id="brue" />
+
+    <label for="rose" class="sr-only">rose</label>
+    <input type="radio" name="theme" id="rose" />
+  </fieldset>
+</form>
+
+<style>
+  form {
+    > fieldset {
+      display: flex;
+      gap: 2rem;
+
+      width: fit-content;
+      margin: auto;
+      padding: 1rem;
+      border: 0;
+    }
+
+    input[type="radio"] {
+      width: 0.75rem;
+      height: 0.75rem;
+      border-radius: 50%;
+
+      appearance: none;
+      outline: 2px solid var(--radio-color, var(--text-950));
+
+      &:checked {
+        background: var(--radio-color, var(--text-950));
+      }
+    }
+  }
+
+  #default {
+    --radio-color: light-dark(
+      oklab(26.17% 0.048 -0.11),
+      oklab(66.88% 0.083 -0.15)
+    );
+  }
+
+  #reverse {
+    --radio-color: light-dark(oklab(50% -0.08 0.08), oklab(83% -0.08 0.08));
+  }
+
+  #brue {
+    --radio-color: light-dark(
+      oklab(40.88% -0.015 -0.04),
+      oklab(75.09% -0.01 -0.04)
+    );
+  }
+
+  #rose {
+    --radio-color: light-dark(
+      oklab(47.66% 0.083 -0.08),
+      oklab(73.68% 0.057 -0.05)
+    );
+  }
+</style>
+<Fragment slot="head">
+  <script>
+    function initializeThemeSelector() {
+      const colorThemes: NodeListOf<HTMLInputElement> =
+        document.querySelectorAll('input[name="theme"]');
+
+      function storeTheme(theme: string) {
+        localStorage.setItem("theme", theme);
+      }
+
+      function retrieveTheme() {
+        const activeTheme = localStorage.getItem("theme");
+        colorThemes.forEach((theme) => {
+          if (theme.id === activeTheme) {
+            theme.checked = true;
+          }
+        });
+      }
+
+      colorThemes.forEach((theme) => {
+        theme.addEventListener("click", () => {
+          storeTheme(theme.id);
+        });
+      });
+
+      retrieveTheme();
+    }
+
+    if (document.readyState === "loading") {
+      document.addEventListener("DOMContentLoaded", initializeThemeSelector);
+    } else {
+      initializeThemeSelector();
+    }
+
+    document.addEventListener("astro:page-load", initializeThemeSelector);
+  </script>
+</Fragment>

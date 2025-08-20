@@ -1,5 +1,5 @@
 @media (prefers-color-scheme: light) {
-  :root {
+  :root:has(#brue:checked) {
     --text-50: oklab(96% -0.002 -0.01);
     --text-100: oklab(92.14% -0.005 -0.01);
     --text-200: oklab(83.88% -0.009 -0.02);
@@ -59,7 +59,7 @@
 }
 
 @media (prefers-color-scheme: dark) {
-  :root {
+  :root:has(#brue:checked) {
     --text-50: oklab(15.29% -0.003 -0.01);
     --text-100: oklab(21.06% -0.005 -0.02);
     --text-200: oklab(31.22% -0.01 -0.03);

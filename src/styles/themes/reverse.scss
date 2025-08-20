@@ -1,5 +1,5 @@
 @media (prefers-color-scheme: light) {
-  :root {
+  :root:has(#reverse:checked) {
     --text-50: oklab(97% -0.01 0.01);
     --text-100: oklab(94% -0.03 0.03);
     --text-200: oklab(89% -0.05 0.05);
@@ -59,7 +59,7 @@
 }
 
 @media (prefers-color-scheme: dark) {
-  :root {
+  :root:has(#reverse:checked) {
     --text-50: oklab(17% -0.02 0.02);
     --text-100: oklab(25% -0.03 0.03);
     --text-200: oklab(38% -0.06 0.06);

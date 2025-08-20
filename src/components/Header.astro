@@ -1,5 +1,6 @@
 ---
 import Anchor from "./Anchor.astro";
+import ThemeSwitcher from "./ThemeSwitcher.astro";
 
 interface Link {
   label: string;
@@ -85,6 +86,7 @@ const currentUrl = Astro.url.pathname;
           </li>
         ))
       }
+      <ThemeSwitcher />
     </ul>
   </nav>
   <div id="navbar-handle">⌄</div>

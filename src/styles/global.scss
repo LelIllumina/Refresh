@@ -4,7 +4,10 @@
 
 @use "./reset";
 @use "./fonts";
-@use "./colors";
+@use "./themes/default";
+@use "./themes/reverse";
+@use "./themes/brue";
+@use "./themes/rose";
 @use "./typography";
 
 :root {
