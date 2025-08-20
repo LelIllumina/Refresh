@@ -13,7 +13,6 @@
     "prepare": "husky install"
   },
   "dependencies": {
-    "@astrojs/check": "^0.9.4",
     "@astrojs/mdx": "4.3.4",
     "@astrojs/partytown": "^2.1.4",
     "@astrojs/rss": "^4.0.12",
@@ -34,7 +33,6 @@
     "@prettier/plugin-oxc": "^0.0.4",
     "@types/markdown-it": "^14.1.2",
     "@types/sanitize-html": "^2.16.0",
-    "globals": "^16.3.0",
     "husky": "^9.1.7",
     "oxlint": "^1.12.0",
     "postcss-html": "^1.8.0",
