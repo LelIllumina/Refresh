@@ -35,7 +35,7 @@ const { href, src, alt, caption, noglow = false, ...rest } = Astro.props;
 
 const images = import.meta.glob<{ default: ImageMetadata }>(
   "/src/assets/images/**/*.{jpeg,jpg,png,gif,svg,avif,webp}",
-  { eager: true }
+  { eager: true },
 );
 
 const isPublic = typeof src === "string" && !(src in images);

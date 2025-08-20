@@ -21,7 +21,7 @@ const canonicalUrl = new URL(
   Astro.url.pathname.endsWith("/")
     ? Astro.url.pathname
     : Astro.url.pathname + "/",
-  "https://lel.nekoweb.org"
+  "https://lel.nekoweb.org",
 ).href;
 
 const isDev = import.meta.env.DEV;
