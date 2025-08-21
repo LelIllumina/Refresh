@@ -52,6 +52,7 @@ const { Content, headings } = await render(post);
       </section>
     </div>
   </article>
+  {/* TODO: Comments Widget */}
 </main>
 
 <style>
@@ -113,6 +114,6 @@ const { Content, headings } = await render(post);
 
   .content {
     display: flex;
-    flex-direction: row-reverse;
+    flex-flow: row-reverse wrap;
   }
 </style>

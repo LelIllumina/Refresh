@@ -41,11 +41,8 @@ const filteredHeadings = headings.filter((heading) => heading.depth <= levels);
 
 <style>
   .toc-container {
-    position: sticky;
-    inset: 5rem;
-
-    width: 20vw;
-    margin-block-end: auto;
+    width: max(20vw, 15rem);
+    margin: 0 auto auto;
     padding-block: 1rem;
     padding-inline: 2rem;
     border: 2px solid var(--background-800);
@@ -72,6 +69,13 @@ const filteredHeadings = headings.filter((heading) => heading.depth <= levels);
       .toc-indent-3 {
         padding-inline-start: 3rem;
       }
+    }
+  }
+
+  @container (min-width: 768px) {
+    .toc-container {
+      position: sticky;
+      top: 5rem;
     }
   }
 </style>
