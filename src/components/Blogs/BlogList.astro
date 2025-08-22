@@ -24,6 +24,7 @@ const sortedPosts = posts.sort(
           src={post.data.thumb.src}
           alt={post.data.description}
           href={`./${post.id}/`}
+          width={350}
         >
           <time datetime={new Date(post.data.date).toISOString()}>
             {new Date(post.data.date).toLocaleDateString("en-US", {
