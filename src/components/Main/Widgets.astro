@@ -1,0 +1,35 @@
+---
+import Nekostats from "@components/Main/Nekostats.astro";
+import LastFM from "@components/Main/LastFM.astro";
+import GitCommits from "@components/Main/GitCommits.astro";
+---
+
+<section class="widgets">
+  <h2 id="widgets-title" class="sr-only">
+    Widgets with Additional Information
+  </h2>
+  <article>
+    <Nekostats client:visible />
+  </article>
+  <article>
+    <LastFM client:visible />
+  </article>
+  <article>
+    <GitCommits client:visible />
+  </article>
+</section>
+
+<style>
+  .widgets {
+    display: flex;
+    flex-wrap: wrap;
+    align-items: center;
+    justify-content: space-around;
+
+    margin-block: 0;
+
+    text-align: center;
+
+    background-color: var(--background-100);
+  }
+</style>

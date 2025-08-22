@@ -48,8 +48,9 @@ h6 {
 }
 
 section {
-  // margin: clamp(1rem, 5vw, 4rem) 0;
-  padding: clamp(1rem, 3vw, 10rem);
+  margin: clamp(1rem, 5vw, 4rem) 0;
+
+  // padding-block: clamp(1rem, 3vw, 10rem);
 }
 
 :focus-visible {
