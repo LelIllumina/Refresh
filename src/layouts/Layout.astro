@@ -1,6 +1,7 @@
 ---
 import Head from "@components/Head/Head.astro";
 import Header from "@components/Header.astro";
+import Footer from "@components/Footer.astro";
 
 import "@styles/global.scss";
 
@@ -25,7 +26,9 @@ const { title, description, image, keywords } = Astro.props;
 
     <slot />
 
-    <footer></footer>
+    <slot name="footer">
+      <Footer />
+    </slot>
   </body>
 </html>
 
