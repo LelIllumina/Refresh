@@ -104,6 +104,6 @@
       initializeThemeSelector();
     }
 
-    document.addEventListener("astro:page-load", initializeThemeSelector);
+    document.addEventListener("astro:after-swap", initializeThemeSelector);
   </script>
 </Fragment>
