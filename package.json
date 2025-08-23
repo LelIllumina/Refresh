@@ -7,7 +7,7 @@
     "build": "astro build",
     "preview": "astro preview",
     "dual": "astro build && astro preview",
-    "oxlint": "oxlint './src/**/*.{js,ts,astro}' --fix",
+    "oxlint": "oxlint src --fix",
     "stylelint": "stylelint './src/**/*.{css,scss,astro}' --fix --cache",
     "prettier": "prettier './src/**/*.{js,ts,css,md,astro}' --write --cache",
     "prepare": "husky install"
