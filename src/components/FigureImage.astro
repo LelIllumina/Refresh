@@ -72,6 +72,7 @@ const optimizedImage = await getImage(options);
           width={optimizedImage.attributes.width}
           height={optimizedImage.attributes.height}
           alt={alt}
+          {...rest}
         />
         {caption && (
           <figcaption>
@@ -86,6 +87,7 @@ const optimizedImage = await getImage(options);
           width={optimizedImage.attributes.width}
           height={optimizedImage.attributes.height}
           alt={alt}
+          {...rest}
         />
         {caption && (
           <figcaption>
