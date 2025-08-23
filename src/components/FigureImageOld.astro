@@ -1,0 +1,136 @@
+---
+import type { ImageMetadata } from "astro";
+import { Image } from "astro:assets";
+import type { HTMLAttributes } from "astro/types";
+import path from "node:path";
+
+import { getGlowColors } from "@utils/getColors.ts";
+import Anchor from "@components/Anchor.astro";
+
+type AstroImageProps = {
+  src: string | URL;
+  alt: string;
+  width?: number;
+  height?: number;
+  format?: "avif" | "jpeg" | "png" | "webp";
+  quality?: number;
+  fit?: "contain" | "cover" | "fill" | "inside" | "outside";
+  position?: string;
+  background?: string;
+  loading?: "lazy" | "eager";
+  decoding?: "async" | "sync" | "auto";
+  sizes?: string;
+  referrerpolicy?: HTMLImageElement["referrerPolicy"];
+  style?: string;
+  class?: string;
+} & HTMLAttributes<"img">;
+
+type Props = AstroImageProps & {
+  href?: string;
+  caption?: string | boolean;
+  noglow?: boolean;
+};
+
+const { href, src, alt, caption, noglow = false, ...rest } = Astro.props;
+
+const images = import.meta.glob<{ default: ImageMetadata }>(
+  "/src/assets/images/**/*.{jpeg,jpg,png,gif,svg,avif,webp}",
+  { eager: true },
+);
+
+const isPublic = typeof src === "string" && !(src in images);
+const aliasBase = "/src/assets/images";
+
+function normalizeSrcPath(src: string): string {
+  if (!src.startsWith("/")) {
+    return `${aliasBase}/${src}`;
+  }
+
+  if (!src.startsWith(aliasBase)) {
+    return path.posix.join(aliasBase, src.replace(/^\/+/, ""));
+  }
+
+  return src;
+}
+
+function generateAlt(src: string | undefined): string {
+  if (!src) return "";
+  const filename = src.split("/").pop()?.split(".")[0];
+  return filename?.replace(/[-_]/g, " ") ?? "";
+}
+
+const normalizedSrc = typeof src === "string" ? normalizeSrcPath(src) : src;
+
+const imageSrc =
+  !isPublic && typeof normalizedSrc === "string"
+    ? (images[normalizedSrc]?.default ?? null)
+    : null;
+
+const resolvedAlt = alt ?? generateAlt(typeof src === "string" ? src : "");
+
+const { palette } = await getGlowColors(src);
+const darkglow = palette.Vibrant?.hex ?? "";
+const lightglow = palette.DarkVibrant?.hex ?? "";
+---
+
+<figure data-noglow={noglow}>
+  {
+    href ? (
+      <Anchor href={href}>
+        {isPublic ? (
+          <img src={src as string} alt={resolvedAlt} {...rest} />
+        ) : (
+          imageSrc && <Image src={imageSrc} alt={resolvedAlt} {...rest} />
+        )}
+        {caption !== false && resolvedAlt && (
+          <figcaption>
+            <slot>{caption || resolvedAlt}</slot>
+          </figcaption>
+        )}
+      </Anchor>
+    ) : (
+      <>
+        {isPublic ? (
+          <img src={src as string} alt={resolvedAlt} {...rest} />
+        ) : (
+          imageSrc && <Image src={imageSrc} alt={resolvedAlt} {...rest} />
+        )}
+        {caption !== false && resolvedAlt && (
+          <figcaption>
+            <slot>{caption || resolvedAlt}</slot>
+          </figcaption>
+        )}
+      </>
+    )
+  }
+</figure>
+
+<style define:vars={{ darkglow, lightglow }}>
+  figure {
+    margin: 0;
+
+    img {
+      height: auto;
+    }
+
+    &[data-noglow="false"] {
+      img {
+        filter: drop-shadow(0 0 10px black)
+          drop-shadow(-0.5em 0.5em 0 var(--glow));
+      }
+    }
+
+    a {
+      --link-color: var(--text-950);
+      --visited-color: var(--text-950);
+    }
+
+    @media (prefers-color-scheme: light) {
+      --glow: var(--lightglow);
+    }
+
+    @media (prefers-color-scheme: dark) {
+      --glow: var(--darkglow);
+    }
+  }
+</style>

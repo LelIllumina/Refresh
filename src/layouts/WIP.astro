@@ -3,6 +3,8 @@ import Layout from "@layouts/Layout.astro";
 
 import FigureImage from "@components/FigureImage.astro";
 import Anchor from "@components/Anchor.astro";
+
+import giant from "/src/assets/images/etc/hand.gif";
 ---
 
 <Layout title="Making this page" description="This might be a 404 Page">
@@ -13,7 +15,7 @@ import Anchor from "@components/Anchor.astro";
   </div>
   <FigureImage
     draggable="false"
-    src={"/src/assets/images/etc/hand.gif"}
+    src={giant}
     alt="Giant Woman"
     class="giant-woman"
     caption={false}

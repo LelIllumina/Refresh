@@ -1,103 +1,95 @@
 ---
-import type { ImageMetadata } from "astro";
-import { Image } from "astro:assets";
+import type { ImageOutputFormat } from "astro";
+import { getImage } from "astro:assets";
 import type { HTMLAttributes } from "astro/types";
-import path from "node:path";
 
-import { getGlowColors } from "@utils/getColors.ts";
-import Anchor from "@components/Anchor.astro";
+import { readFileSync } from "node:fs";
+import { join } from "node:path";
+import { imageSize } from "image-size";
 
-type AstroImageProps = {
-  src: string | URL;
-  alt: string;
-  width?: number;
-  height?: number;
-  format?: "avif" | "jpeg" | "png" | "webp";
-  quality?: number;
-  fit?: "contain" | "cover" | "fill" | "inside" | "outside";
-  position?: string;
-  background?: string;
-  loading?: "lazy" | "eager";
-  decoding?: "async" | "sync" | "auto";
-  sizes?: string;
-  referrerpolicy?: HTMLImageElement["referrerPolicy"];
-  style?: string;
-  class?: string;
-} & HTMLAttributes<"img">;
+import Anchor from "./Anchor.astro";
 
-type Props = AstroImageProps & {
+interface Props extends Omit<HTMLAttributes<"img">, "src"> {
+  src: ImageMetadata | string;
+  format?: ImageOutputFormat;
   href?: string;
   caption?: string | boolean;
-  noglow?: boolean;
-};
+  position?: string;
+  fit?: "contain" | "cover" | "fill" | "none" | "scale-down";
+}
 
-const { href, src, alt, caption, noglow = false, ...rest } = Astro.props;
+const {
+  src,
+  width,
+  height,
+  format = "webp",
+  alt = "",
+  href,
+  caption = true,
+  ...rest
+} = Astro.props;
 
 const images = import.meta.glob<{ default: ImageMetadata }>(
-  "/src/assets/images/**/*.{jpeg,jpg,png,gif,svg,avif,webp}",
-  { eager: true },
+  "/src/assets/**/*.{png,jpg,jpeg,webp,avif,svg,gif}",
 );
 
-const isPublic = typeof src === "string" && !(src in images);
-const aliasBase = "/src/assets/images";
+let imageImport: ImageMetadata | string;
+let remoteDimensions: { width: number; height: number } | undefined;
 
-function normalizeSrcPath(src: string): string {
-  if (!src.startsWith("/")) {
-    return `${aliasBase}/${src}`;
-  }
-
-  if (!src.startsWith(aliasBase)) {
-    return path.posix.join(aliasBase, src.replace(/^\/+/, ""));
-  }
-
-  return src;
+if (typeof src === "string" && src in images) {
+  const imageModule = await images[src]();
+  imageImport = imageModule.default;
+} else {
+  imageImport = src;
 }
 
-function generateAlt(src: string | undefined): string {
-  if (!src) return "";
-  const filename = src.split("/").pop()?.split(".")[0];
-  return filename?.replace(/[-_]/g, " ") ?? "";
-}
+const options = {
+  src: imageImport,
+  format,
+  ...(width
+    ? { width: Number(width) }
+    : remoteDimensions?.width
+      ? { width: remoteDimensions.width }
+      : {}),
+  ...(height
+    ? { height: Number(height) }
+    : remoteDimensions?.height
+      ? { height: remoteDimensions.height }
+      : {}),
+  inferSize: true,
+  ...rest,
+};
 
-const normalizedSrc = typeof src === "string" ? normalizeSrcPath(src) : src;
-
-const imageSrc =
-  !isPublic && typeof normalizedSrc === "string"
-    ? (images[normalizedSrc]?.default ?? null)
-    : null;
-
-const resolvedAlt = alt ?? generateAlt(typeof src === "string" ? src : "");
-
-const { palette } = await getGlowColors(src);
-const darkglow = palette.Vibrant?.hex ?? "";
-const lightglow = palette.DarkVibrant?.hex ?? "";
+const optimizedImage = await getImage(options);
 ---
 
-<figure data-noglow={noglow}>
+<figure>
   {
     href ? (
-      <Anchor href={href}>
-        {isPublic ? (
-          <img src={src as string} alt={resolvedAlt} {...rest} />
-        ) : (
-          imageSrc && <Image src={imageSrc} alt={resolvedAlt} {...rest} />
-        )}
-        {caption !== false && resolvedAlt && (
+      <Anchor {href}>
+        <img
+          src={optimizedImage.src}
+          width={optimizedImage.attributes.width}
+          height={optimizedImage.attributes.height}
+          alt={alt}
+        />
+        {caption && (
           <figcaption>
-            <slot>{caption || resolvedAlt}</slot>
+            <slot>{alt || caption}</slot>
           </figcaption>
         )}
       </Anchor>
     ) : (
       <>
-        {isPublic ? (
-          <img src={src as string} alt={resolvedAlt} {...rest} />
-        ) : (
-          imageSrc && <Image src={imageSrc} alt={resolvedAlt} {...rest} />
-        )}
-        {caption !== false && resolvedAlt && (
+        <img
+          src={optimizedImage.src}
+          width={optimizedImage.attributes.width}
+          height={optimizedImage.attributes.height}
+          alt={alt}
+        />
+        {caption && (
           <figcaption>
-            <slot>{caption || resolvedAlt}</slot>
+            <slot>{alt || caption}</slot>
           </figcaption>
         )}
       </>
@@ -105,7 +97,11 @@ const lightglow = palette.DarkVibrant?.hex ?? "";
   }
 </figure>
 
-<style define:vars={{ darkglow, lightglow }}>
+<Fragment slot="head">
+  <link rel="preload" as="image" href={optimizedImage.src} />
+</Fragment>
+
+<style>
   figure {
     margin: 0;
 
@@ -113,24 +109,9 @@ const lightglow = palette.DarkVibrant?.hex ?? "";
       height: auto;
     }
 
-    &[data-noglow="false"] {
-      img {
-        filter: drop-shadow(0 0 10px black)
-          drop-shadow(-0.5em 0.5em 0 var(--glow));
-      }
-    }
-
     a {
       --link-color: var(--text-950);
       --visited-color: var(--text-950);
-    }
-
-    @media (prefers-color-scheme: light) {
-      --glow: var(--lightglow);
-    }
-
-    @media (prefers-color-scheme: dark) {
-      --glow: var(--darkglow);
     }
   }
 </style>
