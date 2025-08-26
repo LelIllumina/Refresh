@@ -2,14 +2,14 @@
 import type { CollectionEntry } from "astro:content";
 import { render } from "astro:content";
 
+import TableOfContents from "@components/Blogs/TableOfContents.astro";
+import Background from "@components/Blogs/Background.astro";
+
 import FigureImage from "@components/FigureImage.astro";
 import Anchor from "@components/Anchor.astro";
-import Aside from "./Aside.astro";
+import Aside from "@components/Blogs/Aside.astro";
 
 import "@styles/blog/content.scss";
-
-import TableOfContents from "@components/Blogs/TableOfContents.astro";
-import Background from "./Background.astro";
 
 interface Props {
   post: CollectionEntry<"blogs" | "guides">;
@@ -48,7 +48,7 @@ const { Content, headings } = await render(post);
       <TableOfContents {headings} levels={3} />
 
       <section>
-        <Content components={{ img: FigureImage, a: Anchor, Aside: Aside }} />
+        <Content components={{ img: FigureImage, a: Anchor, Aside }} />
       </section>
     </div>
   </article>
@@ -115,5 +115,6 @@ const { Content, headings } = await render(post);
   .content {
     display: flex;
     flex-flow: row-reverse wrap;
+    justify-content: center;
   }
 </style>

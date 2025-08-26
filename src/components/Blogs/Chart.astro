@@ -1,0 +1,114 @@
+---
+import type { ChartDataset } from "chart.js";
+
+interface Props {
+  type: "bar" | "line" | "pie";
+  labels: string[];
+  datasets: ChartDataset[];
+  ariaLabel?: string;
+}
+
+const { type, labels, datasets, ariaLabel } = Astro.props;
+
+const options = {
+  type,
+  data: {
+    labels,
+    datasets,
+  },
+  options: {
+    normalized: true,
+    responsive: true,
+    maintainAspectRatio: false,
+    devicePixelRatio: 1.5,
+    plugins: {
+      legend: {
+        labels: {
+          font: {
+            family: "Mica Valo",
+            size: 20,
+          },
+          color: "#e5e5e5",
+        },
+      },
+    },
+    scales: {
+      x: {
+        ticks: { color: "#e5e5e5" },
+        grid: { color: "rgba(255,255,255,0.1)" },
+      },
+      y: {
+        beginAtZero: true,
+        ticks: { color: "#e5e5e5" },
+        grid: { color: "rgba(255,255,255,0.1)" },
+        max: 10, // Change this later blawg
+      },
+    },
+  },
+};
+---
+
+<chart-component data-options={JSON.stringify(options)}>
+  <canvas
+    role="img"
+    aria-label={ariaLabel || `A ${type} chart with labels ${labels.join(", ")}`}
+  >
+    <table>
+      <caption>
+        {`Data for ${type} chart`}
+      </caption>
+      <thead>
+        <tr>
+          <th>Label</th>
+          {datasets.map((ds) => <th>{ds.label}</th>)}
+        </tr>
+      </thead>
+      <tbody>
+        {
+          labels.map((label, i) => (
+            <tr>
+              <td>{label}</td>
+              {datasets.map((ds) => (
+                <td>{ds.data[i]}</td>
+              ))}
+            </tr>
+          ))
+        }
+      </tbody>
+    </table>
+  </canvas>
+</chart-component>
+
+<script>
+  import Chart, { type ChartTypeRegistry } from "chart.js/auto";
+
+  class ChartComponent extends HTMLElement {
+    connectedCallback() {
+      const rawType = this.dataset.type as string;
+
+      const type = (
+        ["bar", "line", "pie"].includes(rawType) ? rawType : "bar"
+      ) as keyof ChartTypeRegistry;
+
+      const options = JSON.parse(this.dataset.options as string);
+      const ctx = this.querySelector("canvas") as HTMLCanvasElement;
+
+      new Chart(ctx, options);
+    }
+  }
+
+  if (!customElements.get("chart-component")) {
+    customElements.define("chart-component", ChartComponent);
+  }
+</script>
+<style>
+  chart-component {
+    position: relative;
+
+    display: block;
+
+    width: 85%;
+    min-height: 400px;
+    margin: 2rem auto;
+  }
+</style>

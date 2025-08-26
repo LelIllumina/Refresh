@@ -13,6 +13,8 @@ import emoji from "remark-emoji";
 
 import icon from "astro-icon";
 
+import svelte from "@astrojs/svelte";
+
 export default defineConfig({
   site: "https://lel.nekoweb.org",
   server: { host: true },
@@ -32,11 +34,12 @@ export default defineConfig({
 
   integrations: [
     sitemap(),
-    mdx(),
     partytown(),
     pageInsight(),
     metaTags(),
     icon(),
+    svelte(),
+    mdx({ optimize: true }),
   ],
 
   markdown: {

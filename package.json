@@ -9,24 +9,29 @@
     "dual": "astro build && astro preview",
     "oxlint": "oxlint src --fix",
     "stylelint": "stylelint './src/**/*.{css,scss,astro}' --fix --cache",
-    "prettier": "prettier './src/**/*.{js,ts,css,md,astro}' --write --cache",
+    "prettier": "prettier './src/**/*.{js,ts,css,md,astro,svelte}' --write --cache",
     "prepare": "husky install"
   },
   "dependencies": {
     "@astrojs/mdx": "4.3.4",
     "@astrojs/partytown": "^2.1.4",
     "@astrojs/rss": "^4.0.12",
-    "@astrojs/sitemap": "^3.5.0",
-    "astro": "5.13.2",
+    "@astrojs/sitemap": "3.5.1",
+    "@astrojs/svelte": "^7.1.0",
+    "@tsconfig/svelte": "^5.0.5",
+    "astro": "5.13.3",
     "astro-capo": "^0.0.1",
     "astro-icon": "^1.1.5",
     "astro-meta-tags": "^0.4.0",
     "astro-page-insight": "^0.10.2",
+    "chart.js": "^4.5.0",
     "feed": "^5.1.0",
     "markdown-it": "^14.1.0",
     "node-vibrant": "^4.0.3",
+    "prettier-plugin-svelte": "^3.4.0",
     "remark-emoji": "^5.0.1",
-    "sanitize-html": "^2.17.0"
+    "sanitize-html": "^2.17.0",
+    "svelte": "^5.38.2"
   },
   "devDependencies": {
     "@iconify-json/lucide": "^1.2.63",
@@ -56,7 +61,7 @@
   "lint-staged": {
     "*.{js,mjs,cjs,jsx,ts,mts,cts,tsx,vue,astro,svelte}": "oxlint --fix",
     "*.{css,scss,astro}": "stylelint --fix --cache",
-    "*.{js,ts,css,md,astro}": "prettier --write"
+    "*.{js,ts,css,md,astro,svelte}": "prettier --write"
   },
   "browserslist": [
     "defaults and fully supports es6-module",

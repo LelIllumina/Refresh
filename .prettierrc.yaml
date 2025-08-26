@@ -1,3 +1,4 @@
 plugins:
   - "@prettier/plugin-oxc"
   - "prettier-plugin-astro"
+  - "prettier-plugin-svelte"
