@@ -39,7 +39,7 @@ export default defineConfig({
     metaTags(),
     icon(),
     svelte(),
-    mdx({ optimize: true }),
+    mdx(),
   ],
 
   markdown: {
