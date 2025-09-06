@@ -1,65 +1,108 @@
 ---
 import Anchor from "@components/Anchor.astro";
+import FigureImage from "@components/FigureImage.astro";
 ---
 
 <section class="faq">
   <h2>Frequently Asked Questions</h2>
 
-  <details name="faq">
-    <summary>Are these questions frequently asked?</summary>
-    <p>Nope!</p>
-  </details>
-
-  <details name="faq">
-    <summary>Do you use an SSG? Why?</summary>
-    <p>
-      I use astro without a framework (for now) and SCSS. Writing reusable
-      components instead of copy pasting headers and stuff all the time and
-      being able to write in markdown is just simpler. I also like the simpler
-      minification setup compared to my awful gulp setup.
-    </p>
-  </details>
-
-  <details name="faq">
-    <summary>Do you use a component library?</summary>
-    <p>
-      I write my own reusable components but I do use a lot of code that I've
-      learned from tutorials and blogs. A lot of CSS tricks I've picked up are
-      from
-      <Anchor href="https://www.youtube.com/@KevinPowell">Kevin Powell</Anchor>
-      and astro related ones <Anchor
-        href="https://astro-tips.dev/external-resources"
-        >from this collection</Anchor
-      > .
-    </p>
-    <br />
-    <Anchor href="https://www.sanity.io/glossary/component-library"
-      >What is a component library?</Anchor
-    >
-  </details>
-
-  <details name="faq">
-    <summary>Is everything on this site yours?</summary>
-    <p>
-      All the code (which you can find on my <Anchor
-        href="https://github.com/LelIllumina/Refresh">GitHub</Anchor
-      >) is written by me and so are all the blogs. The colorschemes are
-      randomly generated and all the images are stolen from random places on the
-      internet. (The placeholder images on the lastfm widget were designed by me
-      though.)
-    </p>
-  </details>
+  <div>
+    <details name="faq" open>
+      <summary>Do you use an SSG? Why?</summary>
+      <p>
+        I use astro without a framework (for now) and SCSS. Writing reusable
+        components instead of copy pasting headers and stuff all the time and
+        being able to write in markdown is just simpler. I also like the simpler
+        minification setup compared to my awful gulp setup.
+      </p>
+    </details>
+    <details name="faq">
+      <summary>Do you use a component library?</summary>
+      <p>
+        I write my own reusable components but I do use a lot of code that I've
+        learned from tutorials and blogs. A lot of CSS tricks I've picked up are
+        from
+        <Anchor href="https://www.youtube.com/@KevinPowell">Kevin Powell</Anchor
+        >
+        and astro related ones <Anchor
+          href="https://astro-tips.dev/external-resources"
+          >from this collection</Anchor
+        > .
+      </p>
+      <br />
+      <Anchor href="https://www.sanity.io/glossary/component-library"
+        >What is a component library?</Anchor
+      >
+    </details>
+    <details name="faq">
+      <summary>Is everything on this site yours?</summary>
+      <p>
+        All the code (which you can find on my <Anchor
+          href="https://github.com/LelIllumina/Refresh">GitHub</Anchor
+        >) is written by me and so are all the blogs. The colorschemes are
+        randomly generated and all the images are stolen from random places on
+        the internet. (The placeholder images on the lastfm widget were designed
+        by me though.)
+      </p>
+    </details>
+    <details name="faq">
+      <summary>Are these questions frequently asked?</summary>
+      <p>Nope!</p>
+    </details>
+  </div>
+  <FigureImage
+    src="/src/assets/images/main/desuwa.jpg"
+    alt="Desuwa"
+    caption={false}
+  />
 </section>
 
 <style>
   .faq {
-    max-width: 60ch;
-    margin-inline: auto;
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(500px, auto));
+    column-gap: 5rem;
+    justify-content: center;
 
-    details {
-      margin: 0.5rem;
-      padding: 0.5rem;
-      background-color: var(--background-200);
+    padding-inline: 5vw;
+
+    div {
+      grid-column: 1;
+      max-width: 60ch;
+
+      details {
+        width: 100%;
+        margin: 0.5rem;
+        padding: 0.5rem;
+        border: 1px solid var(--background-500);
+        border-radius: 0.5rem;
+
+        background-color: var(--background-200);
+      }
+
+      summary {
+        padding: 0.5em;
+      }
+
+      details[open] {
+        padding: 0.5em;
+
+        summary {
+          margin-bottom: 0.5em;
+          border-bottom: 1px solid var(--background-500);
+        }
+      }
+    }
+
+    figure {
+      place-self: start center;
+      max-width: 60ch;
+      margin-block: auto;
+
+      img {
+        border: 2px solid var(--background-500);
+        border-radius: 0.5rem;
+      }
     }
   }
 </style>
