@@ -24,11 +24,15 @@ section {
   }
 
   figure {
+    width: 100vw;
+    max-width: 55vw;
+    margin-left: calc(50% - (55vw / 2)) !important;
     text-align: center;
 
     img {
       width: auto;
-      max-width: 20vw;
+
+      // max-width: 20vw;
       max-height: 50vh;
       margin-block: 1rem;
       margin-inline: auto;
@@ -61,4 +65,10 @@ section {
       background-color: var(--background-200);
     }
   }
+}
+
+.breakout {
+  width: 100vw;
+  max-width: 55vw;
+  margin-left: calc(50% - (55vw / 2));
 }

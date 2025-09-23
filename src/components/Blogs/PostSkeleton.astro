@@ -19,6 +19,14 @@ const { post } = Astro.props;
 const { title, date, thumb } = post.data;
 
 const { Content, headings } = await render(post);
+
+function formatDate(date: Date) {
+  const d = date.getDate(); // day of month (1–31)
+  const m = date.getMonth() + 1; // month is zero-based
+  const y = String(date.getFullYear()).slice(-2); // last 2 digits of year
+
+  return `${d}/${m}/${y}`;
+}
 ---
 
 <main>
@@ -37,7 +45,7 @@ const { Content, headings } = await render(post);
       <div class="title">
         <time datetime={date.toISOString()}>
           <h2>
-            EPISODE: {date.toLocaleDateString()}
+            EPISODE: {formatDate(date)}
           </h2>
         </time>
         <h2>{title}</h2>
@@ -76,6 +84,14 @@ const { Content, headings } = await render(post);
           font-size: clamp(6rem, 20vh, 40rem);
         }
 
+        @media (width <= 1024px) {
+          font-size: clamp(8rem, 35vh / 3, 20rem);
+
+          span {
+            font-size: clamp(10rem, 7vh, 4rem);
+          }
+        }
+
         @media (width <= 768px) {
           font-size: clamp(1.5rem, 20vh / 3, 15rem);
 
@@ -87,11 +103,11 @@ const { Content, headings } = await render(post);
     }
 
     .title {
-      letter-spacing: clamp(-10px, -1vw, -2px);
+      letter-spacing: clamp(-10px, -0.4vw, -2px);
 
       h2 {
         margin: 0;
-        font-size: clamp(2rem, 30vh / 3, 15rem);
+        font-size: clamp(2rem, 20vh / 3, 15rem);
         font-weight: 200;
         text-align: end;
 
@@ -100,13 +116,17 @@ const { Content, headings } = await render(post);
           text-align: start;
         }
 
-        @media (width <= 768px) {
+        @media (width <= 1024px) {
           font-size: clamp(1.5rem, 15vh / 3, 10rem);
+        }
+
+        @media (width <= 768px) {
+          font-size: clamp(1.5rem, 10vh / 3, 10rem);
         }
       }
     }
 
-    @media (width <= 768px) {
+    @media (width <= 1024px) {
       padding-block: 10rem;
       padding-inline: 2rem;
     }
