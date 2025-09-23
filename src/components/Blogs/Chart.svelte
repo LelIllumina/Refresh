@@ -10,6 +10,7 @@
     datasets: ChartData<T>["datasets"];
     options?: ChartOptions<T>;
     ariaLabel?: string;
+    title: string;
   };
 
   const defaultLabels = ["Red", "Blue", "Yellow", "Green", "Purple", "Orange"];
@@ -58,6 +59,7 @@
     datasets = defaultDatasets,
     options = defaultOptions,
     ariaLabel,
+    title,
   }: Props = $props();
 
   const config = {
@@ -75,11 +77,16 @@
   });
 </script>
 
-<div
-  style="position: relative;display: block;width: 85%;min-height: 400px;margin: 2rem auto;"
->
-  <canvas
-    bind:this={ctx}
-    aria-label={ariaLabel || `A ${type} chart with labels ${labels.join(", ")}`}
-  ></canvas>
-</div>
+<figure style=" min-height: 400px; margin-block: 2rem;" class="breakout">
+  <div style="position: relative; min-height: 400px;">
+    <canvas
+      bind:this={ctx}
+      aria-label={ariaLabel ||
+        `A ${type} chart with labels ${labels.join(", ")}`}
+    ></canvas>
+  </div>
+
+  <figcaption>
+    {title || `A ${type} chart with labels ${labels.join(", ")}`}
+  </figcaption>
+</figure>

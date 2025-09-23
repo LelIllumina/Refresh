@@ -1,0 +1,176 @@
+---
+title: I am a horse
+description: I have started eating nothing but carrots.
+date: 2025-09-24
+thumb: uma.webp
+tags:
+  - General
+  - Chart
+keywords:
+  - horses
+  - uma musume
+  - carrots
+  - charts
+  - chart.js
+draft: false
+---
+
+import Chart from "@components/Blogs/Chart.svelte";
+import "@components/Blogs/Chart.svelte?style";
+
+If you've had the false notion that I have any semblance of seriousness in me after reading my previous blogs, be prepared to have that worthless illusion shattered as I rate horses on their hotness and cuteness
+
+While these ratings are very obviously subjective and biased to my tastes, I've tried to keep them normalized. Most of the reference images used while measuring were official artwork and models and I solely factored in visuals, not any personality traits.
+
+The ratings are ordered left to right in descending order of popularity as ranked in [this](https://x.com/uma_musu_en/status/1904245834549460992?lang=en) popularity poll.
+
+These are the top 20 (Total 21 including ties) Umas:
+
+<Chart
+  type="bar"
+  labels={[
+    "Tokai Teio",
+    "Rice Shower",
+    "Agnes Tachyon",
+    "Oguri Cap",
+    "Manhattan Cafe",
+    "GolShi",
+    "Kitasan Black",
+    "Meijiro McQueen",
+    "T.M Opera O",
+    "Nice Nature",
+    "Silence Suzuka",
+    "Twin Turbo",
+    "Matikanetannhauser",
+    "Admire Vega",
+    "Gentildonna",
+    "Cheval Grand",
+    "Jungle Pocket",
+    "Satono Diamond",
+    "Special Week",
+    "Daitaku Helios",
+    "Daiwa Scarlet",
+  ]}
+  datasets={[
+    {
+      label: "Hot",
+      data: [1, 5, 7, 3, 8, 4, 5, 6, 2, 4, 2, 1, 2, 4, 7, 8, 3, 7, 1, 4, 8],
+      backgroundColor: "oklab(87.65% -0.111 0.12 / 0.5)",
+      borderColor: "oklab(87.65% -0.111 0.12)",
+      borderWidth: 1,
+    },
+    {
+      label: "Cute",
+      data: [10, 7, 6, 6, 9, 9, 7, 8, 3, 6, 5, 5, 7, 8, 7, 6, 6, 8, 8, 7, 8],
+      backgroundColor: "oklab(67.95% 0.102 -0.14 / 0.5)",
+      borderColor: "oklab(67.95% 0.102 -0.14)",
+      borderWidth: 1,
+    },
+  ]}
+  ariaLabel="A bar chart showing hotness and cuteness ratings of the top 20 most popular Uma Musume characters"
+  title="Hot and cute ratings of the top 20 most popular Uma Musume characters"
+  client:visible
+/>
+
+I also thought of making an "Honourable mentions" for the Umas who I liked but werent as high up to be included above:
+
+<Chart
+  type="bar"
+  labels={[
+    "Seiun Sky",
+    "Vodka",
+    "King Halo",
+    "El Condor Pasa",
+    "Maruzensky",
+    "Ikuno Dictus",
+    "Biwa Hayahide",
+    "Seeking The Pearl",
+  ]}
+  datasets={[
+    {
+      label: "Hot",
+      data: [3, 4, 5, 5, 8, 7, 8, 7],
+      backgroundColor: "oklab(87.65% -0.111 0.12 / 0.5)",
+      borderColor: "oklab(87.65% -0.111 0.12)",
+      borderWidth: 1,
+    },
+    {
+      label: "Cute",
+      data: [7, 6, 9, 8, 7, 7, 6, 3],
+      backgroundColor: "oklab(67.95% 0.102 -0.14 / 0.5)",
+      borderColor: "oklab(67.95% 0.102 -0.14)",
+      borderWidth: 1,
+    },
+  ]}
+  ariaLabel="A bar chart showing hotness and cuteness ratings of Mejiro family characters"
+  title="Hot and cute ratings of the Mejiro Family"
+  client:visible
+/>
+
+After that I also made 2 for the Mejiro family and the "O" Family since they look cool too.
+
+<Chart
+  type="bar"
+  labels={[
+    "Mejiro McQueen",
+    "Mejiro Ardan",
+    "Mejiro Palmer",
+    "Mejiro Dober",
+    "Mejiro Ramonu",
+    "Mejiro Ryan",
+    "Mejiro Bright",
+  ]}
+  datasets={[
+    {
+      label: "Hot",
+      data: [7, 6, 5, 7, 7, 5, 2],
+      backgroundColor: "oklab(87.65% -0.111 0.12 / 0.5)",
+      borderColor: "oklab(87.65% -0.111 0.12)",
+      borderWidth: 1,
+    },
+    {
+      label: "Cute",
+      data: [10, 6, 7, 9, 5, 5, 8],
+      backgroundColor: "oklab(67.95% 0.102 -0.14 / 0.5)",
+      borderColor: "oklab(67.95% 0.102 -0.14)",
+      borderWidth: 1,
+    },
+  ]}
+  ariaLabel="A bar chart showing hotness and cuteness ratings of Mejiro family characters"
+  title="Hot and cute ratings of the Mejiro Family"
+  client:visible
+/>
+
+<Chart
+  type="bar"
+  labels={[
+    "T.M. Opera O",
+    "Sakura Bakushin O",
+    "Sakura Chiyono O",
+    "Calstone Light O",
+  ]}
+  datasets={[
+    {
+      label: "Hot",
+      data: [2, 5, 2, 7],
+      backgroundColor: "oklab(87.65% -0.111 0.12 / 0.5)",
+      borderColor: "oklab(87.65% -0.111 0.12)",
+      borderWidth: 1,
+    },
+    {
+      label: "Cute",
+      data: [5, 7, 8, 7],
+      backgroundColor: "oklab(67.95% 0.102 -0.14 / 0.5)",
+      borderColor: "oklab(67.95% 0.102 -0.14)",
+      borderWidth: 1,
+    },
+  ]}
+  ariaLabel="A bar chart showing hotness and cuteness ratings of O family"
+  title="Hot and cute ratings of O family"
+  client:visible
+/>
+
+Honestly I just wanted to make these charts because charts look cool. Also I like Uma Musume.
+The ratings are very not balanced because I kept putting this off and rated these Umas like over 2 months so I dont remember what metric I set the first time around.
+
+The charts are a svelte component and use Chart.js I hadn't used either before this.
