@@ -1,0 +1,102 @@
+#comments-root {
+  max-width: 60%;
+  margin: auto;
+  padding: 15px;
+}
+
+button,
+input[type="submit"],
+.c-submit-button {
+  cursor: pointer;
+
+  padding: 6px 16px;
+  border: 1px dashed var(--accent-500);
+  border-radius: 6px;
+
+  font-size: 14px;
+  font-weight: 600;
+  color: var(--accent-500);
+
+  background: transparent;
+}
+
+button:hover,
+.c-submit-button:hover {
+  color: var(--text-100);
+  background-color: var(--background-500);
+}
+
+button:disabled {
+  cursor: default;
+  opacity: 0.6;
+}
+
+#c-input-div {
+  padding: 10px;
+  border: 1px dashed var(--accent-500);
+  border-radius: 5px;
+  background-color: var(--background-200);
+}
+
+#c-widget-title {
+  margin: 0;
+  padding-block-end: 1rem;
+  color: var(--text-800);
+  text-decoration: underline wavy;
+}
+
+.c-input-wrapper {
+  margin: 5px 0;
+}
+
+.c-input {
+  width: 80%;
+  padding: 4px;
+  border: 1px solid var(--accent-500);
+  border-radius: 4px;
+
+  background-color: var(--primary-100);
+
+  &:focus {
+    border-color: var(--accent-700);
+    outline: none;
+  }
+}
+
+.c-comment,
+.c-reply {
+  margin: 10px 0;
+  padding: 10px;
+  border: 1px dashed var(--accent-500);
+  border-radius: 4px;
+
+  list-style: none;
+}
+
+.c-name {
+  display: inline-block;
+  margin: 0;
+  text-decoration: underline;
+}
+
+.c-site {
+  color: var(--accent-500);
+
+  &:hover {
+    color: var(--accent-300);
+  }
+}
+
+.c-timestamp {
+  float: right;
+  opacity: 0.6;
+}
+
+.c-text {
+  margin-top: 10px;
+  text-align: justify;
+}
+
+.c-reply-button {
+  margin-top: 10px;
+}

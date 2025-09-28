@@ -8,6 +8,7 @@ import Background from "@components/Blogs/Background.astro";
 import FigureImage from "@components/FigureImage.astro";
 import Anchor from "@components/Anchor.astro";
 import Aside from "@components/Blogs/Aside.astro";
+import CommentWidget from "./CommentWidget.astro";
 
 import "@styles/blog/content.scss";
 
@@ -60,7 +61,7 @@ function formatDate(date: Date) {
       </section>
     </div>
   </article>
-  {/* TODO: Comments Widget */}
+  <CommentWidget />
 </main>
 
 <style>

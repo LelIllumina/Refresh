@@ -1,0 +1,90 @@
+---
+title: I love unemployment
+description: I have started eating nothing but carrots.
+date: 2025-09-28
+thumb: ugh.gif
+tags:
+  - General
+  - Me
+keywords:
+  - Employment
+  - Hate
+  - Tech
+  - Crypto
+draft: true
+---
+
+On my way back home at the back of a motorbike, while wondering about different aspects of my current site, my train of thought ended up at reaching the memories of my past job.  
+Similarly to webdev it was a programming job as a “Junior Dev”, although quite frankly, it was actually shit, so entirely dogass that I don't even remember the name of that company, in fact I don't even know if I ever knew the name of it in the first place.
+
+This happened earlier this year, when I was still 17. After I had got off my first job a few months prior to this event, my mom received a message from her friend, who I too was acquainted with. He told her about an online joint interview I could participate in from the company he worked in, because my mom wanted me to get a job. My mom agreed and told me and then I followed through.
+
+## Interview
+
+At first, I was interested in the opportunity as it was a tech company and not only was I studying Computer science, I had always had an interest in computers.  
+I showed up to the interview, it seemed genuine enough; The first interview was just introductions and talking about prior experience, education, etc. and then they'd go to the next interview at a later date. In the next interview they talked with a few people they had shortlisted, which included me, and asked about a little more detail about them. After yapping a bit about random stuff, the apparent “owner” (Lets call him “A”) of the company, who was also on the calls asked, rather oddly, for all of us in the interview — who at this point were not practically or literally hired I might add — to make an “AI Telegram bot” in the likeness of a certain figure (Hazrat Luqman Hakeem).
+
+It was quite a weird task because I actually didn't even know what skill set they were looking for, but he assured being hired and a cash reward to the person who submitted the best bot.  
+However, have no doubt in your mind that I, after making the bot and submitting it: Did not receive any cash reward whatsoever or even a mention of the said reward even after being hired on the basis of that exact bot.
+
+A couple of things I haven't mentioned yet are the fact this was a remote job at night, if I remember correctly it was something like 8 pm to 4 am as “A” lived in the US and timezones equated to this time slot. This obviously meant I didn't have transport costs or time costs in transit, but I also had “Flexible hours” which meant working overtime, a lot.
+
+Also, the contract I received was to be digitally signed, but it was probably worth nothing considering how many typos and mistakes it had. One of the sentences quite literally said:
+
+<Aside variant="note" title="From the contract">
+  " …a period of 3 months (30 days)."
+</Aside>
+
+But whatever, I got hired on an otherwise mediocre salary, that's good enough, isn’t it? Not to mention it's in a field I quite enjoy, right? So it's fine, right? Right?
+
+## Bot
+
+Before I go into the details of why exactly the job sucked, I'd like to talk about the bot itself because it'll be used on the job later on as well.
+
+The specifics of what the bot needed to do were left quite brief by “A”. Very basically, all it needed to do was:
+
+1. Be on Telegram
+2. Respond to messages sent to it by a user using AI.
+
+I spent a day or two of looking at Telegram bot libraries and trying to find a way to use AI using API calls for free. After settling on 2 main libraries, I made a simple bot using Telegraf for the bot code and used Groq (not to be confused with Grok) for the AI responses.
+
+One of the most annoying issues with the bot was actually the fact that Telegram is banned in my country. To get anything to work, including my Telegram account and the bot’s API calls I needed to use a VPN. This was wholly very annoying as it made everything slower.
+
+### Telegraf
+
+Telegraf is a JS/TS bot Library for Telegram and was simple enough to use with the boilerplate code it provided, but alas this would bite me in my ass in the future, but here is mostly my fault.
+
+I had a little experience with Discord.JS so using the bot library wasn't super hard at first, if it hadn't been me using Typescript for whatever reason, which caused me quite a few headaches further on. Besides that, Telegraf itself didn't really have much documentation other than the README which had some basic starter code and examples. The reason was that most libraries like these are just wrappers for API requests on the platform the bot is of (i.e., Discord, Telegram, etc.), so the methods and functions in the library are structured to match those API endpoints. This basically means you need to use both the library and the platform's documentation to understand how to do something besides basic stuff you might infer from the README.
+This wasn't really anyone's fault besides mine, I just hate reading documentation, but I did eventually read a bunch of the Telegram bot docs and implemented what I needed to, more on that later.
+
+### Groq
+
+Unlike official Web UIs for AI chatbots like ChatGPT or Claude, using these services anywhere else requires you to acquire an API key. Also, unlike official Web UIs, these API keys are not free. You might have free credits or a free trial, but long term you'll need to pay up.
+
+That's where I found Groq and its free API. I'm not a 100% sure on what exactly their vision or policy is, but they seem to focus on making their model's “Inference” faster. Inference here meaning the AI model actually doing the AI writing. They have really slimmed down and efficient models, which makes them faster and more importantly cheaper to run. This amounts to them giving registered users, albeit on a pretty low rate limit, free access to models using their API.  
+This allowed me to both prototype and actually develop and deploy the bot using Groq’s AI responses.
+
+Overall, I had around a week's worth of time, but I just slacked off for most of it.
+
+## The Job
+
+I feel like the first few days off any job are fine, enjoyable even. When you're newly employed and get to learn the basics, it’s fun, like you're in school again. Here it felt more like self-study, but whatever. Now I was directly leaded by “A”, there was a team leader later on, but that didn't amount to much.
+
+“A” now tells me a little bit about what to actually do and what his goals are in hiring devs.
+
+### Uno
+
+The first few days, he explained and elaborated on…. The AI slop he wrote about AI slop. I forgot to mention a few things earlier on, one of them being the fact that during the interview he flexed his site, which was filled with AI images and text and was about a boot kicked cryptocurrency he made.
+
+This is important because now suddenly I was told to read upon what Crypto, Solana, and the likes are because I'll be working with that.  
+Immediately I disliked it but went with it anyway.
+Another thing that put me off was the “autonomous employee” kind of policy he had, which in my opinion was just an excuse to escape responsibility as leader.
+An example of this was when he gave me the task to read up on these topics and said he'd “call later” and did in fact not call later. This led to a little kerfuffle when I didn’t call him either for an unreasonably long time.
+
+### Dos
+
+“A” liked to go and on about the very stupid plan he had which he wanted to grow, the few GitHub repos he had were just empty besides an AI written README file that said nothing of worth. He said he was a developer himself, but I seriously doubted that, especially considering he didn't even know how to get started with NPM.
+
+After this I started work in the bot again, adding a few requested features here and there and changing the prompt to a crypto slop bot dick riding the dev (The dev here being "A" of course). Every night near the end of my shift he'd call for a status update and to explain more of his unoriginal, incomprehensible vision.
+
+His product architecture was odd as the separation of concerns didn't quite make sense, I don't really remember the details well but it was

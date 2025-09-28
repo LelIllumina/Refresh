@@ -26,6 +26,7 @@
     "astro-page-insight": "^0.10.2",
     "chart.js": "^4.5.0",
     "feed": "^5.1.0",
+    "firebase": "^12.3.0",
     "markdown-it": "^14.1.0",
     "node-vibrant": "^4.0.3",
     "prettier-plugin-svelte": "^3.4.0",
