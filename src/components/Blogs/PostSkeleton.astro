@@ -17,7 +17,7 @@ interface Props {
 }
 
 const { post } = Astro.props;
-const { title, date, thumb } = post.data;
+const { title, date, thumb, draft } = post.data;
 
 const { Content, headings } = await render(post);
 
@@ -51,6 +51,7 @@ function formatDate(date: Date) {
         </time>
         <h2>{title}</h2>
       </div>
+      {draft ? <p>(Draft, I'll add more stuff later)</p> : null}
     </header>
 
     <div class="content">
