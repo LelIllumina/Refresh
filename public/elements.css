@@ -1,0 +1,80 @@
+/* stylelint-disable all */
+
+.site-box {
+  font-family: monospace;
+  color: #bebebe;
+  background: #141414;
+}
+a {
+  color: #303030;
+}
+.site-box > a {
+  color: #bebebe;
+}
+.site-box > a > p {
+  font-size: 0;
+}
+.site-box > a > p::before {
+  content: "Lelweb beckons you";
+  margin: 0 2px;
+  font-size: 16px;
+}
+.follow {
+  width: 151px;
+  height: 35px;
+  font-family: monospace;
+  font-size: 11px;
+  color: #bebebe;
+  background: #141414;
+  border: 5px double #303030;
+  border-radius: 0;
+  transition: 1s;
+}
+.follow:hover {
+  border: 5px double #cba6f7;
+}
+.site-box .sitefeature {
+  width: 275px;
+  height: 149px;
+  margin: 0;
+  border: 0;
+  border-bottom: 2px solid #303030;
+  content: url(https://lel.nekoweb.org/screenshot.png);
+}
+.sitefeature {
+  content: url(https://lel.nekoweb.org/screenshot.png);
+}
+.post-box {
+  font-family: monospace;
+  color: #bebebe;
+  background-color: #141414;
+  border: 5px solid #303030;
+  border-radius: 0;
+  transition: 1s;
+}
+.post-box .post-author {
+  display: none;
+}
+.post-box .post-dot {
+  display: none;
+}
+.post-box:hover {
+  border: 5px solid #cba6f7;
+}
+.post-box::before {
+  content: "lel@nekoweb";
+  position: absolute;
+  transform: translateY(-27px);
+  padding: 5px;
+  background: #141414;
+  transition: 1s;
+}
+.post-box:hover::before {
+  color: #cba6f7;
+}
+.post-title {
+  margin-top: 10px;
+  margin-bottom: 0;
+  font-size: 18px;
+  font-weight: bold;
+}
