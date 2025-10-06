@@ -10,16 +10,16 @@
     "oxlint": "oxlint src --fix",
     "stylelint": "stylelint './src/**/*.{css,scss,astro}' --fix --cache",
     "prettier": "prettier './src/**/*.{js,ts,css,md,astro,svelte}' --write --cache",
-    "prepare": "husky install"
+    "prepare": "husky && husky install"
   },
   "dependencies": {
     "@astrojs/mdx": "4.3.6",
     "@astrojs/partytown": "^2.1.4",
     "@astrojs/rss": "^4.0.12",
     "@astrojs/sitemap": "3.6.0",
-    "@astrojs/svelte": "7.1.1",
+    "@astrojs/svelte": "7.2.0",
     "@tsconfig/svelte": "^5.0.5",
-    "astro": "5.13.10",
+    "astro": "5.14.1",
     "astro-capo": "^0.0.1",
     "astro-icon": "^1.1.5",
     "astro-meta-tags": "^0.4.0",
