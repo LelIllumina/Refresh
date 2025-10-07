@@ -3,10 +3,6 @@ import type { ImageOutputFormat } from "astro";
 import { getImage } from "astro:assets";
 import type { HTMLAttributes } from "astro/types";
 
-import { readFileSync } from "node:fs";
-import { join } from "node:path";
-import { imageSize } from "image-size";
-
 import Anchor from "./Anchor.astro";
 
 interface Props extends Omit<HTMLAttributes<"img">, "src"> {

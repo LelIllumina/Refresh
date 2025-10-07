@@ -80,15 +80,16 @@ const options = {
 </chart-component>
 
 <script>
-  import Chart, { type ChartTypeRegistry } from "chart.js/auto";
+  import Chart from "chart.js/auto";
+  import { type ChartTypeRegistry } from "chart.js/auto";
 
   class ChartComponent extends HTMLElement {
     connectedCallback() {
-      const rawType = this.dataset.type as string;
+      // const rawType = this.dataset.type as string;
 
-      const type = (
-        ["bar", "line", "pie"].includes(rawType) ? rawType : "bar"
-      ) as keyof ChartTypeRegistry;
+      // const type = (
+      //   ["bar", "line", "pie"].includes(rawType) ? rawType : "bar"
+      // ) as keyof ChartTypeRegistry;
 
       const options = JSON.parse(this.dataset.options as string);
       const ctx = this.querySelector("canvas") as HTMLCanvasElement;
