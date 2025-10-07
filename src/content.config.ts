@@ -9,7 +9,8 @@ const blogs = defineCollection({
     rssSchema.extend({
       title: z.string(),
       description: z.string(),
-      date: z.coerce.date(),
+      created: z.coerce.date(),
+      modified: z.coerce.date(),
       thumb: z.preprocess((val) => `/src/assets/images/blog/${val}`, image()),
       tags: z.array(z.string()),
       keywords: z.array(z.string()).optional(),
@@ -22,7 +23,8 @@ const guides = defineCollection({
     rssSchema.extend({
       title: z.string(),
       description: z.string(),
-      date: z.coerce.date(),
+      created: z.coerce.date(),
+      modified: z.coerce.date(),
       thumb: z.preprocess((val) => `/src/assets/images/blog/${val}`, image()),
       tags: z.array(z.string()),
       keywords: z.array(z.string()).optional(),

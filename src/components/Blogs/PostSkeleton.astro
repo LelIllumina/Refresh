@@ -5,10 +5,10 @@ import { render } from "astro:content";
 import TableOfContents from "@components/Blogs/TableOfContents.astro";
 import Background from "@components/Blogs/Background.astro";
 
-import FigureImage from "@components/FigureImage.astro";
+import IsImage from "@components/IsImage.astro";
 import Anchor from "@components/Anchor.astro";
 import Aside from "@components/Blogs/Aside.astro";
-import CommentWidget from "./CommentWidget.astro";
+import CommentWidget from "@components/Blogs/CommentWidget.astro";
 
 import "@styles/blog/content.scss";
 
@@ -17,7 +17,7 @@ interface Props {
 }
 
 const { post } = Astro.props;
-const { title, date, thumb, draft } = post.data;
+const { title, modified, thumb, draft } = post.data;
 
 const { Content, headings } = await render(post);
 
@@ -44,9 +44,9 @@ function formatDate(date: Date) {
         </h1>
       </div>
       <div class="title">
-        <time datetime={date.toISOString()}>
+        <time datetime={modified.toISOString()}>
           <h2>
-            EPISODE: {formatDate(date)}
+            EPISODE: {formatDate(modified)}
           </h2>
         </time>
         <h2>{title}</h2>
@@ -58,7 +58,7 @@ function formatDate(date: Date) {
       <TableOfContents {headings} levels={3} />
 
       <section>
-        <Content components={{ img: FigureImage, a: Anchor, Aside }} />
+        <Content components={{ img: IsImage, a: Anchor, Aside }} />
       </section>
     </div>
   </article>

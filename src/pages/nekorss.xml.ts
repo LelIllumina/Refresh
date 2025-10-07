@@ -11,11 +11,16 @@ export async function GET(context: APIContext) {
     title: "lel@nekoweb",
     description: "THE site for lel and gooning",
     site: context.site?.toString() ?? "https://lel.nekoweb.org",
-    items: blog.map((post) => ({
-      title: post.data.title,
-      pubDate: post.data.date,
-      description: post.data.description,
-      link: `/blogs/${post.id}/`,
-    })),
+    items: blog.map(({ id, data }) => {
+      const { title, created, modified, description, tags } = data;
+      return {
+        title,
+        pubDate: created,
+        lastBuildDate: modified,
+        description,
+        categories: tags,
+        link: `/blogs/${id}/`,
+      };
+    }),
   });
 }

@@ -29,26 +29,34 @@ export async function GET(context: APIContext) {
     <copyright>All rights reserved 2025, Lel Illumina</copyright>
     `,
     items: [
-      ...blog.map((post) => ({
-        title: post.data.title,
-        pubDate: post.data.date,
-        description: post.data.description,
-        content: sanitizeHtml(parser.render(post.body ?? ""), {
-          allowedTags: sanitizeHtml.defaults.allowedTags.concat(["img"]),
-        }),
-        categories: post.data.tags,
-        link: `/blogs/${post.id}/`,
-      })),
-      ...guide.map((post) => ({
-        title: post.data.title,
-        pubDate: post.data.date,
-        description: post.data.description,
-        content: sanitizeHtml(parser.render(post.body ?? ""), {
-          allowedTags: sanitizeHtml.defaults.allowedTags.concat(["img"]),
-        }),
-        categories: post.data.tags,
-        link: `/guides/${post.id}/`,
-      })),
+      ...blog.map(({ id, data, body }) => {
+        const { title, created, modified, description, tags } = data;
+        return {
+          title,
+          pubDate: created,
+          lastBuildDate: modified,
+          description,
+          content: sanitizeHtml(parser.render(body ?? ""), {
+            allowedTags: sanitizeHtml.defaults.allowedTags.concat(["img"]),
+          }),
+          categories: tags,
+          link: `/blogs/${id}/`,
+        };
+      }),
+      ...guide.map(({ id, data, body }) => {
+        const { title, created, modified, description, tags } = data;
+        return {
+          title,
+          pubDate: created,
+          lastBuildDate: modified,
+          description,
+          content: sanitizeHtml(parser.render(body ?? ""), {
+            allowedTags: sanitizeHtml.defaults.allowedTags.concat(["img"]),
+          }),
+          categories: tags,
+          link: `/guides/${id}/`,
+        };
+      }),
     ],
   });
 }

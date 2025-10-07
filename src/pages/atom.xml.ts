@@ -36,8 +36,8 @@ export async function GET(context: APIContext) {
       image: encodeURI(
         `${context.site}_astro/${post.data.thumb.src.split("/").pop()}`,
       ),
-      date: post.data.date,
-      published: post.data.date,
+      date: post.data.modified,
+      published: post.data.created,
       description: post.data.description,
       content: sanitizeHtml(parser.render(post.body ?? ""), {
         allowedTags: sanitizeHtml.defaults.allowedTags.concat(["img"]),
@@ -56,8 +56,8 @@ export async function GET(context: APIContext) {
       image: encodeURI(
         `${context.site}_astro/${post.data.thumb.src.split("/").pop()}`,
       ),
-      date: post.data.date,
-      published: post.data.date,
+      date: post.data.modified,
+      published: post.data.created,
       description: post.data.description,
       content: sanitizeHtml(parser.render(post.body ?? ""), {
         allowedTags: sanitizeHtml.defaults.allowedTags.concat(["img"]),
