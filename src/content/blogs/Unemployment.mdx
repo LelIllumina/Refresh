@@ -97,8 +97,6 @@ His product architecture was odd as the separation of concerns didn’t quite ma
 ```mermaid
 ---
 title: Program Flow
-config:
-  layout: elk
 ---
 flowchart TD
     F[Frontend] -->|Prompt| O[Oracle]
@@ -106,7 +104,7 @@ flowchart TD
     O -->|Aggregated Results| F[Frontend]
     A -->|Learns & Produces Result| C[Cache]
     C -->|Cached Result| F[Frontend]
-    T[3rd Party Sources] -->|Fetch & Aggregate| O
+    T[3rd Party Sources] -->|Fetch| O
 
 ```
 

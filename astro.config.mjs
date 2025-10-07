@@ -10,6 +10,7 @@ import pageInsight from "astro-page-insight";
 import metaTags from "astro-meta-tags";
 
 import emoji from "remark-emoji";
+import mermaid from "rehype-mermaid";
 
 import icon from "astro-icon";
 
@@ -44,6 +45,23 @@ export default defineConfig({
 
   markdown: {
     remarkPlugins: [[emoji, { accessible: true }]],
+    rehypePlugins: [
+      [
+        mermaid,
+        {
+          strategy: "inline-svg",
+          mermaidConfig: {
+            layout: "elk",
+            theme: "dark",
+            look: "handDrawn",
+          },
+        },
+      ],
+    ],
+    syntaxHighlight: {
+      type: "shiki",
+      excludeLangs: ["mermaid", "math"],
+    },
   },
 
   experimental: {

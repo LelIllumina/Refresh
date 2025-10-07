@@ -4,7 +4,7 @@ section {
   padding: 2rem;
 
   @supports (initial-letter: 2) or (-webkit-initial-letter: 2) {
-    p:nth-child(1)::first-letter {
+    p:not(svg p):nth-child(1)::first-letter {
       margin-right: 10px;
       font-weight: 900;
 
@@ -23,7 +23,8 @@ section {
     }
   }
 
-  figure {
+  figure,
+  picture {
     width: 100vw;
     max-width: 55vw;
     margin-left: calc(50% - (55vw / 2)) !important;

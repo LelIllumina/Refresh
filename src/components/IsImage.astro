@@ -1,0 +1,27 @@
+---
+/** Checks if image is manually handled or not and bypasses FigureImage if managed by a script */
+import FigureImage from "@components/FigureImage.astro";
+import type { HTMLAttributes } from "astro/types";
+
+interface Props extends HTMLAttributes<"img"> {
+  src: string;
+}
+
+const { src, ...rest } = Astro.props;
+
+const isMermaidImage =
+  src.startsWith("data:image") ||
+  rest.class?.includes("mermaid") ||
+  rest.alt?.includes("mermaid");
+
+const isInPicture =
+  Astro.slots.has("default") || JSON.stringify(rest).includes("picture");
+---
+
+{
+  isMermaidImage || isInPicture ? (
+    <img src={src} {...rest} />
+  ) : (
+    <FigureImage src={src} {...rest} />
+  )
+}
