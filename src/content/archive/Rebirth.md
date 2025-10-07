@@ -1,7 +1,8 @@
 ---
 title: "Rebirth of trademarkhell"
 description: "On this sacred day, our dear tm is born anew"
-date: 2025-01-31
+created: 2025-01-31
+modified: 2025-01-31
 ---
 
 Living in Pakistan, I'm pretty much halfway around the globe, latitude-wise, from America, where most of the nekoweb demographic is.

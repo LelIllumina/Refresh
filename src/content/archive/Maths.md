@@ -1,7 +1,8 @@
 ---
 title: I FUCKING HATE MATH
 description: Its so fucking ass brooo
-date: 2024-04-18
+created: 2024-04-18
+modified: 2024-04-18
 ---
 
 Why do I need to pass a test for calculus level math? Like I _could_ find it useful IRL _maybe_, but honestly I'm only going to use it to pass this test. I need to be good at math to be in computer science? Sure in that case _ILL LEARN WHAT I NEED_ you know _LIKE I DO WITH EVERYTHING ELSE_, forcing me learn shit I can't even with Motherfucking YouTube Indian teach classes is just going to make me bomb everything else I'm actually good at. (not much)

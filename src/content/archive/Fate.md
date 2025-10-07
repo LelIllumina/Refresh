@@ -1,7 +1,8 @@
 ---
 title: "Fate series Piracy guide WIP"
 description: "A guide on how to pirate a lot of the fate and other Type-Moon games"
-date: 1111-11-11
+created: 1111-11-11
+modified: 1111-11-11
 ---
 
 ## **!! STILL A WORK IN PROGRESS !!**

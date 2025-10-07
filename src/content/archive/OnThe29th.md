@@ -1,7 +1,8 @@
 ---
 title: "Soon is my Nekoversary"
 description: "It is somewhat exciting"
-date: 2025-02-05
+created: 2025-02-05
+modified: 2025-02-05
 ---
 
 On the 29th this month it will be 1 whole year that my site has existed on nekoweb.  

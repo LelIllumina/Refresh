@@ -1,7 +1,8 @@
 ---
 title: "Hello there."
 description: "Herooooo :3"
-date: 2024-03-14
+created: 2024-03-14
+modified: 2024-03-14
 ---
 
 I'm lel, I'm not much of a talker so, I don't know why I decided to make this page, after all to make it look good I need to yap a lot to fill up all this space, and even then nobody is going to read it except me, which is kind of annoying considering I have to cringe at myself writing all of this for nothing, but then again I'm going to send this in _every_ discord channel I have so that's probably a few more views.
