@@ -48,7 +48,7 @@ jobs:
         run: bunx playwright install --with-deps
 
       - name: Build site
-        run: bunx build
+        run: bun build
 
       - name: Upload built site
         uses: actions/upload-artifact@v4
