@@ -1,6 +1,7 @@
 ---
 import Layout from "@layouts/Layout.astro";
 
+import HeroImage from "@components/Main/HeroImage.astro";
 import Grid from "@components/Main/Grid.astro";
 import Widgets from "@components/Main/Widgets.astro";
 import Faq from "@components/Main/Faq.astro";
@@ -17,6 +18,7 @@ import Faq from "@components/Main/Faq.astro";
     />
   </Fragment>
   <main>
+    <HeroImage />
     <section class="hero">
       <h1 class="hero-title">Lel@NekoWEB</h1>
     </section>
@@ -48,8 +50,8 @@ import Faq from "@components/Main/Faq.astro";
     height: 100vh;
     margin: 0;
 
-    background: var(--background-50) center/cover no-repeat fixed
-      url("/src/assets/images/background.jpg");
+    // background: var(--background-50) center/cover no-repeat fixed
+    //  url("/src/assets/images/background.jpg");
   }
 
   .hero-title {

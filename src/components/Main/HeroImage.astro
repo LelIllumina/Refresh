@@ -1,0 +1,83 @@
+---
+
+---
+
+<canvas id="hero-canvas" width="1920" height="1005"></canvas>
+
+<script>
+  import bg from "/src/assets/images/background.jpg";
+
+  const canvas = document.querySelector<HTMLCanvasElement>("#hero-canvas")!;
+  const ctx = canvas.getContext("2d", { willReadFrequently: true })!;
+
+  function drawCoverImage() {
+    const cw = canvas.width;
+    const ch = canvas.height;
+    const iw = image.naturalWidth;
+    const ih = image.naturalHeight;
+
+    // Calculate scale ratio for "cover"
+    const scale = Math.max(cw / iw, ch / ih);
+
+    const scaledWidth = iw * scale;
+    const scaledHeight = ih * scale;
+
+    // Centered cropping (like background-position: center)
+    const dx = (cw - scaledWidth) / 2;
+    const dy = (ch - scaledHeight) / 2;
+
+    ctx.drawImage(image, dx, dy, scaledWidth, scaledHeight);
+  }
+
+  function chromaticAberration(
+    ctx: CanvasRenderingContext2D,
+    intensity: number,
+    phase: number,
+  ) {
+    /* From: https://gist.github.com/lqt0223/8a258b68ae1c032fa1fb1e26c4965e8d 
+    
+    Use canvas to draw the original image, and load pixel data by calling getImageData
+        The ImageData.data is an one-dimentional Uint8Array with all the color elements flattened. The array contains data in the sequence of [r,g,b,a,r,g,b,a...]
+        Because of the cross-origin issue, remember to run the demo in a localhost server or the getImageData call will throw error
+        */
+    const w = Math.floor(canvas.width);
+    const h = Math.floor(canvas.height);
+
+    var imageData = ctx.getImageData(0, 0, w, h);
+    var data = imageData.data;
+
+    for (var i = phase % 4; i < data.length; i += 4) {
+      // Setting the start of the loop to a different integer will change the aberration color, but a start integer of 4n-1 will not work
+      data[i] = data[i + 4 * intensity];
+    }
+    ctx.putImageData(imageData, 0, 0);
+  }
+
+  var image = new Image();
+  image.src = bg.src;
+  image.onload = function () {
+    drawCoverImage();
+    chromaticAberration(ctx, 4, 0);
+  };
+
+  function resizeCanvas() {
+    canvas.width = document.documentElement.clientWidth;
+    canvas.height = document.documentElement.clientHeight;
+    // Redraw image and effects after resizing
+    if (image.complete) {
+      drawCoverImage();
+      chromaticAberration(ctx, 4, 0);
+    }
+  }
+  resizeCanvas();
+  window.addEventListener("resize", resizeCanvas);
+</script>
+
+<style>
+  #hero-canvas {
+    position: fixed;
+    z-index: -1;
+    top: 0;
+    left: 0;
+  }
+</style>
