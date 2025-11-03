@@ -17,7 +17,7 @@
     "@astrojs/partytown": "^2.1.4",
     "@astrojs/rss": "^4.0.12",
     "@astrojs/sitemap": "3.6.0",
-    "@astrojs/svelte": "7.2.0",
+    "@astrojs/svelte": "7.2.1",
     "@tsconfig/svelte": "^5.0.5",
     "astro": "5.14.1",
     "astro-capo": "^0.0.1",
