@@ -33,7 +33,8 @@
     "rehype-mermaid": "^3.0.0",
     "remark-emoji": "^5.0.2",
     "sanitize-html": "^2.17.0",
-    "svelte": "^5.39.5"
+    "svelte": "^5.39.5",
+    "twgl.js": "^7.0.0"
   },
   "devDependencies": {
     "@iconify-json/lucide": "^1.2.68",
