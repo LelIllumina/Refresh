@@ -51,7 +51,7 @@ jobs:
         run: bun run build
 
       - name: Upload built site
-        uses: actions/upload-artifact@v4
+        uses: actions/upload-artifact@v5
         with:
           name: site-build
           path: dist/
@@ -61,7 +61,7 @@ jobs:
     needs: build
     steps:
       - name: Download built site
-        uses: actions/download-artifact@v5
+        uses: actions/download-artifact@v6
         with:
           name: site-build
           path: dist/
