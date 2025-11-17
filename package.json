@@ -38,7 +38,7 @@
   },
   "devDependencies": {
     "@iconify-json/lucide": "^1.2.73",
-    "@prettier/plugin-oxc": "^0.0.4",
+    "@prettier/plugin-oxc": "^0.0.5",
     "@types/markdown-it": "^14.1.2",
     "@types/sanitize-html": "^2.16.0",
     "husky": "^9.1.7",
