@@ -18,7 +18,7 @@ import svelte from "@astrojs/svelte";
 
 export default defineConfig({
   site: "https://lel.nekoweb.org",
-  server: { host: true },
+  // server: { host: true },
   output: "static",
 
   trailingSlash: "always",
