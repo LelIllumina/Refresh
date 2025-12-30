@@ -1,4 +1,4 @@
-import bg from "/src/assets/images/background.jpg";
+import bg from "/src/assets/images/background.webp";
 
 document.addEventListener("astro:page-load", initCanvas);
 
