@@ -1,16 +1,9 @@
 @font-face {
-  font-family: Amplitude;
-  font-weight: 500;
-  font-style: normal;
-  font-display: swap;
-  src: url("/fonts/subset-AmplitudeCond-Regular.woff2") format("woff2");
-}
-
-@font-face {
   font-family: Archoblast;
   font-feature-settings: "ss02" 1;
   font-weight: normal;
   font-style: normal;
+
   font-display: block;
   src: url("/fonts/Archoblast.woff2") format("woff2");
 }
@@ -19,198 +12,153 @@
   font-family: Blaster;
   font-weight: normal;
   font-style: normal;
+
   font-display: swap;
   src: url("/fonts/subset-BlasterDisplayFont-Regular.woff2") format("woff2");
-}
-
-@font-face {
-  font-family: Aporrheton;
-  font-weight: normal;
-  font-style: normal;
-  font-display: swap;
-  src: url("/fonts/subset-Aporrheton.woff2") format("woff2");
-}
-
-@font-face {
-  font-family: Fasad;
-  font-weight: normal;
-  font-style: normal;
-  font-display: swap;
-  src: url("/fonts/subset-Fasad-Regular.woff2") format("woff2");
-}
-
-@font-face {
-  font-family: "LEMON MILK";
-  font-weight: normal;
-  font-style: normal;
-  font-display: swap;
-  src: url("/fonts/subset-LEMONMILK-Regular.woff2") format("woff2");
-}
-
-@font-face {
-  font-family: "Gunsan Script";
-  font-weight: normal;
-  font-style: normal;
-  font-display: swap;
-  src: url("/fonts/subset-GunsanScript.woff2") format("woff2");
-}
-
-@font-face {
-  font-family: "Computer says no";
-  font-weight: normal;
-  font-style: normal;
-  font-display: swap;
-  src: url("/fonts/subset-Computer-says-no.woff2") format("woff2");
-}
-
-@font-face {
-  font-family: Gunsan;
-  font-weight: normal;
-  font-style: normal;
-  font-display: swap;
-  src: url("/fonts/subset-Gunsan.woff2") format("woff2");
 }
 
 @font-face {
   font-family: "Mica Valo";
   font-weight: normal;
   font-style: normal;
+
   font-display: swap;
   src: url("/fonts/subset-MicaValo.woff2") format("woff2");
 }
 
 @font-face {
-  font-family: Mica;
-  font-weight: normal;
-  font-style: normal;
-  font-display: swap;
-  src: url("/fonts/subset-MicaRegular.woff2") format("woff2");
-}
-
-@font-face {
-  font-family: "Iosevka Etoile";
-  font-weight: normal;
-  font-style: normal;
-  font-display: swap;
-  src: url("/fonts/subset-Iosevka-Etoile.woff2") format("woff2");
-}
-
-@font-face {
-  font-family: Plexifont;
-  font-weight: normal;
-  font-style: normal;
-  font-display: swap;
-  src: url("/fonts/subset-PlexifontBV.woff2") format("woff2");
-}
-
-@font-face {
-  font-family: Conso;
-  font-weight: bold;
-  font-style: italic;
-  font-display: swap;
-  src: url("/fonts/subset-Conso-BoldItalic.woff2") format("woff2");
-}
-
-@font-face {
-  font-family: Conso;
-  font-weight: 200;
-  font-style: italic;
-  font-display: swap;
-  src: url("/fonts/subset-Conso-ExtraLightItalic.woff2") format("woff2");
-}
-
-@font-face {
-  font-family: Conso;
-  font-weight: 300;
-  font-style: italic;
-  font-display: swap;
-  src: url("/fonts/subset-Conso-LightItalic.woff2") format("woff2");
-}
-
-@font-face {
-  font-family: Conso;
-  font-weight: 500;
-  font-style: italic;
-  font-display: swap;
-  src: url("/fonts/subset-Conso-MediumItalic.woff2") format("woff2");
-}
-
-@font-face {
-  font-family: Conso;
-  font-weight: 600;
-  font-style: italic;
-  font-display: swap;
-  src: url("/fonts/subset-Conso-SemiBoldItalic.woff2") format("woff2");
-}
-
-@font-face {
-  font-family: Conso;
-  font-weight: normal;
-  font-style: italic;
-  font-display: swap;
-  src: url("/fonts/subset-Conso-RegularItalic.woff2") format("woff2");
-}
-
-@font-face {
-  font-family: Conso;
+  font-family: "Atkinson Hyperlegible Next";
   font-weight: bold;
   font-style: normal;
+
   font-display: swap;
-  src: url("/fonts/subset-Conso-Bold.woff2") format("woff2");
+  src: url("fonts/subset-AtkinsonHyperlegibleNext-ExtraBold.woff2")
+    format("woff2");
 }
 
 @font-face {
-  font-family: Conso;
-  font-weight: 100;
+  font-family: "Atkinson Hyperlegible Next";
+  font-weight: bold;
   font-style: italic;
+
   font-display: swap;
-  src: url("/fonts/subset-Conso-ThinItalic.woff2") format("woff2");
+  src: url("fonts/subset-AtkinsonHyperlegibleNext-BoldItalic.woff2")
+    format("woff2");
 }
 
 @font-face {
-  font-family: Conso;
-  font-weight: 200;
+  font-family: "Atkinson Hyperlegible Next";
+  font-weight: bold;
   font-style: normal;
+
   font-display: swap;
-  src: url("/fonts/subset-Conso-ExtraLight.woff2") format("woff2");
+  src: url("fonts/subset-AtkinsonHyperlegibleNext-Bold.woff2") format("woff2");
 }
 
 @font-face {
-  font-family: Conso;
+  font-family: "Atkinson Hyperlegible Next";
+  font-weight: bold;
+  font-style: italic;
+
+  font-display: swap;
+  src: url("fonts/subset-AtkinsonHyperlegibleNext-ExtraBoldItalic.woff2")
+    format("woff2");
+}
+
+@font-face {
+  font-family: "Atkinson Hyperlegible Next";
+  font-weight: 200;
+  font-style: italic;
+
+  font-display: swap;
+  src: url("fonts/subset-AtkinsonHyperlegibleNext-ExtraLightItalic.woff2")
+    format("woff2");
+}
+
+@font-face {
+  font-family: "Atkinson Hyperlegible Next";
   font-weight: 500;
   font-style: normal;
+
   font-display: swap;
-  src: url("/fonts/subset-Conso-Medium.woff2") format("woff2");
+  src: url("fonts/subset-AtkinsonHyperlegibleNext-Medium.woff2") format("woff2");
 }
 
 @font-face {
-  font-family: Conso;
+  font-family: "Atkinson Hyperlegible Next";
   font-weight: 300;
   font-style: normal;
+
   font-display: swap;
-  src: url("/fonts/subset-Conso-Light.woff2") format("woff2");
+  src: url("fonts/subset-AtkinsonHyperlegibleNext-Light.woff2") format("woff2");
 }
 
 @font-face {
-  font-family: Conso;
+  font-family: "Atkinson Hyperlegible Next";
+  font-weight: 200;
+  font-style: normal;
+
+  font-display: swap;
+  src: url("fonts/subset-AtkinsonHyperlegibleNext-ExtraLight.woff2")
+    format("woff2");
+}
+
+@font-face {
+  font-family: "Atkinson Hyperlegible Next";
+  font-weight: 300;
+  font-style: italic;
+
+  font-display: swap;
+  src: url("fonts/subset-AtkinsonHyperlegibleNext-LightItalic.woff2")
+    format("woff2");
+}
+
+@font-face {
+  font-family: "Atkinson Hyperlegible Next";
   font-weight: normal;
   font-style: normal;
+
   font-display: swap;
-  src: url("/fonts/subset-Conso-Regular.woff2") format("woff2");
+  src: url("fonts/subset-AtkinsonHyperlegibleNext-Regular.woff2")
+    format("woff2");
 }
 
 @font-face {
-  font-family: Conso;
+  font-family: "Atkinson Hyperlegible Next";
+  font-weight: normal;
+  font-style: italic;
+
+  font-display: swap;
+  src: url("fonts/subset-AtkinsonHyperlegibleNext-RegularItalic.woff2")
+    format("woff2");
+}
+
+@font-face {
+  font-family: "Atkinson Hyperlegible Next";
   font-weight: 600;
   font-style: normal;
+
   font-display: swap;
-  src: url("/fonts/subset-Conso-SemiBold.woff2") format("woff2");
+  src: url("fonts/subset-AtkinsonHyperlegibleNext-SemiBold.woff2")
+    format("woff2");
 }
 
 @font-face {
-  font-family: Conso;
-  font-weight: 100;
-  font-style: normal;
+  font-family: "Atkinson Hyperlegible Next";
+  font-weight: 500;
+  font-style: italic;
+
   font-display: swap;
-  src: url("/fonts/subset-Conso-Thin.woff2") format("woff2");
+  src: url("fonts/subset-AtkinsonHyperlegibleNext-MediumItalic.woff2")
+    format("woff2");
+}
+
+@font-face {
+  font-family: "Atkinson Hyperlegible Next";
+  font-weight: 600;
+  font-style: italic;
+
+  font-display: swap;
+  src: url("fonts/subset-AtkinsonHyperlegibleNext-SemiBoldItalic.woff2")
+    format("woff2");
 }
