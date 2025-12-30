@@ -44,8 +44,8 @@ jobs:
       #     bun remove sharp
       #     bun install --os=linux --cpu=x64 sharp
 
-      - name: Install Playwright Browsers
-        run: bunx playwright install --with-deps
+      # - name: Install Playwright Browsers
+      #   run: bunx playwright install --with-deps
 
       - name: Build site
         run: bun run build
