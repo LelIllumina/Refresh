@@ -12,6 +12,7 @@ interface Props extends Omit<HTMLAttributes<"img">, "src"> {
   caption?: string | boolean;
   position?: string;
   fit?: "contain" | "cover" | "fill" | "none" | "scale-down";
+  noSign?: boolean;
 }
 
 const {
@@ -22,11 +23,12 @@ const {
   alt = "",
   href,
   caption = true,
+  noSign,
   ...rest
 } = Astro.props;
 
 const images = import.meta.glob<{ default: ImageMetadata }>(
-  "/src/assets/**/*.{png,jpg,jpeg,webp,avif,svg,gif}",
+  "/src/assets/**/*.{png,jpg,jpeg,webp,avif,svg,gif}"
 );
 
 let imageImport: ImageMetadata | string;
@@ -62,7 +64,7 @@ const optimizedImage = await getImage(options);
 <figure>
   {
     href ? (
-      <Anchor {href}>
+      <Anchor {href} {noSign}>
         <img
           src={optimizedImage.src}
           width={optimizedImage.attributes.width}
