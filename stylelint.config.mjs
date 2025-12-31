@@ -17,6 +17,6 @@ export default {
     "scss/at-rule-no-unknown": true,
     "selector-class-pattern": null,
     "csstools/use-nesting": "always",
-    "plugin/no-low-performance-animation-properties": true,
+    // "plugin/no-low-performance-animation-properties": true,
   },
 };
