@@ -28,21 +28,21 @@ import FigureImage from "@components/FigureImage.astro";
           href="https://astro-tips.dev/external-resources"
           >from this collection</Anchor
         > .
+        <br />
+        <br />
+        <Anchor href="https://www.sanity.io/glossary/component-library"
+          >What is a component library?</Anchor
+        >
       </p>
-      <br />
-      <Anchor href="https://www.sanity.io/glossary/component-library"
-        >What is a component library?</Anchor
-      >
     </details>
     <details name="faq">
       <summary>Is everything on this site yours?</summary>
       <p>
-        All the code (which you can find on my <Anchor
-          href="https://github.com/LelIllumina/Refresh">GitHub</Anchor
-        >) is written by me and so are all the blogs. The colorschemes are
-        randomly generated and all the images are stolen from random places on
-        the internet. (The placeholder images on the lastfm widget were designed
-        by me though.)
+        All the code (which you can find on my
+        <Anchor href="https://github.com/LelIllumina/Refresh"> GitHub </Anchor>
+        ) is written by me and so are all the blogs. The colorschemes are randomly
+        generated and all the images are stolen from random places on the internet.
+        (The placeholder images on the lastfm widget were designed by me though.)
       </p>
     </details>
     <details name="faq">
@@ -60,7 +60,7 @@ import FigureImage from "@components/FigureImage.astro";
 <style>
   .faq {
     display: grid;
-    grid-template-columns: repeat(auto-fit, minmax(500px, auto));
+    grid-template-columns: repeat(auto-fit, minmax(600px, auto));
     column-gap: 5rem;
     justify-content: center;
 
@@ -82,6 +82,11 @@ import FigureImage from "@components/FigureImage.astro";
 
       summary {
         padding: 0.5em;
+      }
+
+      p {
+        max-width: 500px;
+        margin: auto;
       }
 
       details[open] {
