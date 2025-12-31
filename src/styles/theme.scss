@@ -1,0 +1,54 @@
+@use "sass:map";
+@use "./themes/default";
+@use "./themes/reverse";
+@use "./themes/brue";
+@use "./themes/rose";
+
+// Build the themes map from imported variables
+$themes: (
+  "default": default.$default,
+  "reverse": reverse.$reverse,
+  "brue": brue.$brue,
+  "rose": rose.$rose,
+);
+
+// Generate auto mode (respects system preference)
+@each $theme-name, $modes in $themes {
+  @media (prefers-color-scheme: light) {
+    :root[data-theme="#{$theme-name}"] {
+      @each $property, $value in map.get($modes, light) {
+        #{$property}: #{$value};
+      }
+    }
+  }
+
+  @media (prefers-color-scheme: dark) {
+    :root[data-theme="#{$theme-name}"] {
+      @each $property, $value in map.get($modes, dark) {
+        #{$property}: #{$value};
+      }
+    }
+  }
+}
+
+// Generate forced light mode
+@each $theme-name, $modes in $themes {
+  :root[data-color-scheme="light"][data-theme="#{$theme-name}"] {
+    color-scheme: light;
+
+    @each $property, $value in map.get($modes, light) {
+      #{$property}: #{$value};
+    }
+  }
+}
+
+// Generate forced dark mode
+@each $theme-name, $modes in $themes {
+  :root[data-color-scheme="dark"][data-theme="#{$theme-name}"] {
+    color-scheme: dark;
+
+    @each $property, $value in map.get($modes, dark) {
+      #{$property}: #{$value};
+    }
+  }
+}

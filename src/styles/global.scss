@@ -4,25 +4,21 @@
 
 @use "./reset";
 @use "./fonts";
-@use "./themes/default";
-@use "./themes/reverse";
-@use "./themes/brue";
-@use "./themes/rose";
+@use "./theme";
 @use "./typography";
 
 :root {
+  caret-shape: bar;
   scroll-behavior: smooth;
   scrollbar-width: thin;
 
-  -webkit-font-smoothing: antialiased;
-  -moz-osx-font-smoothing: grayscale;
   text-rendering: optimizelegibility;
 
-  color-scheme: dark;
   accent-color: var(--accent-700);
   caret-color: var(--accent-700);
 
-  caret-shape: bar;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
 
   ::selection {
     color: var(--background-950);

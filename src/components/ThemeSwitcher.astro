@@ -1,5 +1,5 @@
 ---
-
+import { Icon } from "astro-icon/components";
 ---
 
 <form action="">
@@ -17,16 +17,28 @@
     <label for="rose" class="sr-only">rose</label>
     <input type="radio" name="theme" id="rose" />
   </fieldset>
+  <fieldset>
+    <legend class="sr-only">Color Mode</legend>
+    <label for="auto"> <Icon name="lucide:sun-moon" /></label>
+    <input type="radio" name="mode" id="auto" checked />
+
+    <label for="light"> <Icon name="lucide:sun" /></label>
+    <input type="radio" name="mode" id="light" />
+
+    <label for="dark"> <Icon name="lucide:moon" /></label>
+    <input type="radio" name="mode" id="dark" />
+  </fieldset>
 </form>
 
 <style>
   form {
+    display: flex;
+
     > fieldset {
       display: flex;
-      gap: 2rem;
+      gap: 0.75rem;
 
-      width: fit-content;
-      margin: auto;
+      margin: 0 auto;
       padding: 1rem;
       border: 0;
     }
@@ -34,7 +46,7 @@
     input[type="radio"] {
       width: 0.75rem;
       height: 0.75rem;
-      border-radius: 50%;
+      border-radius: 10%;
 
       appearance: none;
       outline: 2px solid var(--radio-color, var(--text-950));
@@ -46,28 +58,19 @@
   }
 
   #default {
-    --radio-color: light-dark(
-      oklab(26.17% 0.048 -0.11),
-      oklab(66.88% 0.083 -0.15)
-    );
+    --radio-color: oklab(66.88% 0.083 -0.15);
   }
 
   #reverse {
-    --radio-color: light-dark(oklab(50% -0.08 0.08), oklab(83% -0.08 0.08));
+    --radio-color: oklab(83% -0.08 0.08);
   }
 
   #brue {
-    --radio-color: light-dark(
-      oklab(40.88% -0.015 -0.04),
-      oklab(75.09% -0.01 -0.04)
-    );
+    --radio-color: oklab(75.09% -0.01 -0.04);
   }
 
   #rose {
-    --radio-color: light-dark(
-      oklab(47.66% 0.083 -0.08),
-      oklab(73.68% 0.057 -0.05)
-    );
+    --radio-color: oklab(73.68% 0.057 -0.05);
   }
 </style>
 <script>
@@ -75,34 +78,84 @@
     const colorThemes: NodeListOf<HTMLInputElement> = document.querySelectorAll(
       'input[name="theme"]'
     );
+    const root = document.documentElement;
+
+    function applyTheme(theme: string) {
+      root.setAttribute("data-theme", theme);
+    }
 
     function storeTheme(theme: string) {
       localStorage.setItem("theme", theme);
     }
 
     function retrieveTheme() {
-      const activeTheme = localStorage.getItem("theme");
+      const activeTheme = localStorage.getItem("theme") ?? "default";
+
+      // Apply the theme to the DOM
+      applyTheme(activeTheme);
+
+      // Update the radio button
       colorThemes.forEach((theme) => {
-        if (theme.id === activeTheme) {
-          theme.checked = true;
-        }
+        theme.checked = theme.id === activeTheme;
       });
     }
 
     colorThemes.forEach((theme) => {
       theme.addEventListener("click", () => {
         storeTheme(theme.id);
+        applyTheme(theme.id); // Apply immediately when clicked
       });
     });
 
     retrieveTheme();
   }
 
-  if (document.readyState === "loading") {
-    document.addEventListener("DOMContentLoaded", initializeThemeSelector);
-  } else {
-    initializeThemeSelector();
+  function initializeColorMode() {
+    const modes: NodeListOf<HTMLInputElement> =
+      document.querySelectorAll('input[name="mode"]');
+    const root = document.documentElement;
+
+    function applyMode(mode: string | null) {
+      if (!mode || mode === "auto") {
+        root.removeAttribute("data-color-scheme");
+      } else {
+        root.setAttribute("data-color-scheme", mode);
+      }
+    }
+
+    function storeMode(mode: string) {
+      localStorage.setItem("color-mode", mode);
+    }
+
+    function restoreMode() {
+      const saved = localStorage.getItem("color-mode") ?? "auto";
+      applyMode(saved);
+
+      const input = document.getElementById(saved) as HTMLInputElement | null;
+      if (input) input.checked = true;
+    }
+
+    modes.forEach((input) => {
+      input.addEventListener("change", () => {
+        const mode = input.id;
+        storeMode(mode);
+        applyMode(mode);
+      });
+    });
+
+    restoreMode();
   }
 
-  document.addEventListener("astro:after-swap", initializeThemeSelector);
+  function init() {
+    initializeThemeSelector();
+    initializeColorMode();
+  }
+
+  if (document.readyState === "loading") {
+    document.addEventListener("DOMContentLoaded", init);
+  } else {
+    init();
+  }
+
+  document.addEventListener("astro:after-swap", init);
 </script>
