@@ -9,7 +9,7 @@ export default {
   plugins: [
     "stylelint-scss",
     "stylelint-use-nesting",
-    "stylelint-high-performance-animation",
+    // "stylelint-high-performance-animation",
   ],
   rules: {
     // recommended rules

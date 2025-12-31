@@ -29,8 +29,14 @@
 body {
   margin: 0;
   padding: 0.02px;
+
   color: var(--text-900);
+
   background-color: var(--background-50);
+
+  transition:
+    background-color 0.3s,
+    color 0.3s;
 }
 
 h1,
