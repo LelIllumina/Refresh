@@ -107,7 +107,7 @@ async function handleMessage(event: MessageEvent) {
 
   // Update track details in DOM
   trackNameEl.textContent = track.name;
-  artistNameEl.textContent = `by ${track.artist.name}`;
+  artistNameEl.innerHTML = `by <b>${track.artist.name}</b>`;
   coverImgEl.src = coverImgUrl || DEFAULT_NO_ART;
 }
 

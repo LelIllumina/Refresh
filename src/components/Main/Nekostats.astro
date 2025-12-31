@@ -2,76 +2,35 @@
 import FigureImage from "@components/FigureImage.astro";
 ---
 
-<Fragment slot="head">
-  <link rel="prefetch" href="/images/main/numbers/0.gif" />
-  <link rel="prefetch" href="/images/main/numbers/1.gif" />
-  <link rel="prefetch" href="/images/main/numbers/2.gif" />
-  <link rel="prefetch" href="/images/main/numbers/3.gif" />
-  <link rel="prefetch" href="/images/main/numbers/4.gif" />
-  <link rel="prefetch" href="/images/main/numbers/5.gif" />
-  <link rel="prefetch" href="/images/main/numbers/6.gif" />
-  <link rel="prefetch" href="/images/main/numbers/7.gif" />
-  <link rel="prefetch" href="/images/main/numbers/8.gif" />
-  <link rel="prefetch" href="/images/main/numbers/9.gif" />
-</Fragment>
-
 <div id="views">
-  <section id="views-counter">
-    <FigureImage
-      src="/images/main/numbers/0.gif"
-      alt="0"
-      loading="lazy"
-      decoding="async"
-      caption={false}
-      width={45}
-      height={100}
-    />
-    <FigureImage
-      src="/images/main/numbers/1.gif"
-      alt="1"
-      loading="lazy"
-      decoding="async"
-      caption={false}
-      width={45}
-      height={100}
-    />
-    <FigureImage
-      src="/images/main/numbers/2.gif"
-      alt="2"
-      loading="lazy"
-      decoding="async"
-      caption={false}
-      width={45}
-      height={100}
-    />
-    <FigureImage
-      src="/images/main/numbers/3.gif"
-      alt="3"
-      loading="lazy"
-      decoding="async"
-      caption={false}
-      width={45}
-      height={100}
-    />
-    <FigureImage
-      src="/images/main/numbers/4.gif"
-      alt="4"
-      loading="lazy"
-      decoding="async"
-      caption={false}
-      width={45}
-      height={100}
-    />
+  <div id="views-counter">
+    {
+      Array.from({ length: 5 }).map((_, i) => (
+        <FigureImage
+          src={`/images/main/numbers/${i}.gif`}
+          alt={String(i)}
+          loading="lazy"
+          decoding="async"
+          caption={false}
+          width={45}
+          height={100}
+        />
+      ))
+    }
     <span id="views-text" class="sr-only">00000</span>
     <p id="subtitle">Visits since creation</p>
-  </section>
+  </div>
 
-  <section id="stats">
+  <div id="stats">
     <h2>Stats:</h2>
-    <p id="created"><em>Created</em>: Loading...</p>
-    <p id="updated"><em>Updated</em>: Loading...</p>
-    <p id="followers"><em>Followers</em>: Loading...</p>
-
+    <p>
+      <span id="created"><em>Created</em>: Loading...</span>
+      <br />
+      <span id="updated"><em>Updated</em>: Loading...</span>
+      <br />
+      <span id="followers"><em>Followers</em>: Loading...</span>
+      <br />
+    </p>
     <iframe
       loading="lazy"
       title="Nekoweb Follow button"
@@ -79,12 +38,13 @@ import FigureImage from "@components/FigureImage.astro";
       width="150"
       height="35"
       style="border: none"></iframe>
-  </section>
+  </div>
 </div>
 <script src="/src/scripts/main/nekostats.ts"></script>
 <style>
   #views {
-    section {
+    div {
+      margin: 1rem auto;
       padding-block: 0;
 
       figure {

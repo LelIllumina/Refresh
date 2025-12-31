@@ -1,52 +1,62 @@
-<Fragment slot="head">
-  <link rel="preconnect" href="https://api.github.com" />
-</Fragment>
-<a id="commit-link" href="./" target="_blank">
-  <div>
+---
+
+---
+
+<div>
+  <h2>Latest Commit:</h2>
+  <a id="commit-link" href="./" target="_blank">
     <div>
       <p id="short-hash"></p>
-      <p id="commit-latest">
-        <br />
-        Loading...
-      </p>
+      <p id="commit-latest">Loading...</p>
     </div>
-  </div>
-</a>
-<script src="/src/scripts/main/github.ts"></script>
+  </a>
+</div>
+
+<script>
+  fetch("https://api.github.com/repos/LelIllumina/Refresh/commits?per_page=1")
+    .then((res) => res.json())
+    .then((res) => {
+      const sha = res[0].sha;
+      const authorDate = new Date(res[0].commit.author.date);
+      (
+        document.getElementById("commit-latest") as HTMLParagraphElement
+      ).innerText = res[0].commit.message;
+      (
+        document.getElementById("short-hash") as HTMLParagraphElement
+      ).innerHTML =
+        `<b>${sha.substring(0, 7)}</b> <br /> on ${authorDate.toLocaleString()}`;
+      (document.getElementById("commit-link") as HTMLAnchorElement).href =
+        `https://github.com/LelIllumina/Refresh/commit/${sha}`;
+    });
+</script>
+
 <style>
   #commit-link {
-    display: flex;
-    flex-direction: column;
-    gap: 0.25rem; /* space between short hash and latest commit text */
-    align-items: center;
-    justify-content: center;
+    display: block;
 
     padding: 0.5rem 0.75rem;
     border-radius: 0.5rem;
 
     text-decoration: none;
 
-    background: var(--background-900);
-
     transition:
       /* stylelint-disable-next-line plugin/no-low-performance-animation-properties */
-      background 0.5s ease-out,
-      transform 0.25s ease-out;
+      background 0.25s cubic-bezier(0.175, 0.885, 0.32, 1.275),
+      transform 0.2s cubic-bezier(0.175, 0.885, 0.32, 1.275);
 
     &:hover {
       transform: translateY(-5px);
-      background: var(--background-800);
+      background: var(--background-200);
     }
   }
 
   #short-hash {
     font-size: var(--fs-500);
-    font-weight: 600;
-    color: var(--text-300);
+    color: var(--text-700);
   }
 
   #commit-latest {
     font-size: var(--fs-400);
-    color: var(--text-200);
+    color: var(--text-800);
   }
 </style>
