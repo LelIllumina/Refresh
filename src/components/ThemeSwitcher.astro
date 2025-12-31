@@ -70,40 +70,39 @@
     );
   }
 </style>
-<Fragment slot="head">
-  <script>
-    function initializeThemeSelector() {
-      const colorThemes: NodeListOf<HTMLInputElement> =
-        document.querySelectorAll('input[name="theme"]');
+<script>
+  function initializeThemeSelector() {
+    const colorThemes: NodeListOf<HTMLInputElement> = document.querySelectorAll(
+      'input[name="theme"]'
+    );
 
-      function storeTheme(theme: string) {
-        localStorage.setItem("theme", theme);
-      }
+    function storeTheme(theme: string) {
+      localStorage.setItem("theme", theme);
+    }
 
-      function retrieveTheme() {
-        const activeTheme = localStorage.getItem("theme");
-        colorThemes.forEach((theme) => {
-          if (theme.id === activeTheme) {
-            theme.checked = true;
-          }
-        });
-      }
-
+    function retrieveTheme() {
+      const activeTheme = localStorage.getItem("theme");
       colorThemes.forEach((theme) => {
-        theme.addEventListener("click", () => {
-          storeTheme(theme.id);
-        });
+        if (theme.id === activeTheme) {
+          theme.checked = true;
+        }
       });
-
-      retrieveTheme();
     }
 
-    if (document.readyState === "loading") {
-      document.addEventListener("DOMContentLoaded", initializeThemeSelector);
-    } else {
-      initializeThemeSelector();
-    }
+    colorThemes.forEach((theme) => {
+      theme.addEventListener("click", () => {
+        storeTheme(theme.id);
+      });
+    });
 
-    document.addEventListener("astro:after-swap", initializeThemeSelector);
-  </script>
-</Fragment>
+    retrieveTheme();
+  }
+
+  if (document.readyState === "loading") {
+    document.addEventListener("DOMContentLoaded", initializeThemeSelector);
+  } else {
+    initializeThemeSelector();
+  }
+
+  document.addEventListener("astro:after-swap", initializeThemeSelector);
+</script>

@@ -21,7 +21,7 @@ const canonicalUrl = new URL(
   Astro.url.pathname.endsWith("/")
     ? Astro.url.pathname
     : Astro.url.pathname + "/",
-  "https://lel.nekoweb.org",
+  "https://lel.nekoweb.org"
 ).href;
 
 const isDev = import.meta.env.DEV;
@@ -91,7 +91,22 @@ const isDev = import.meta.env.DEV;
     content="WOn7NKMqQnniSYxOoqE9lu4k9YKK9zzhUJkSwQLm-_U"
   />
 
-  <slot name="headContent" />
+  <link
+    rel="preload"
+    href="/fonts/subset-AtkinsonHyperlegibleNext-Regular.woff2"
+    as="font"
+    type="font/woff2"
+    crossorigin
+  />
+  <link
+    rel="preload"
+    href="/fonts/subset-MicaValo.woff2"
+    as="font"
+    type="font/woff2"
+    crossorigin
+  />
+
+  <slot name="head" />
 
   <ClientRouter />
 </CapoHead>

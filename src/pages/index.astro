@@ -9,6 +9,7 @@ import Faq from "@components/Main/Faq.astro";
 
 <Layout title="lel@NekoWeb" description="Nekosex">
   <Fragment slot="head">
+    <slot name="head" slot="head" />
     <link
       rel="preload"
       href="/fonts/Archoblast.woff2"
@@ -16,7 +17,26 @@ import Faq from "@components/Main/Faq.astro";
       type="font/woff2"
       crossorigin
     />
+
+    <link rel="prefetch" href="/images/main/numbers/0.gif" />
+    <link rel="prefetch" href="/images/main/numbers/1.gif" />
+    <link rel="prefetch" href="/images/main/numbers/2.gif" />
+    <link rel="prefetch" href="/images/main/numbers/3.gif" />
+    <link rel="prefetch" href="/images/main/numbers/4.gif" />
+    <link rel="prefetch" href="/images/main/numbers/5.gif" />
+    <link rel="prefetch" href="/images/main/numbers/6.gif" />
+    <link rel="prefetch" href="/images/main/numbers/7.gif" />
+    <link rel="prefetch" href="/images/main/numbers/8.gif" />
+    <link rel="prefetch" href="/images/main/numbers/9.gif" />
+
+    <link rel="preconnect" href="https://scrobbled.tepiloxtl.net" />
+    <link
+      rel="preconnect"
+      href="https://lastfm.freetls.fastly.net"
+      crossorigin
+    />
   </Fragment>
+
   <main>
     <HeroImage />
     <section class="hero">
@@ -27,6 +47,8 @@ import Faq from "@components/Main/Faq.astro";
         <h2 id="main-grid-title" class="sr-only">Main Grid with Information</h2>
         <Grid />
       </section>
+
+      <slot name="head" slot="head" />
 
       <Widgets />
 
