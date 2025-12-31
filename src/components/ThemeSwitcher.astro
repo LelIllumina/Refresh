@@ -19,13 +19,22 @@ import { Icon } from "astro-icon/components";
   </fieldset>
   <fieldset>
     <legend class="sr-only">Color Mode</legend>
-    <label for="auto"> <Icon name="lucide:sun-moon" /></label>
+    <label for="auto">
+      <Icon name="lucide:sun-moon" />
+      <span class="sr-only">auto</span></label
+    >
     <input type="radio" name="mode" id="auto" checked />
 
-    <label for="light"> <Icon name="lucide:sun" /></label>
+    <label for="light">
+      <Icon name="lucide:sun" />
+      <span class="sr-only">light</span></label
+    >
     <input type="radio" name="mode" id="light" />
 
-    <label for="dark"> <Icon name="lucide:moon" /></label>
+    <label for="dark">
+      <Icon name="lucide:moon" />
+      <span class="sr-only">dark</span></label
+    >
     <input type="radio" name="mode" id="dark" />
   </fieldset>
 </form>
