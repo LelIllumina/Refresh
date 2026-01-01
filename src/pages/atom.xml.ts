@@ -31,7 +31,7 @@ export async function GET(context: APIContext) {
 
   blog.forEach((post) => {
     feed.addItem({
-      id: `${context.site} /blogs/${post.id}/`,
+      id: `${context.site}/blogs/${post.id}/`,
       title: post.data.title,
       image: encodeURI(
         `${context.site}_astro/${post.data.thumb.src.split("/").pop()}`,
@@ -46,12 +46,12 @@ export async function GET(context: APIContext) {
         name: tag,
         term: tag,
       })),
-      link: `${context.site} /blogs/${post.id}/`,
+      link: `${context.site}/blogs/${post.id}/`,
     });
   });
   guide.forEach((post) => {
     feed.addItem({
-      id: `${context.site} /guides/${post.id}/`,
+      id: `${context.site}/guides/${post.id}/`,
       title: post.data.title,
       image: encodeURI(
         `${context.site}_astro/${post.data.thumb.src.split("/").pop()}`,
@@ -66,7 +66,7 @@ export async function GET(context: APIContext) {
         name: tag,
         term: tag,
       })),
-      link: `${context.site} /guides/${post.id}/`,
+      link: `${context.site}/guides/${post.id}/`,
     });
   });
   return new Response(feed.atom1(), {
