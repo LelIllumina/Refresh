@@ -27,20 +27,6 @@ self.onmessage = async (e) => {
   }
 
   if (msg.type === "resize") {
-    if (
-      !msg.canvas ||
-      !msg.width ||
-      !msg.height ||
-      !msg.bg ||
-      msg.intensity === undefined
-    ) {
-      self.postMessage({
-        type: "error",
-        message: "Invalid init message: missing required fields",
-      });
-      return;
-    }
-
     canvas.width = msg.width;
     canvas.height = msg.height;
     drawBaseImage();
