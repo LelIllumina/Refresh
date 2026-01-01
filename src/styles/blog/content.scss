@@ -7,7 +7,6 @@ section {
     p:not(svg p):nth-child(1)::first-letter {
       margin-right: 10px;
       font-weight: 900;
-
       -webkit-initial-letter: 2 2;
       initial-letter: 2 2;
     }
