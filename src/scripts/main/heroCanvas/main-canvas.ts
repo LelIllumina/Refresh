@@ -14,17 +14,24 @@ worker.postMessage(
     type: "init",
     canvas: offscreen,
     bg: bg.src,
-    intensity: Math.ceil(Math.random() * 10) + 2,
+    intensity: Math.floor(Math.random() * 10) + 3, // Range: 3-12
     width: window.innerWidth,
     height: window.innerHeight,
   },
   [offscreen],
 );
+let resizeScheduled = false;
 
 window.addEventListener("resize", () => {
-  worker.postMessage({
-    type: "resize",
-    width: window.innerWidth,
-    height: window.innerHeight,
+  if (resizeScheduled) return;
+  resizeScheduled = true;
+
+  requestAnimationFrame(() => {
+    resizeScheduled = false;
+    worker.postMessage({
+      type: "resize",
+      width: window.innerWidth,
+      height: window.innerHeight,
+    });
   });
 });
