@@ -27,7 +27,7 @@ const fragmentShaderSource = /* GLSL */ `#version 300 es
 
 /* Init stuff */
 function initCanvas() {
-  const canvas = document.querySelector<HTMLCanvasElement>("#hero-canvas")!;
+  const canvas = document.querySelector<HTMLCanvasElement>("#hero-canvas");
   if (!canvas) {
     alert("Canvas element not found");
     return;
@@ -38,7 +38,7 @@ function initCanvas() {
     alert(
       "Unable to initialize Webgl. Your browser may not support it. Switching to 2D canvas context",
     );
-    import("@scripts/main/heroCanvas/2d");
+    // import("@scripts/main/heroCanvas/2d");
     return;
   }
 
@@ -84,6 +84,7 @@ function initCanvas() {
     glContext.useProgram(programInfo.program);
 
     // Set uniforms
+    if (!canvas) throw new Error("Canvas not found during render");
     twgl.setUniforms(programInfo, {
       u_resolution: [canvas.width, canvas.height],
       u_image: texture,

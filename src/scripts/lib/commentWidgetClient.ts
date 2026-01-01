@@ -18,7 +18,10 @@ function buildTree(comments: CommentData[]) {
 
   comments.forEach((c) => {
     if (c.parentId && map.has(c.parentId)) {
-      map.get(c.parentId)!.replies.push(c);
+      const parent = map.get(c.parentId);
+      if (parent) {
+        parent.replies.push(c);
+      }
     } else {
       roots.push(c);
     }
@@ -68,7 +71,8 @@ function commentHTML(c: CommentData): string {
 function renderUI(comments: CommentData[]) {
   const tree = buildTree(comments);
 
-  root!.innerHTML = `
+  if (!root) throw new Error("Comments root element not found");
+  root.innerHTML = `
 <div id="c-input-div">
   <form id="c_form">
     <h2 id="c-widget-title">Leave your comments</h2>
@@ -122,7 +126,8 @@ function bindEvents() {
 
   document.querySelectorAll<HTMLButtonElement>(".submit-reply").forEach((btn) =>
     btn.addEventListener("click", async () => {
-      const li = btn.closest("li")!;
+      const li = btn.closest("li");
+      if (!li) return;
       const parentId = li.getAttribute("data-id") ?? undefined;
       const username = (li.querySelector(".reply-username") as HTMLInputElement)
         .value;

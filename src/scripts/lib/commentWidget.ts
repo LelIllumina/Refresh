@@ -48,12 +48,12 @@ export async function postComment(
 }
 
 export async function loadComments(slug: string): Promise<CommentData[]> {
-  const q = query(
+  const querys = query(
     collection(db, "comments"),
     where("slug", "==", slug),
     orderBy("createdAt", "asc"),
   );
-  const snapshot = await getDocs(q);
+  const snapshot = await getDocs(querys);
   return snapshot.docs.map((doc) => {
     const data = doc.data();
     return {
