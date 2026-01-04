@@ -20,40 +20,41 @@ import giant from "/src/assets/images/etc/hand.gif";
     class="giant-woman"
     caption={false}
   />
-</Layout>
+  <Fragment slot="footer"> </Fragment>
 
-<style>
-  .text {
-    position: absolute;
-    top: 24%;
-    left: 8%;
-    text-align: center;
-
-    a {
-      margin: 7.5vh auto;
-      padding: 0.75em 1.5em;
-      border-radius: 10px;
-    }
-
-    h2 {
+  <style>
+    .text {
+      position: absolute;
+      top: 24%;
+      left: 8%;
       text-align: center;
+
+      a {
+        margin: 7.5vh auto;
+        padding: 0.75em 1.5em;
+        border-radius: 10px;
+      }
+
+      h2 {
+        text-align: center;
+      }
     }
-  }
 
-  .giant-woman {
-    pointer-events: none;
+    .giant-woman {
+      pointer-events: none;
 
-    position: absolute;
-    right: 0;
-    bottom: 0;
+      position: absolute;
+      right: 0;
+      bottom: 0;
 
-    width: auto;
-    height: 100vh;
-    margin: 0;
+      width: auto;
+      height: 100vh;
+      margin: 0;
 
-    object-fit: contain;
-    object-position: bottom;
+      object-fit: contain;
+      object-position: bottom;
 
-    image-rendering: pixelated;
-  }
-</style>
+      image-rendering: pixelated;
+    }
+  </style>
+</Layout>
