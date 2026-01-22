@@ -1,0 +1,184 @@
+---
+import { Image } from "astro:assets";
+---
+
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link rel="stylesheet" href="/src/styles/reset.scss" />
+    <title>Erotic Page</title>
+  </head>
+  <body>
+    <div class="container">
+      <div class="hero">
+        <div class="title">
+          <h1>A Certain Scientific<br /><span class="big">RAILGUN</span></h1>
+        </div>
+      </div>
+      <Image
+        src="/src/assets/images/erotic/elevate.png"
+        alt="Erotic"
+        class="erotic"
+        width={750}
+        height={750}
+        loading="eager"
+      />
+      <div class="logo">
+        <div class="coins">
+          <Image
+            src="/src/assets/images/erotic/Coin 1.png"
+            alt="Railgun Anime logo"
+            height={100}
+            width={100}
+            loading="eager"
+          />
+          <Image
+            src="/src/assets/images/erotic/Coin 1.png"
+            alt="Railgun Anime logo"
+            height={100}
+            width={100}
+            loading="eager"
+          />
+        </div>
+        <Image
+          src="/src/assets/images/erotic/railgunLogo.png"
+          alt="Railgun Anime logo"
+          height={200}
+          width={200}
+          loading="eager"
+          class="main-logo"
+        />
+      </div>
+      <hr />
+      <p>
+        Academy City is a highly developed place in terms of technology. It is
+        said to be 20 to 30 years ahead of the rest of the world, and 80% of its
+        2.3 million residents are students. The focus of studies here is
+        directed towards esper powers. Misaka Mikoto, one of the top level
+        espers in town, shares a room with Kuroko Shirai, another high level
+        esper who is a member of Judgement, a law enforcing agency composed of
+        students. Both attend Tokiwadai, a private school reserved for the
+        high-leveled and the rich. Kuroko's partner at Judgement, Kazari Uiharu,
+        is a low level esper who studies at Sakugawa middle school. Her best
+        friend and classmate there is Ruiko Saten, a level zero, one who has no
+        esper powers. Together, the four encounter several adventures in the
+        exciting scientific town.
+      </p>
+    </div>
+    <style>
+      img {
+        user-select: none;
+      }
+
+      .container {
+        position: relative;
+
+        display: grid;
+        grid-template:
+          "title title title title title title" 50%
+          "line line line line . ." 0.1fr
+          "logo text text text . ." 1.9fr / 1fr 1fr 1fr 1fr 1fr 1fr;
+        gap: 0;
+
+        height: 100vh;
+
+        font-size: 1.5rem;
+
+        .hero {
+          position: absolute;
+          z-index: -1;
+          inset: 3rem;
+
+          padding: 3rem;
+          border: 2.5px black solid;
+        }
+
+        hr {
+          grid-area: line;
+
+          width: 80%;
+          height: 5px;
+          border: 0;
+
+          background: linear-gradient(to right, #e3021f, #ec8b31);
+        }
+      }
+
+      .title {
+        grid-area: title;
+      }
+
+      h1 {
+        margin: 0;
+        padding: 10px;
+
+        font-family: Gloock, serif;
+        font-size: 10rem;
+        font-weight: 400;
+        line-height: 0.75;
+        text-align: center;
+
+        background: linear-gradient(45deg, #e3021f, #ec8b31);
+        background-clip: text;
+
+        -webkit-text-fill-color: transparent;
+
+        .big {
+          font-size: 20rem;
+        }
+      }
+
+      p {
+        grid-area: text;
+        font-family: "IBM Plex Sans", sans-serif;
+        line-height: 1.2;
+      }
+
+      .logo {
+        display: flex;
+        grid-area: logo;
+        flex-direction: column;
+        align-items: flex-end;
+        justify-content: flex-end;
+
+        padding: 2rem;
+        padding-bottom: 6rem;
+
+        .coins {
+          display: flex;
+          padding-block: 1rem;
+        }
+
+        .main-logo {
+          width: 200px;
+          height: auto;
+        }
+      }
+
+      .erotic {
+        position: absolute;
+        right: 0;
+        bottom: 0;
+
+        /* float: right;
+        shape-outside: url("/src/assets/images/erotic/elevate.png");
+        shape-image-threshold: 20%;
+        shape-margin: 1rem; */
+      }
+
+      @font-face {
+        font-family: Gloock;
+
+        src: url("/fonts/Gloock-Regular.ttf") format("truetype");
+      }
+
+      @font-face {
+        font-family: "IBM Plex Sans";
+
+        src: url("/fonts/IBMPlexSans-Light.ttf") format("truetype");
+      }
+    </style>
+  </body>
+</html>
