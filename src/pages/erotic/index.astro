@@ -1,5 +1,10 @@
 ---
 import { Image } from "astro:assets";
+
+import eroticImage from "@assets/images/erotic/elevate.png";
+import coin1 from "@assets/images/erotic/coin1.png";
+import coin2 from "@assets/images/erotic/coin2.png";
+import logo from "@assets/images/erotic/railgunLogo.png";
 ---
 
 <!doctype html>
@@ -18,7 +23,7 @@ import { Image } from "astro:assets";
         </div>
       </div>
       <Image
-        src="/src/assets/images/erotic/elevate.png"
+        src={eroticImage}
         alt="Erotic"
         class="erotic"
         width={750}
@@ -28,22 +33,22 @@ import { Image } from "astro:assets";
       <div class="logo">
         <div class="coins">
           <Image
-            src="/src/assets/images/erotic/Coin 1.png"
-            alt="Railgun Anime logo"
+            src={coin1}
+            alt="Coin front"
             height={100}
             width={100}
             loading="eager"
           />
           <Image
-            src="/src/assets/images/erotic/Coin 1.png"
-            alt="Railgun Anime logo"
+            src={coin2}
+            alt="Coin back"
             height={100}
             width={100}
             loading="eager"
           />
         </div>
         <Image
-          src="/src/assets/images/erotic/railgunLogo.png"
+          src={logo}
           alt="Railgun Anime logo"
           height={200}
           width={200}
