@@ -26,7 +26,6 @@
     "astro-page-insight": "^0.10.2",
     "chart.js": "^4.5.1",
     "feed": "^5.1.0",
-    "firebase": "^12.6.0",
     "markdown-it": "^14.1.0",
     "remark-emoji": "^5.0.2",
     "sanitize-html": "^2.17.0",
