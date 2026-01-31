@@ -40,6 +40,7 @@ class SupabaseComments extends HTMLElement {
           <label for="username">Name:</label>
           <input
             name="username"
+            id="username"
             placeholder="Lel"
             required
             autocomplete="name"
@@ -49,14 +50,18 @@ class SupabaseComments extends HTMLElement {
           <label for="website">(Optional) Website:</label>
           <input
             name="website"
+            id="website"
             placeholder="https://lel.nekoweb.org/"
             pattern="https?://.+"
             autocomplete="url"
             class="comment-form__field comment-form__input"
           />
+          <label for="content">Comment:</label>
           <textarea
             name="content"
+            id="content"
             placeholder="Write a comment..."
+            required
             class="comment-form__field comment-form__input"></textarea>
           <br />
           <button type="submit">Post</button>
@@ -174,6 +179,7 @@ class SupabaseComments extends HTMLElement {
       await this.loadComments();
     } catch (err) {
       console.error(err);
+      alert("Failed to post comment. Please try again.");
     } finally {
       button.disabled = false;
     }
