@@ -1,4 +1,4 @@
-#comments-root {
+#comments {
   max-width: 60%;
   margin: auto;
   padding: 15px;
@@ -6,7 +6,7 @@
 
 button,
 input[type="submit"],
-.c-submit-button {
+.comment__submit {
   cursor: pointer;
 
   padding: 6px 16px;
@@ -21,7 +21,7 @@ input[type="submit"],
 }
 
 button:hover,
-.c-submit-button:hover {
+.comment__submit:hover {
   color: var(--text-100);
   background-color: var(--background-500);
 }
@@ -31,25 +31,89 @@ button:disabled {
   opacity: 0.6;
 }
 
-#c-input-div {
+.comment {
+  margin: 10px 0 auto 1rem;
+  padding: 10px;
+  border: 1px dashed var(--accent-500);
+  border-radius: 4px;
+}
+
+.comment--reply {
+  margin-left: 20px;
+}
+
+.comment__header {
+  display: grid;
+  grid-template-columns: 1fr 1fr 1fr;
+  align-items: center;
+}
+
+.comment__username {
+  margin: 0;
+  font-weight: 600;
+  text-decoration: underline;
+}
+
+.comment__time {
+  justify-self: center;
+  font-size: 0.85em;
+  text-align: center;
+  opacity: 0.6;
+}
+
+.comment__website {
+  justify-self: end;
+  text-align: right;
+}
+
+.comment__content {
+  margin-top: 10px;
+  text-align: justify;
+
+  // word-break: break-word;
+  white-space: pre-wrap;
+}
+
+.comment__footer {
+  margin-top: 10px;
+}
+
+.comment__reply {
+  cursor: pointer;
+  color: var(--accent-500);
+  text-decoration: none;
+
+  &:hover {
+    color: var(--accent-300);
+    text-decoration: underline;
+  }
+}
+
+#comment-form {
+  margin: 20px auto;
   padding: 10px;
   border: 1px dashed var(--accent-500);
   border-radius: 5px;
+
   background-color: var(--background-200);
+
+  label {
+    display: block;
+  }
 }
 
-#c-widget-title {
+.comment-form__title {
   margin: 0;
-  padding-block-end: 1rem;
+  padding-bottom: 1rem;
   color: var(--text-800);
   text-decoration: underline wavy;
 }
 
-.c-input-wrapper {
+.comment-form__field {
   margin: 5px 0;
 }
 
-.c-input {
+.comment-form__input {
   width: 80%;
   padding: 4px;
   border: 1px solid var(--accent-500);
@@ -61,42 +125,4 @@ button:disabled {
     border-color: var(--accent-700);
     outline: none;
   }
-}
-
-.c-comment,
-.c-reply {
-  margin: 10px 0;
-  padding: 10px;
-  border: 1px dashed var(--accent-500);
-  border-radius: 4px;
-
-  list-style: none;
-}
-
-.c-name {
-  display: inline-block;
-  margin: 0;
-  text-decoration: underline;
-}
-
-.c-site {
-  color: var(--accent-500);
-
-  &:hover {
-    color: var(--accent-300);
-  }
-}
-
-.c-timestamp {
-  float: right;
-  opacity: 0.6;
-}
-
-.c-text {
-  margin-top: 10px;
-  text-align: justify;
-}
-
-.c-reply-button {
-  margin-top: 10px;
 }
