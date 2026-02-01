@@ -18,7 +18,7 @@
     "@astrojs/rss": "4.0.14",
     "@astrojs/sitemap": "3.6.0",
     "@astrojs/svelte": "7.2.4",
-    "@supabase/supabase-js": "^2.93.1",
+    "@supabase/supabase-js": "^2.93.3",
     "@tsconfig/svelte": "^5.0.6",
     "astro": "5.16.6",
     "astro-capo": "^0.0.1",
