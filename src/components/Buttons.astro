@@ -1,6 +1,141 @@
-{
-  /* 
-  TODO:add the buttons from before. 
-https://nyscyra.nekoweb.org/img/button.png
-*/
-}
+---
+import { Image } from "astro:assets";
+
+const images = [
+  {
+    href: "https://hillhouse.neocities.org/journal/notes/palestine",
+    src: "https://hillhouse.neocities.org/_images/toybox/_buttons/riversea1.gif",
+    title: "FREE PALESTINE!!",
+    alt: "Palestine Button",
+  },
+  {
+    href: "https://decolonizepalestine.com/",
+    src: "https://hillhouse.neocities.org/_images/toybox/_buttons/standwith.png",
+    title: "Decolonize Palestine site which is very useful",
+    alt: "decolonizepalestine Button",
+  },
+  {
+    href: "/",
+    src: "/images/main/buttons/lel@Button.png",
+    title: "lel@button",
+    alt: "lel@nekoweb button",
+  },
+  {
+    href: "https://potentia.moe/",
+    src: "https://potentia.moe/img/tm.gif",
+    title: "Trad Wife Hell",
+    alt: "potentia.moe button",
+  },
+  {
+    href: "https://trademarkhell.net",
+    src: "/images/main/buttons/LIES.png",
+    title: "LIESSSSS THEY WERE ALL LIES",
+    alt: "lyes",
+  },
+  {
+    href: "https://melankorin.net/",
+    src: "https://melankorin.net/assets/img/buttons/button-1.gif",
+    title: "melankorin",
+    alt: "melankorin Button",
+  },
+  {
+    href: "https://joo.sh/",
+    src: "https://files.joo.sh/img/buttons/jooshRice.gif",
+    title: "JOOOOOOOOOOOOOOSH",
+    alt: "joo.sh Button",
+  },
+  {
+    href: "https://thinliquid.dev/",
+    src: "https://thinliquid.dev/buttons/btn.png",
+    title: "twin Liquid",
+    alt: "Thin Liquid Button",
+  },
+  {
+    href: "https://oooeee.nekoweb.org",
+    src: "https://oooeee.nekoweb.org/img/misc/button.png",
+    title: "oooeee",
+    alt: "oooeee Button",
+  },
+  {
+    href: "https://rice.place/",
+    src: "https://rice.place/button/riceu.gif",
+    title: "rice meat and bokchoy",
+    alt: "rice Button",
+  },
+  {
+    href: "https://moosyu.com/",
+    src: "https://ze.wtf/9d6m7sun",
+    title: "Moose",
+    alt: "Moose",
+  },
+  {
+    href: "https://nyscyra.nekoweb.org/",
+    src: "https://nyscyra.nekoweb.org/img/button.png",
+    title: "Nyscyra",
+    alt: "Nyscyra Button",
+  },
+  {
+    href: "https://banner.nekoweb.org/",
+    src: "https://banner.nekoweb.org/image/bannerclubbutton.png",
+    title: "Banner Club",
+    alt: "Banner Club Button",
+  },
+  {
+    href: "https://lel.nekoweb.org/",
+    src: "/images/main/buttons/cuteanimegirls.gif",
+    title: "Animay Gurls",
+    alt: "Anime girl Button",
+  },
+  {
+    href: "https://lel.nekoweb.org/",
+    src: "/images/main/buttons/blink-0.gif",
+    title: "Blink Blink",
+    alt: "blink blink",
+  },
+];
+---
+
+<section class="buttons" aria-labelledby="buttons-title">
+  {
+    images.map(({ href, src, title, alt }) => (
+      <a
+        href={href}
+        target="_blank"
+        rel="noopener noreferrer"
+        title={title}
+        class="button-link"
+      >
+        <Image
+          decoding="async"
+          loading="eager"
+          src={src}
+          alt={alt}
+          width="88"
+          height="31"
+        />
+      </a>
+    ))
+  }
+</section>
+
+<style>
+  .buttons {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 0.5rem;
+    align-items: center;
+    justify-content: center;
+
+    margin: 1rem auto;
+
+    & a {
+      display: inline-flex;
+      line-height: 0;
+    }
+
+    & img {
+      margin: auto 0;
+      image-rendering: pixelated;
+    }
+  }
+</style>
